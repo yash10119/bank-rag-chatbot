@@ -18,6 +18,10 @@ EMAIL_RE = re.compile(r"^[^@\s<>\"',;]+@[^@\s<>\"',;]+\.[^@\s<>\"',;]+$")
 
 
 async def authed(ctx: Context, service: str) -> tuple[str, str]:
+    """Authenticate one tool call. The caller's identity comes only from the signed internal token in the
+    Authorization header (never from tool arguments); that user's own access token is then loaded and refreshed
+    if needed. Returns (user_id, access_token) or raises a ToolError the agent can report.
+    """
     request = ctx.request_context.request
     header = request.headers.get("authorization", "") if request is not None else ""
     if not header.lower().startswith("bearer "):
@@ -42,6 +46,7 @@ def register_oauth(mcp, service: str) -> None:
 
     @mcp.custom_route("/oauth/start", methods=["GET"])
     async def oauth_start(request: Request):
+        """GET /oauth/start: verify the connect ticket and redirect the browser to the provider's consent page."""
         try:
             return RedirectResponse(await flow.begin(service, request.query_params.get("ticket", "")), status_code=302)
         except providers.OAuthError as exc:
@@ -51,16 +56,21 @@ def register_oauth(mcp, service: str) -> None:
 
     @mcp.custom_route("/oauth/callback", methods=["GET"])
     async def oauth_callback(request: Request):
+        """GET /oauth/callback: validate state, exchange the code server-side, store the encrypted token and send
+        the browser back to the Streamlit app. Tokens never reach the browser.
+        """
         q = request.query_params
         title, message, ok, uid = await flow.finish(service, q.get("code"), q.get("state"), q.get("error"))
         return RedirectResponse(flow.back_to_app(service, title, message, ok, uid), status_code=302)  # back to the Streamlit app
 
 
 def bearer(token: str) -> dict[str, str]:
+    """Authorization header for a provider API call."""
     return {"Authorization": f"Bearer {token}"}
 
 
 def check_emails(addresses: list[str]) -> list[str]:
+    """Validate recipient addresses before any send, so a malformed or injected address fails loudly."""
     cleaned = [a.strip() for a in addresses if a and a.strip()]
     for a in cleaned:
         if not EMAIL_RE.match(a):
@@ -69,6 +79,9 @@ def check_emails(addresses: list[str]) -> list[str]:
 
 
 def raise_for_google(resp: httpx.Response) -> None:
+    """Turn a Google API error into a ToolError. 401/403 are reported as not_connected so the UI asks the user
+    to reconnect instead of showing a raw API error.
+    """
     if resp.status_code >= 400:
         try:
             msg = resp.json().get("error", {}).get("message", resp.text)

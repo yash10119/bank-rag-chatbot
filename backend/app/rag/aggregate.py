@@ -36,23 +36,27 @@ class PlanError(ValueError):
 
 
 class Filter(BaseModel):
+    """One row filter of a plan. The column is resolved against the real table before use."""
     column: str
     op: Literal["=", "!=", ">", ">=", "<", "<=", "contains", "in"]
     value: str = Field(description="For 'in', a comma-separated list. Use values exactly as listed in the table description.")
 
 
 class Metric(BaseModel):
+    """One aggregate to compute: an operation over a column, or a plain row count."""
     op: Literal["sum", "count", "count_distinct", "avg", "min", "max"]
     column: str | None = Field(None, description="null for a plain row count")
 
 
 class Join(BaseModel):
+    """Lookup join to a second table, for a column the main table lacks (e.g. branch for a loan row)."""
     table: str
     left_on: str
     right_on: str
 
 
 class SubQuery(BaseModel):
+    """A single filter / group / aggregate query over one table. The model writes this; pandas runs it."""
     table: str = Field(description="Exact table name from the catalog")
     date_column: str | None = Field(None, description="Date column to apply the question's period to")
     filters: list[Filter] = Field(default_factory=list)
@@ -68,6 +72,9 @@ class SubQuery(BaseModel):
 
 
 class AggPlan(BaseModel):
+    """The planner's full answer: whether the question is an aggregate, the main query, an optional
+    denominator (percentage-of questions) and whether to compare with another period.
+    """
     is_aggregate: bool = Field(description="True if the question needs totals/counts/averages/rankings/trends over many rows")
     query: SubQuery | None = None
     denominator: SubQuery | None = Field(None, description="Second query whose total divides the first (percentage of ...)")
@@ -97,6 +104,9 @@ def resolve_column(df: pd.DataFrame, name: str) -> str:
 
 
 def resolve_table(tables: dict[str, pd.DataFrame], name: str) -> tuple[str, pd.DataFrame]:
+    """Map the table name the model wrote to a real indexed table (exact, case-insensitive, then close match).
+    Raises PlanError rather than guessing when nothing matches.
+    """
     if name in tables:
         return name, tables[name]
     low = {k.lower(): k for k in tables}
@@ -151,6 +161,7 @@ def _is_date(s: pd.Series) -> bool:
 
 
 def guess_date_column(df: pd.DataFrame) -> str | None:
+    """The column to apply a period to when the plan names none: a date-like name first, else any date column."""
     named = [c for c in df.columns if re.search(r"date|time|_on$|_at$", c, re.I) and _is_date(df[c])]
     return named[0] if named else next((c for c in df.columns if _is_date(df[c])), None)
 
@@ -160,6 +171,9 @@ def guess_date_column(df: pd.DataFrame) -> str | None:
 
 @dataclass
 class ExecResult:
+    """Result of running one SubQuery: the grouped frame plus how many rows matched and the date coverage
+    of the data, which feed the guardrail notes in the answer.
+    """
     df: pd.DataFrame
     keys: list[str]
     metrics: list[str]
@@ -174,10 +188,14 @@ class ExecResult:
 
 
 def metric_name(m: Metric) -> str:
+    """Stable result-column name for a metric, e.g. sum_amount or count."""
     return "count" if m.op == "count" and not m.column else f"{m.op}_{m.column}"
 
 
 def _apply_filter(df: pd.DataFrame, f: Filter) -> pd.DataFrame:
+    """Apply one plan filter with type-aware comparison: numeric and date columns compare as values, text
+    compares case-insensitively. An unknown column raises PlanError instead of silently matching nothing.
+    """
     col = resolve_column(df, f.column)
     s, v = df[col], f.value.strip()
     if f.op in (">", ">=", "<", "<="):
@@ -326,6 +344,7 @@ def execute(sub: SubQuery, tables: dict[str, pd.DataFrame], period: Period | Non
     fn = {"sum": "sum", "count": "count", "count_distinct": "nunique", "avg": "mean", "min": "min", "max": "max"}
 
     def agg(frame: pd.DataFrame, keys: list[str]) -> pd.DataFrame:
+        """Group the filtered frame by the given keys and compute every metric of the plan."""
         grp = frame.assign(__all=1).groupby(keys or ["__all"], sort=True, dropna=True)
         out = pd.concat([getattr(grp[f"__m{i}"], fn[m.op])().rename(nm) for i, (m, nm) in enumerate(zip(metrics, names))], axis=1)
         out = out.reset_index()
@@ -674,6 +693,9 @@ def describe_catalog(tables: dict[str, pd.DataFrame], question: str, k: int = 4)
     words = {w for w in re.findall(r"[a-z]{3,}", question.lower())} - {"the", "and", "for", "what", "how", "many", "much", "was", "were", "last", "this", "that", "with", "from", "between", "total", "amount", "more", "than"}
 
     def score(item) -> float:
+        """Rank a table by how many question words appear in its name and columns, with a boost for the
+        transaction and loan tables when the question is clearly about them.
+        """
         name, df = item
         toks = set(re.findall(r"[a-z]{3,}", (name + " " + " ".join(df.columns)).lower().replace("_", " ")))
         stems = {t.rstrip("s") for t in toks}

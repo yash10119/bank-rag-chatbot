@@ -14,6 +14,7 @@ ALLOWED_EXT = {".csv", ".xlsx"}
 
 
 class UnsupportedFile(ValueError):
+    """Raised when an upload is not a valid .xlsx or .csv; the API answers 415 with the reason."""
     pass
 
 
@@ -88,6 +89,7 @@ def _norm(col: str) -> str:
 
 
 def find_col(columns: list[str], *needles: str) -> str | None:
+    """First column whose normalised name contains one of the needles, in needle priority order."""
     normed = {c: _norm(c) for c in columns}
     for needle in needles:  # priority by needle order
         for c, n in normed.items():
@@ -97,6 +99,9 @@ def find_col(columns: list[str], *needles: str) -> str | None:
 
 
 def classify_table(df: pd.DataFrame) -> str:
+    """Guess what a sheet holds (transactions, profile, rates, eligibility rules, compliance, ...) from its
+    headers. The kind is stored on each chunk so agents can restrict retrieval to the right tables.
+    """
     cols = list(df.columns)
     joined = " ".join(_norm(c) for c in cols)
     has = lambda *k: any(x in joined for x in k)  # noqa: E731
@@ -116,6 +121,9 @@ def classify_table(df: pd.DataFrame) -> str:
 
 
 def to_number(value: object) -> float | None:
+    """Lenient numeric parse for cell values: strips currency symbols and separators, reads (1,200) as negative.
+    For amounts quoted in a question use the strict parse_amount in aggregate.py instead.
+    """
     s = str(value).strip()
     if not s:
         return None

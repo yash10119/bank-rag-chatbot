@@ -20,12 +20,14 @@ URLS = {
 
 @dataclass
 class McpResult:
+    """Outcome of one MCP tool call. Failures are returned, not raised, so a failed side effect never aborts the turn."""
     ok: bool
     data: dict = field(default_factory=dict)
     error: str = ""
 
     @property
     def not_connected(self) -> bool:
+        """True when the user has not connected (or must reconnect) the service; the UI then points to Settings."""
         return "not_connected" in self.error
 
 

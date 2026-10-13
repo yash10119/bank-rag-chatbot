@@ -1,3 +1,4 @@
+"""Typed state of the banking graph, checkpointed per conversation."""
 from typing import Annotated, Any, TypedDict
 
 from langchain_core.messages import AnyMessage
@@ -15,6 +16,9 @@ def merge_dict(old: dict | None, new: dict | None) -> dict:
 
 
 def reduce_list(old: list | None, new: list | None) -> list:
+    """List reducer for parallel branches: appends, and a leading RESET marker replaces the list (used to
+    start each turn with an empty trace/actions list).
+    """
     new = new or []
     if new and isinstance(new[0], dict) and new[0].get("__reset__"):
         return new[1:]
@@ -22,6 +26,9 @@ def reduce_list(old: list | None, new: list | None) -> list:
 
 
 class BankState(TypedDict, total=False):
+    """Everything one conversation turn carries between nodes. Identity fields come from the authenticated
+    session; only findings, entities and messages are ever produced by the model.
+    """
     # identity: set by the API from the authenticated session, never from model output
     user_id: str
     user_name: str

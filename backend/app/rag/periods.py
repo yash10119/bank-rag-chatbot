@@ -20,12 +20,14 @@ _SEP = r"(?:-|–|—|to|and|through|till|until)"
 
 @dataclass(frozen=True)
 class Period:
+    """A half-open date range [start, end) with the label shown to the user."""
     start: date
     end: date  # exclusive
     label: str
 
     @property
     def last_day(self) -> date:
+        """Last calendar day inside the period (end is exclusive)."""
         return self.end - timedelta(days=1)
 
 
@@ -35,10 +37,12 @@ def _add_months(d: date, n: int) -> date:
 
 
 def month_period(year: int, month: int) -> Period:
+    """The calendar month as a Period."""
     return Period(date(year, month, 1), _add_months(date(year, month, 1), 1), f"{calendar.month_name[month]} {year}")
 
 
 def quarter_period(year: int, q: int) -> Period:
+    """Calendar quarter q (1-4) of a year as a Period."""
     start = date(year, 3 * q - 2, 1)
     return Period(start, _add_months(start, 3), f"Q{q} {year}")
 
@@ -55,6 +59,7 @@ def _year_of(token: str | None, today: date) -> int:
 
 
 def fiscal_year_period(today: date, fy_start_month: int, offset: int = 0) -> Period:
+    """The financial year containing today (offset -1 = the previous one), for a configurable start month."""
     start_year = today.year if today.month >= fy_start_month else today.year - 1
     start = date(start_year + offset, fy_start_month, 1)
     end = _add_months(start, 12)
@@ -69,9 +74,11 @@ def parse_periods(text: str, today: date, fy_start_month: int = 4) -> list[Perio
     claimed: list[tuple[int, int]] = []
 
     def free(a: int, b: int) -> bool:
+        """True if this span of the question has not already been claimed by an earlier, more specific pattern."""
         return all(b <= s or a >= e for s, e in claimed)
 
     def add(m: re.Match, p: Period) -> None:
+        """Record a matched period and claim its text span, so 'Q1 2026' is not also read as the year 2026."""
         if free(m.start(), m.end()):
             claimed.append((m.start(), m.end()))
             found.append((m.start(), p))

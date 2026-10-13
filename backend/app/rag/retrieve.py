@@ -1,3 +1,5 @@
+"""Retrieval entry points used by the agents: scoped hybrid search plus formatting of the hits
+into citable context ([S1], [S2], ...) and source references for the UI."""
 from . import store
 
 
@@ -16,6 +18,7 @@ def format_context(hits: list[dict]) -> str:
 
 
 def sources(hits: list[dict]) -> list[dict]:
+    """Source references (file, sheet, row range) for the UI, numbered to match the [S#] tags in the context."""
     return [
         {"ref": f"S{i}", "file": h.get("filename"), "sheet": h.get("sheet"), "rows": [h.get("row_start"), h.get("row_end")]}
         for i, h in enumerate(hits, 1)

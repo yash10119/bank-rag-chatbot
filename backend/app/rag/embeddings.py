@@ -15,6 +15,7 @@ _sem = asyncio.Semaphore(2)  # bound concurrent ONNX inference
 
 @dataclass
 class Sparse:
+    """A BM25 sparse vector as parallel index / value lists."""
     indices: list[int]
     values: list[float]
 
@@ -45,10 +46,12 @@ def _embed_query_sync(text: str) -> tuple[list[float], Sparse]:
 
 
 async def embed_documents(texts: list[str]) -> tuple[list[list[float]], list[Sparse]]:
+    """Dense and sparse vectors for a batch of chunks, computed off the event loop."""
     async with _sem:
         return await asyncio.to_thread(_embed_docs_sync, texts)
 
 
 async def embed_query(text: str) -> tuple[list[float], Sparse]:
+    """Dense and sparse vectors for a search query (query-side prefix / weighting applied by the models)."""
     async with _sem:
         return await asyncio.to_thread(_embed_query_sync, text)

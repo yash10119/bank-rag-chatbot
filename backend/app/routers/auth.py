@@ -1,3 +1,4 @@
+"""Account routes: register, log in, read and update the profile, and resume a session after an OAuth redirect."""
 import re
 import uuid
 from zoneinfo import ZoneInfo
@@ -19,27 +20,32 @@ CHANNEL_KEYS = {"loans", "compliance", "audit", "rm"}
 
 
 class Register(BaseModel):
+    """Registration request. The password is length-checked here and stored only as a bcrypt hash."""
     email: EmailStr
     name: str = Field(min_length=1, max_length=100)
     password: str = Field(min_length=8, max_length=128)
 
 
 class Login(BaseModel):
+    """Login request."""
     email: EmailStr
     password: str
 
 
 class Profile(BaseModel):
+    """Editable profile fields: display name, timezone and per-user Slack channel routing."""
     name: str | None = Field(None, max_length=100)
     timezone: str | None = None
     prefs: dict[str, str] | None = None
 
 
 def public(u: User) -> dict:
+    """The user fields that are safe to return to the browser (never the password hash)."""
     return {"id": str(u.id), "email": u.email, "name": u.name, "role": u.role, "timezone": u.timezone, "prefs": u.prefs or {}}
 
 
 async def _throttle(request: Request, key: str, limit: int = 10, window: int = 60) -> None:
+    """Per-client attempt limit for login and registration, kept in Redis."""
     k = f"rl:auth:{request.client.host if request.client else 'x'}:{key}"
     r = redis_client()
     n = await r.incr(k)
@@ -51,6 +57,7 @@ async def _throttle(request: Request, key: str, limit: int = 10, window: int = 6
 
 @router.post("/register")
 async def register(body: Register, request: Request, session: AsyncSession = Depends(get_session)):
+    """Create an account and return a session token. Emails in OFFICER_EMAILS become officers; throttled per client."""
     await _throttle(request, "register")
     email = body.email.lower()
     if (await session.execute(select(User).where(User.email == email))).scalar_one_or_none():
@@ -66,6 +73,9 @@ async def register(body: Register, request: Request, session: AsyncSession = Dep
 
 @router.post("/login")
 async def login(body: Login, request: Request, session: AsyncSession = Depends(get_session)):
+    """Exchange email and password for a session token. An unknown email still runs a bcrypt check and gets the
+    same 401, so response time and message do not reveal which accounts exist.
+    """
     await _throttle(request, "login")
     user = (await session.execute(select(User).where(User.email == body.email.lower()))).scalar_one_or_none()
     ok = await verify_password(body.password, user.password_hash if user else "$2b$12$" + "x" * 53)
@@ -75,6 +85,7 @@ async def login(body: Login, request: Request, session: AsyncSession = Depends(g
 
 
 class Resume(BaseModel):
+    """Single-use ticket issued by an MCP server at the end of the OAuth redirect."""
     ticket: str
 
 
@@ -98,11 +109,13 @@ async def resume(body: Resume, session: AsyncSession = Depends(get_session)):
 
 @router.get("/me")
 async def me(user: User = Depends(current_user)):
+    """The authenticated user's own profile."""
     return public(user)
 
 
 @router.patch("/me")
 async def update_me(body: Profile, user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Update name, timezone or Slack channel preferences, validating each against what the system supports."""
     if body.name:
         user.name = body.name.strip()
     if body.timezone:

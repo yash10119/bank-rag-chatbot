@@ -1,3 +1,5 @@
+"""Database tables (SQLAlchemy 2.0 typed models). Every user-owned row carries user_id / owner_id with
+ON DELETE CASCADE, which is what the per-user isolation checks filter on."""
 import uuid
 from datetime import datetime, timezone
 
@@ -15,10 +17,12 @@ def _uuid() -> uuid.UUID:
 
 
 class Base(DeclarativeBase):
+    """Declarative base; create_tables() creates everything registered on it."""
     pass
 
 
 class User(Base):
+    """A customer or bank officer. The role is fixed at registration from OFFICER_EMAILS."""
     __tablename__ = "users"
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     email: Mapped[str] = mapped_column(String(320), unique=True, index=True)
@@ -59,6 +63,7 @@ class OAuthClient(Base):
 
 
 class Conversation(Base):
+    """One chat thread of one user. Its id is half of the LangGraph thread id (<user_id>:<conversation_id>)."""
     __tablename__ = "conversations"
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
@@ -68,6 +73,7 @@ class Conversation(Base):
 
 
 class Message(Base):
+    """A stored chat message. Assistant rows keep the agent trace, actions, analytics and sources shown in the UI."""
     __tablename__ = "messages"
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     conversation_id: Mapped[uuid.UUID] = mapped_column(
@@ -80,6 +86,7 @@ class Message(Base):
 
 
 class Document(Base):
+    """An uploaded .xlsx/.csv file and its ingestion state. scope=bank is shared, scope=customer is owner-only."""
     __tablename__ = "documents"
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     owner_id: Mapped[uuid.UUID | None] = mapped_column(
@@ -117,6 +124,7 @@ class Approval(Base):
 
 
 class Appointment(Base):
+    """A booking made by the scheduler. The reference makes calendar event creation idempotent on retries."""
     __tablename__ = "appointments"
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
@@ -143,6 +151,7 @@ class MockItem(Base):
 
 
 class AuditEvent(Base):
+    """Append-only audit trail: file ingestion, agent turns, LLM calls, MCP tool calls, OAuth and approval events."""
     __tablename__ = "audit_events"
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=_uuid)
     user_id: Mapped[uuid.UUID | None] = mapped_column(

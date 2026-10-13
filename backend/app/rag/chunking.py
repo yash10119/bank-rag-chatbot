@@ -19,6 +19,7 @@ MAX_GROUP = 40
 
 @dataclass
 class Chunk:
+    """One indexable unit: its text, kind (schema, row or summary), sheet and source row range."""
     text: str
     kind: str
     sheet: str
@@ -28,6 +29,7 @@ class Chunk:
 
 
 def _schema_chunk(filename: str, sheet: str, table_kind: str, df: pd.DataFrame) -> Chunk:
+    """One chunk describing the sheet itself: columns, row count, numeric ranges and small value sets."""
     parts = [f"[{filename} > {sheet}] SCHEMA. Table type: {table_kind}. {len(df)} rows. Columns: {', '.join(df.columns)}."]
     for c in df.columns:
         nums = [n for n in (to_number(v) for v in df[c]) if n is not None]
@@ -41,11 +43,13 @@ def _schema_chunk(filename: str, sheet: str, table_kind: str, df: pd.DataFrame) 
 
 
 def _row_text(filename: str, sheet: str, row: pd.Series) -> str:
+    """Render a row as 'column: value; ...' prefixed with file and sheet, so each chunk is self-describing."""
     body = "; ".join(f"{c}: {v}" for c, v in row.items() if str(v).strip())
     return f"[{filename} > {sheet}] {body}"
 
 
 def _summaries(filename: str, sheet: str, df: pd.DataFrame) -> list[Chunk]:
+    """Monthly inflow / outflow / net chunks for transaction tables, for quick period questions."""
     cols = list(df.columns)
     date_c = find_col(cols, "date", "timestamp")
     debit_c, credit_c = find_col(cols, "debit", "withdraw"), find_col(cols, "credit_amount", "deposit")
@@ -74,6 +78,9 @@ def _summaries(filename: str, sheet: str, df: pd.DataFrame) -> list[Chunk]:
 
 
 def build_chunks(filename: str, sheet: str, table_kind: str, df: pd.DataFrame) -> list[Chunk]:
+    """All chunks for one sheet. Rows are indexed one per chunk; very large sheets group rows so a sheet
+    never exceeds MAX_ROW_CHUNKS. Row ranges are kept so answers can cite file, sheet and rows.
+    """
     chunks = [_schema_chunk(filename, sheet, table_kind, df)]
     group = min(MAX_GROUP, max(1, math.ceil(len(df) / MAX_ROW_CHUNKS)))
     for start in range(0, len(df), group):

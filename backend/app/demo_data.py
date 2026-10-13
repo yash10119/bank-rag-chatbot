@@ -21,6 +21,9 @@ def _xlsx(sheets: dict[str, pd.DataFrame]) -> bytes:
 
 
 def bank_files() -> dict[str, bytes]:
+    """Shared reference files seeded on first boot: interest rates, eligibility rules, fee schedule (two sheets)
+    and compliance thresholds. Returned as {filename: bytes} and ingested like any upload.
+    """
     rates = []
     bands = [(300, 649, 3.0), (650, 699, 1.5), (700, 749, 0.75), (750, 799, 0.0), (800, 900, -0.25)]
     base = {("Home Loan", 5): 8.75, ("Home Loan", 10): 8.95, ("Home Loan", 20): 9.10,
@@ -65,6 +68,7 @@ def bank_files() -> dict[str, bytes]:
 
 
 def customer_files(name: str, email: str) -> dict[str, bytes]:
+    """Sample profile workbook and transaction history for one user (the Load demo data button)."""
     cust_id = "CUST-" + hashlib.sha1(email.encode()).hexdigest()[:6].upper()
     profile = pd.DataFrame([{
         "customer_id": cust_id, "customer_name": name, "email": email, "credit_score": 782,

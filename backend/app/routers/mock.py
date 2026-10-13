@@ -14,6 +14,7 @@ router = APIRouter(prefix="/mock", tags=["mock"])
 
 @router.get("/outbox")
 async def outbox(service: str | None = None, user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Development only (MCP_MOCK=true): what the simulated Gmail, Calendar and Slack servers recorded for the caller."""
     if not settings.mcp_mock:
         return {"enabled": False, "items": []}
     q = select(MockItem).where(MockItem.user_id == user.id)
@@ -28,6 +29,7 @@ async def outbox(service: str | None = None, user: User = Depends(current_user),
 
 @router.delete("/outbox")
 async def clear(user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Development only: clear the caller's simulated outbox."""
     await session.execute(delete(MockItem).where(MockItem.user_id == user.id))
     await session.commit()
     return {"ok": True}

@@ -55,11 +55,15 @@ def dispatch(state):
 
 
 async def _ground(question: str, hits: list[dict], extra: str = "") -> str:
+    """Answer a question strictly from the retrieved rows (tagged [S#]) under the shared grounding rules."""
     msg = f"{GROUNDING}\n\n{extra}\nCONTEXT:\n{format_context(hits)}\n\nQUESTION: {question}"
     return text_of((await llm().ainvoke([HumanMessage(msg)])).content)
 
 
 async def rates_agent(state) -> dict:
+    """Interest-rate lookups. Hybrid search over rate files, plus exact trend figures when the question is
+    about how a rate changed; the LLM is told to pick the row whose credit-score band contains the customer.
+    """
     e, uid = state["entities"], state["user_id"]
     score = e.get("credit_score") or (state.get("profile") or {}).get("credit_score")
     tenure = f"{e['tenure_years']:g} year" if e.get("tenure_years") else ""
@@ -79,6 +83,7 @@ async def rates_agent(state) -> dict:
 
 
 class Eligibility(BaseModel):
+    """Structured eligibility verdict; eligible stays null when the files cannot settle it."""
     eligible: bool | None = Field(None, description="null when the data is insufficient to decide")
     summary: str
     checks: list[str] = Field(default_factory=list, description="each rule checked with actual vs required value")
@@ -86,6 +91,9 @@ class Eligibility(BaseModel):
 
 
 async def eligibility_agent(state) -> dict:
+    """Loan eligibility: compares the bank's rule rows with the customer's own profile file. Without a profile
+    it reports that eligibility cannot be confirmed instead of guessing.
+    """
     e, uid, profile = state["entities"], state["user_id"], state.get("profile")
     if not profile:
         return {"evidence": {"eligibility_agent": {"summary": "No customer profile file has been uploaded, so eligibility cannot be confirmed.", "eligible": None}},
@@ -104,6 +112,9 @@ async def eligibility_agent(state) -> dict:
 
 
 async def transaction_agent(state) -> dict:
+    """Account and transaction questions about the customer's own history, using exact analysis numbers
+    computed over the whole file plus matching rows for context.
+    """
     uid = state["user_id"]
     threshold = (state.get("risk") or {}).get("threshold") or await resolve_threshold(uid)
     analysis = await analyze_transactions(uid, threshold)
@@ -124,6 +135,9 @@ async def transaction_agent(state) -> dict:
 
 
 async def inbox_agent(state) -> dict:
+    """Summarise recent emails through the Gmail MCP server. Email text is treated as untrusted data, and a
+    missing connection or tool failure is reported as a finding, not raised.
+    """
     uid, e = state["user_id"], state["entities"]
     if not state.get("connections", {}).get("gmail"):
         return {"evidence": {"inbox_agent": {"summary": "Gmail is not connected, so emails could not be read."}},
@@ -143,6 +157,7 @@ async def inbox_agent(state) -> dict:
 
 
 async def faq_agent(state) -> dict:
+    """Fallback for policy, fee and product questions: grounded answer from hybrid search over all visible files."""
     question = last_user_text(state)
     hits = await retrieve(question, state["user_id"], scope="all", k=8)
     trends = await analyze_series(state["user_id"], question) if re.search(r"rate|trend|chang|exchange|fx|price", question, re.I) else []
@@ -181,6 +196,9 @@ Rules:
 
 
 async def _plan(question: str, today, periods, catalog_text: str, feedback: str = "") -> AggPlan | None:
+    """Ask the LLM for an aggregation plan. Periods and amounts are resolved by code beforehand and passed in,
+    so the model only chooses tables, columns and operations; feedback carries the reason a prior plan failed.
+    """
     amounts = ", ".join(f"{a:g}" for a in amounts_in(question)) or "none"
     found = "; ".join(f"{i}) {p.label} ({p.start} to {p.last_day})" for i, p in enumerate(periods, 1)) or "none (use all dates)"
     msg = (f"{PLANNER_SYSTEM}\n\nTODAY: {today}\nPERIODS RESOLVED BY CODE: {found}\nAMOUNTS IN THE QUESTION: {amounts}\n\nCATALOG:\n{catalog_text}\n\n"
@@ -190,6 +208,7 @@ async def _plan(question: str, today, periods, catalog_text: str, feedback: str 
 
 
 def _analytics_evidence(summary: str, result: dict | None, status: str, detail: str) -> dict:
+    """Package the analytics agent's finding and trace step in the shape the reply node expects."""
     return {"evidence": {"analytics_agent": {"summary": summary, "result": result, "sources": (result or {}).get("sources", [])}},
             "trace": [step("analytics_agent", detail, status)]}
 

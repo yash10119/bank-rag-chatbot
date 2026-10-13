@@ -54,6 +54,7 @@ async def list_recent_emails(ctx: Context, query: str = "newer_than:7d", max_res
         ids = [m["id"] for m in r.json().get("messages", [])]
 
         async def one(mid: str) -> dict:
+            """Fetch the headers and snippet of one message (metadata only, not the full body)."""
             rr = await c.get(
                 f"{API}/messages/{mid}",
                 params={"format": "metadata", "metadataHeaders": ["From", "Subject", "Date"]},

@@ -48,6 +48,7 @@ SLACK_REVOKE = "https://slack.com/api/auth.revoke"
 
 
 class OAuthError(Exception):
+    """A provider-side or configuration failure in an OAuth step, with a message safe to show the user."""
     pass
 
 
@@ -60,6 +61,9 @@ def redirect_uri(service: str, cfg: dict | None = None) -> str:
 
 
 def new_pkce() -> tuple[str, str]:
+    """PKCE verifier and its S256 challenge. The verifier stays server-side with the state, so an intercepted
+    authorization code cannot be exchanged by anyone else.
+    """
     verifier = secrets.token_urlsafe(64)
     challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).rstrip(b"=").decode()
     return verifier, challenge
@@ -74,10 +78,14 @@ async def client_for(service: str) -> dict:
 
 
 async def is_configured(service: str) -> bool:
+    """Whether an OAuth client exists for this service's provider (Settings page or .env)."""
     return await clients.get(SERVICES[service]["provider"]) is not None
 
 
 async def build_authorization_url(service: str, state: str, code_challenge: str) -> str:
+    """The provider consent URL for a service: minimal scopes, the single-use state and, for Google, PKCE plus
+    offline access with forced consent so a refresh token is always issued.
+    """
     spec = SERVICES[service]
     cfg = await client_for(service)
     if spec["provider"] == "google":
@@ -174,6 +182,7 @@ async def revoke(service: str, payload: dict) -> None:
 
 
 async def refresh_google(refresh_token: str) -> dict:
+    """Exchange a refresh token for a new access token. Slack bot tokens do not expire, so only Google needs this."""
     cfg = await clients.get("google")
     if not cfg:
         raise OAuthError("Google OAuth client was removed; reconnect after it is configured again")

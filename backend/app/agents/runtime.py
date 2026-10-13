@@ -19,6 +19,7 @@ from .helpers import redis_client
 
 @dataclass
 class Runtime:
+    """The compiled graph plus the Postgres connection pool behind its checkpointer."""
     graph: object
     pool: AsyncConnectionPool
 
@@ -27,6 +28,9 @@ _runtime: Runtime | None = None
 
 
 async def init_runtime() -> Runtime:
+    """Build the graph once per process with a Postgres checkpointer, so conversations and paused
+    approvals survive restarts and can be resumed by a different process (API or worker).
+    """
     global _runtime
     if _runtime is None:
         pool = AsyncConnectionPool(
@@ -41,6 +45,7 @@ async def init_runtime() -> Runtime:
 
 
 async def close_runtime() -> None:
+    """Close the checkpointer pool on shutdown."""
     global _runtime
     if _runtime:
         await _runtime.pool.close()
@@ -48,14 +53,19 @@ async def close_runtime() -> None:
 
 
 def thread_id(user_id: str, conversation_id: str) -> str:
+    """LangGraph thread id. Prefixing with the user id means one user's conversation id can never address
+    another user's checkpoints.
+    """
     return f"{user_id}:{conversation_id}"
 
 
 def config_for(user_id: str, conversation_id: str) -> dict:
+    """Graph run config for one conversation. The recursion limit bounds clarify loops."""
     return {"configurable": {"thread_id": thread_id(user_id, conversation_id)}, "recursion_limit": 40}
 
 
 async def pending_interrupt(rt: Runtime, cfg: dict) -> dict | None:
+    """Return the payload of the interrupt this conversation is paused on (clarification or approval), if any."""
     snap = await rt.graph.aget_state(cfg)
     for task in snap.tasks:
         for intr in task.interrupts:
@@ -69,6 +79,7 @@ async def acquire_thread(user_id: str, conversation_id: str, ttl: int = 180) -> 
 
 
 async def release_thread(user_id: str, conversation_id: str) -> None:
+    """Release the per-conversation lock taken by acquire_thread."""
     await redis_client().delete(f"lock:{thread_id(user_id, conversation_id)}")
 
 

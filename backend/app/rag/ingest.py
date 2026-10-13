@@ -29,6 +29,10 @@ async def _set_status(doc_id: uuid.UUID, **fields) -> Document | None:
 
 
 async def ingest_document(doc_id: str) -> dict:
+    """Ingestion job for one uploaded file: decrypt and parse every sheet, classify it, build chunks, embed
+    in batches and upsert to Qdrant, updating the document's status throughout. Re-running is idempotent
+    (old points are deleted first); a failure is stored on the document and shown in the UI.
+    """
     did = uuid.UUID(doc_id)
     doc = await _set_status(did, status="processing", error=None)
     if doc is None:

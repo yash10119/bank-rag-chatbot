@@ -77,6 +77,7 @@ def series_trends(df: pd.DataFrame, question: str) -> list[dict]:
     nums = {w for w in words if w.isdigit()}
 
     def score(c) -> int:
+        """Score a column against the question's words, penalising a different number (1-year vs 3-year)."""
         toks = set(re.findall(r"[a-z0-9]+", str(c).lower()))
         s = len(words & toks)
         if nums and (toks & {x for x in toks if x.isdigit()}) and not nums & toks:
@@ -123,6 +124,10 @@ async def load_profile(user_id: str) -> dict | None:
 
 
 def analyze_frame(df: pd.DataFrame, large_threshold: float) -> dict:
+    """Exact statistics over a whole transaction table: totals, largest debits and anomaly flags (amounts at or
+    above the reporting threshold, statistical outliers, rapid succession, repeated amounts). Runs in pandas,
+    not the LLM.
+    """
     cols = list(df.columns)
     date_c = find_col(cols, "date", "timestamp")
     amount_c, debit_c, credit_c = find_col(cols, "amount"), find_col(cols, "debit", "withdraw"), find_col(cols, "credit_amount", "deposit")
@@ -196,6 +201,7 @@ def analyze_frame(df: pd.DataFrame, large_threshold: float) -> dict:
 
 
 async def analyze_transactions(user_id: str, large_threshold: float) -> dict | None:
+    """Run analyze_frame on the user's own transaction file; None when they have not uploaded one."""
     tables = await _user_tables(user_id, "transactions")
     if not tables:
         return None

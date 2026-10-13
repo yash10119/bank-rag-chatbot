@@ -14,6 +14,7 @@ _client: AsyncQdrantClient | None = None
 
 
 def client() -> AsyncQdrantClient:
+    """Process-wide async Qdrant client."""
     global _client
     if _client is None:
         _client = AsyncQdrantClient(url=settings.qdrant_url, timeout=30)
@@ -21,6 +22,9 @@ def client() -> AsyncQdrantClient:
 
 
 async def ensure_collection(retries: int = 30) -> None:
+    """Create the hybrid collection (dense cosine + BM25 sparse with IDF) and the payload indexes used for
+    filtering, if missing. Retries while Qdrant is still starting.
+    """
     c = client()
     for attempt in range(retries):
         try:
@@ -47,20 +51,24 @@ def _sv(s: Sparse) -> models.SparseVector:
 
 
 def point_id(doc_id: str, n: int) -> str:
+    """Deterministic point id from (document, chunk number), so re-ingesting a file overwrites its points."""
     return str(uuid.uuid5(uuid.UUID(doc_id), str(n)))
 
 
 async def upsert(points: list[models.PointStruct]) -> None:
+    """Write a batch of points and wait until they are searchable."""
     await client().upsert(settings.collection, points=points, wait=True)
 
 
 def make_point(doc_id: str, n: int, dense: list[float], sparse: Sparse, payload: dict) -> models.PointStruct:
+    """Build one point holding both vectors and the chunk payload (file, sheet, row range, scope, owner)."""
     return models.PointStruct(
         id=point_id(doc_id, n), vector={"dense": dense, "bm25": _sv(sparse)}, payload={**payload, "doc_id": doc_id}
     )
 
 
 async def delete_document(doc_id: str) -> None:
+    """Remove every chunk of one document from the index."""
     await client().delete(
         settings.collection,
         points_selector=models.FilterSelector(
@@ -71,6 +79,9 @@ async def delete_document(doc_id: str) -> None:
 
 
 def scope_filter(user_id: str, scope: str, table_kinds: list[str] | None) -> models.Filter:
+    """The isolation filter applied to every search: shared bank files and/or files owned by this user,
+    optionally narrowed to table kinds. Another user's chunks can never match.
+    """
     bank = models.FieldCondition(key="scope", match=models.MatchValue(value="bank"))
     mine = models.Filter(
         must=[
@@ -93,6 +104,9 @@ def scope_filter(user_id: str, scope: str, table_kinds: list[str] | None) -> mod
 async def hybrid_search(
     query: str, user_id: str, *, scope: str = "all", table_kinds: list[str] | None = None, k: int = 8
 ) -> list[dict]:
+    """Hybrid retrieval: dense and BM25 candidates are fetched under the same scope filter and fused with
+    Reciprocal Rank Fusion. Dense handles meaning; BM25 handles exact codes and numbers common in tables.
+    """
     dense, sparse = await embed_query(query)
     flt = scope_filter(user_id, scope, table_kinds)
     res = await client().query_points(

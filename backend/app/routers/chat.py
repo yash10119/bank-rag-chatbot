@@ -1,3 +1,5 @@
+"""Chat routes: conversations, the streamed message turn, officer approvals, the activity log and monitoring.
+Every query is filtered by the authenticated user's id."""
 import asyncio
 import json
 import logging
@@ -23,15 +25,18 @@ _tasks: set[asyncio.Task] = set()
 
 
 class Send(BaseModel):
+    """A chat message from the user."""
     text: str = Field(min_length=1, max_length=4000)
 
 
 class Decision(BaseModel):
+    """An officer's decision on a paused high-risk request."""
     decision: str = Field(pattern="^(approved|rejected)$")
     note: str = Field("", max_length=500)
 
 
 async def _owned(session: AsyncSession, user: User, cid: uuid.UUID) -> Conversation:
+    """Load a conversation only if it belongs to the caller; missing and not-yours both return 404."""
     conv = await session.get(Conversation, cid)
     if conv is None or conv.user_id != user.id:
         raise HTTPException(404, "Conversation not found")  # never reveal other users' ids
@@ -44,12 +49,14 @@ def _msg(m: Message) -> dict:
 
 @router.get("/conversations")
 async def list_conversations(user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """The caller's own conversations, most recent first."""
     rows = (await session.execute(select(Conversation).where(Conversation.user_id == user.id).order_by(Conversation.updated_at.desc()).limit(50))).scalars()
     return [{"id": str(c.id), "title": c.title, "updated_at": c.updated_at.isoformat()} for c in rows]
 
 
 @router.post("/conversations")
 async def new_conversation(user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Start an empty conversation for the caller."""
     conv = Conversation(user_id=user.id)
     session.add(conv)
     await session.commit()
@@ -58,6 +65,7 @@ async def new_conversation(user: User = Depends(current_user), session: AsyncSes
 
 @router.get("/conversations/{cid}")
 async def get_conversation(cid: uuid.UUID, request: Request, user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Messages of one of the caller's conversations, plus any interrupt it is paused on."""
     conv = await _owned(session, user, cid)
     msgs = (await session.execute(select(Message).where(Message.conversation_id == cid).order_by(Message.created_at))).scalars()
     pending = await pending_interrupt(request.app.state.runtime, config_for(str(user.id), str(cid)))
@@ -66,6 +74,7 @@ async def get_conversation(cid: uuid.UUID, request: Request, user: User = Depend
 
 @router.delete("/conversations/{cid}")
 async def delete_conversation(cid: uuid.UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Delete one of the caller's conversations and its messages."""
     conv = await _owned(session, user, cid)
     await session.delete(conv)
     await session.commit()
@@ -73,6 +82,7 @@ async def delete_conversation(cid: uuid.UUID, user: User = Depends(current_user)
 
 
 async def _save(cid: uuid.UUID, role: str, content: str, trace: dict | None = None, title: str | None = None) -> None:
+    """Persist one chat message (and set the conversation title from the first user message)."""
     async with SessionLocal() as s:
         s.add(Message(conversation_id=cid, role=role, content=content, trace=trace))
         conv = await s.get(Conversation, cid)
@@ -96,6 +106,9 @@ async def send_message(cid: uuid.UUID, body: Send, request: Request, user: User 
     identity = {"id": uid, "name": user.name, "email": user.email}
 
     async def runner() -> None:
+        """Run the graph for this turn in a background task, persist the messages and feed events to the stream.
+        Errors become a generic message; the per-conversation lock is always released.
+        """
         try:
             await _save(cid, "user", body.text, title=body.text)
             async for ev in stream_turn(rt, user=identity, conversation_id=str(cid), text=body.text):
@@ -116,6 +129,7 @@ async def send_message(cid: uuid.UUID, body: Send, request: Request, user: User 
     task.add_done_callback(_tasks.discard)
 
     async def events():
+        """Server-sent-event generator that relays graph events to Streamlit until the turn ends."""
         while (ev := await queue.get()) is not None:
             yield f"data: {json.dumps(ev, default=str)}\n\n"
 
@@ -189,6 +203,9 @@ async def approvals(status: str = "pending", user: User = Depends(current_user),
 
 @router.post("/approvals/{aid}/decision")
 async def decide(aid: uuid.UUID, body: Decision, user: User = Depends(officer), session: AsyncSession = Depends(get_session)):
+    """Officer approves or rejects a paused request. Enforces the four-eyes rule and a single decision, records
+    an audit event, then queues the job that resumes the conversation.
+    """
     appr = await session.get(Approval, aid)
     if appr is None:
         raise HTTPException(404, "Approval not found")

@@ -15,6 +15,7 @@ from .providers import SERVICES, OAuthError, refresh_google, revoke
 
 
 class NotConnected(Exception):
+    """The user has no usable connection for a service; surfaces to the UI as a prompt to connect in Settings."""
     def __init__(self, service: str):
         super().__init__(f"not_connected:{service}")
         self.service = service
@@ -23,6 +24,7 @@ class NotConnected(Exception):
 async def save_connection(
     session: AsyncSession, user_id: uuid.UUID, service: str, payload: dict, scopes: str, label: str
 ) -> None:
+    """Encrypt and store (or replace) a user's token for one service with its granted scopes and account label."""
     blob = encrypt_token(str(user_id), service, payload)
     row = (
         await session.execute(
@@ -38,6 +40,7 @@ async def save_connection(
 
 
 async def delete_connection(session: AsyncSession, user_id: uuid.UUID, service: str) -> None:
+    """Disconnect: revoke the token at the provider (best effort), then delete the stored row and audit it."""
     row = (
         await session.execute(
             select(OAuthConnection).where(OAuthConnection.user_id == user_id, OAuthConnection.service == service)
@@ -60,6 +63,7 @@ def _expired_key(user_id, service: str) -> str:
 
 
 async def _flag_expired(user_id, service: str, on: bool) -> None:
+    """Set or clear the Redis marker that makes the Settings card show 'token expired - reconnect'."""
     from .flow import _redis  # local import: flow imports this module
 
     try:
@@ -70,6 +74,9 @@ async def _flag_expired(user_id, service: str, on: bool) -> None:
 
 
 async def connection_status(session: AsyncSession, user_id: uuid.UUID) -> dict[str, dict]:
+    """Per-service status for one user: connected, expired (silent refresh failed, reconnect needed) or absent,
+    plus the account label. Never returns token material.
+    """
     if settings.mcp_mock:
         return {s: {"connected": True, "account": "Local mock (no OAuth)"} for s in SERVICES}
     rows = (await session.execute(select(OAuthConnection).where(OAuthConnection.user_id == user_id))).scalars()

@@ -1,3 +1,6 @@
+"""Streamlit front end: sign-in, chat, file management, connected accounts (OAuth), activity log, approvals
+and officer tools. It holds no business logic: every action is a call to the FastAPI backend through api.py,
+and only the session token and user record live in st.session_state."""
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
@@ -11,6 +14,7 @@ SERVICE_ICON = {"gmail": "📧", "calendar": "📅", "slack": "💬"}
 
 
 def api() -> Api:
+    """API client bound to this browser session's token."""
     return Api(st.session_state.get("token"))
 
 
@@ -40,6 +44,7 @@ def start_session(res: dict) -> None:
 
 
 def end_session() -> None:
+    """Sign out: clear the session state and schedule removal of the session cookie."""
     st.session_state.clear()
     # _signed_out stops restore_login() re-using the cookie that this websocket session received when it connected
     st.session_state.update(_signed_out=True, _cookie_action=("clear", None))
@@ -59,12 +64,14 @@ def restore_login() -> None:
 
 
 def flush_cookie_action() -> None:
+    """Emit the pending set / clear cookie script. Done once per run, after the page logic has decided."""
     action = st.session_state.pop("_cookie_action", None)
     if action:
         _cookie_script(action[1] if action[0] == "set" else None)
 
 
 def fail(exc: ApiError) -> None:
+    """Show an API error. A 401 clears the session and returns to the sign-in screen instead of looping."""
     if exc.status == 401:
         for k in ("token", "user", "conversation_id"):
             st.session_state.pop(k, None)
@@ -77,6 +84,7 @@ def fail(exc: ApiError) -> None:
 
 
 def auth_screen() -> None:
+    """Sign-in and registration forms."""
     st.title("🏦 Banking Assistant")
     st.caption("Sign in to chat with your bank's assistant, connect your own Gmail, Calendar and Slack, and upload your files.")
     login, register = st.tabs(["Sign in", "Create account"])
@@ -159,6 +167,7 @@ def connections_panel() -> None:
 
 
 def sidebar() -> None:
+    """Sidebar: who is signed in, sign-out, the connected-accounts cards and preferences."""
     user = st.session_state["user"]
     with st.sidebar:
         st.markdown(f"### 👤 {user['name']}")
@@ -219,6 +228,7 @@ def render_analytics(a: dict | None) -> None:
 
 
 def render_sources(sources: list | None) -> None:
+    """Show which files and row ranges grounded an answer, so the user can verify it."""
     if not sources:
         return
     seen, parts = set(), []
@@ -234,6 +244,9 @@ def render_sources(sources: list | None) -> None:
 
 
 def render_trace(trace: dict | None) -> None:
+    """Under an assistant message: computed analytics, sources, and the expandable agent activity
+    (which agent ran, what it did, and the outcome of each Gmail / Calendar / Slack action).
+    """
     if not trace:
         return
     render_analytics(trace.get("analytics"))
@@ -249,6 +262,7 @@ def render_trace(trace: dict | None) -> None:
 
 
 def conversation_picker() -> str | None:
+    """Choose or start a conversation; returns the selected conversation id."""
     convs = api().get("/conversations")
     top = st.columns([4, 1])
     if top[1].button("➕ New", use_container_width=True) or not convs:
@@ -265,6 +279,9 @@ def conversation_picker() -> str | None:
 
 
 def chat_tab() -> None:
+    """Chat page: message history, streamed replies with a live status line naming the active agent,
+    clarification prompts and the approval-pending state.
+    """
     try:
         cid = conversation_picker()
         conv = api().get(f"/conversations/{cid}")
@@ -331,6 +348,7 @@ def chat_tab() -> None:
 
 @st.fragment(run_every=3)
 def document_list() -> None:
+    """Indexed files with status, upload time, row count and a remove button."""
     try:
         docs = api().get("/documents")
     except ApiError as exc:
@@ -356,6 +374,7 @@ def document_list() -> None:
 
 
 def documents_tab() -> None:
+    """File page: uploader restricted to .xlsx / .csv (checked again by the API), demo data and the file list."""
     user = st.session_state["user"]
     st.subheader("Upload Excel / CSV files")
     st.caption("Only `.xlsx` and `.csv` are accepted. Your personal files are visible to you only; bank-wide files (rates, fees, compliance) are shared by officers.")
@@ -413,6 +432,7 @@ def _summary(e: dict) -> tuple[str, str]:
 
 
 def activity_tab() -> None:
+    """Activity log: recent agent steps, LLM calls, MCP tool calls, file and OAuth events with status and time."""
     officer = st.session_state["user"]["role"] == "officer"
     c1, c2 = st.columns([3, 1])
     kinds = c1.multiselect("Filter by event type", list(KIND_LABEL), format_func=KIND_LABEL.get, placeholder="All events")
@@ -467,6 +487,7 @@ def monitoring_tab() -> None:
 
 
 def approvals_tab() -> None:
+    """Human-in-the-loop page: customers see the state of their requests, officers approve or reject."""
     user = st.session_state["user"]
     officer = user["role"] == "officer"
     show = st.radio("Show", ["pending", "all"], horizontal=True)

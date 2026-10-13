@@ -57,6 +57,7 @@ async def get(provider: str) -> dict | None:
 
 
 async def save(provider: str, client_id: str, client_secret: str, redirect_uri: str | None, by) -> None:
+    """Encrypt and store the application's OAuth client for a provider, replacing any previous one."""
     payload = {"client_id": client_id.strip(), "client_secret": client_secret.strip()}
     if redirect_uri:
         payload["redirect_uri"] = redirect_uri.strip()
@@ -72,6 +73,7 @@ async def save(provider: str, client_id: str, client_secret: str, redirect_uri: 
 
 
 async def remove(provider: str) -> None:
+    """Delete the stored OAuth client for a provider and drop it from the cache."""
     async with SessionLocal() as s:
         await s.execute(delete(OAuthClient).where(OAuthClient.provider == provider))
         await s.commit()

@@ -18,10 +18,14 @@ log = logging.getLogger("worker")
 
 
 async def ingest_document_job(ctx, doc_id: str):
+    """Background job: parse, chunk, embed and index one uploaded file."""
     return await ingest_document(doc_id)
 
 
 async def resume_after_approval(ctx, approval_id: str):
+    """Background job: continue a conversation paused for officer approval and store the outcome as a
+    message. Retries shortly if the conversation is busy, so two runs never write the same thread at once.
+    """
     rt = ctx["runtime"]
     async with SessionLocal() as s:
         appr = (await s.execute(select(Approval).where(Approval.id == uuid.UUID(approval_id)))).scalar_one()
@@ -63,16 +67,19 @@ async def post_audit(ctx, user_id: str, channel: str, summary: dict):
 
 
 async def startup(ctx):
+    """Worker start-up: ensure the vector collection exists and build the same LangGraph runtime the API uses."""
     logging.basicConfig(level=logging.INFO)
     await store.ensure_collection()
     ctx["runtime"] = await init_runtime()
 
 
 async def shutdown(ctx):
+    """Close the checkpointer connection pool."""
     await close_runtime()
 
 
 class WorkerSettings:
+    """arq worker configuration: registered jobs, concurrency, timeout and retry limits."""
     functions = [ingest_document_job, resume_after_approval, post_audit]
     redis_settings = redis_settings()
     on_startup = startup

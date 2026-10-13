@@ -10,6 +10,7 @@ API_URL = os.environ.get("API_URL", "http://localhost:8000")
 
 
 class ApiError(Exception):
+    """A failed API call with a status code and a message that is safe to show in the UI."""
     def __init__(self, status: int, detail: str):
         super().__init__(detail)
         self.status, self.detail = status, detail
@@ -27,6 +28,7 @@ def _raise(r: httpx.Response) -> None:
 
 
 class Api:
+    """Thin HTTP client for the FastAPI backend. Holds the user's session token; the browser never calls the API."""
     def __init__(self, token: str | None = None):
         self.token = token
 
@@ -35,6 +37,9 @@ class Api:
         return {"Authorization": f"Bearer {self.token}"} if self.token else {}
 
     def request(self, method: str, path: str, **kw) -> object:
+        """Send a request and return the JSON body. Connection problems and error responses become ApiError,
+        so pages show a clear message instead of a stack trace.
+        """
         try:
             r = httpx.request(method, f"{API_URL}{path}", headers=self._h, timeout=kw.pop("timeout", 30), **kw)
         except httpx.HTTPError as exc:
@@ -43,15 +48,19 @@ class Api:
         return r.json()
 
     def get(self, path, **kw):
+        """GET helper."""
         return self.request("GET", path, **kw)
 
     def post(self, path, **kw):
+        """POST helper."""
         return self.request("POST", path, **kw)
 
     def delete(self, path, **kw):
+        """DELETE helper."""
         return self.request("DELETE", path, **kw)
 
     def patch(self, path, **kw):
+        """PATCH helper."""
         return self.request("PATCH", path, **kw)
 
     def stream_message(self, conversation_id: str, text: str) -> Iterator[dict]:

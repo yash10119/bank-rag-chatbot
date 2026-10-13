@@ -18,6 +18,9 @@ router = APIRouter(prefix="/oauth", tags=["oauth"])
 
 @router.get("/services")
 async def services(user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Connection cards for the Settings page: per service, whether a client is configured and whether this user
+    is connected, expired or disconnected, with the connected account label. No token material is returned.
+    """
     status = await connection_status(session, user.id)
     return {
         name: {"label": spec["label"], "configured": await providers.is_configured(name), "simulated": settings.mcp_mock,
@@ -28,6 +31,9 @@ async def services(user: User = Depends(current_user), session: AsyncSession = D
 
 @router.post("/{service}/start")
 async def start(service: str, user: User = Depends(current_user)):
+    """Begin connecting a service: returns the URL of that service's MCP server carrying a short-lived connect
+    ticket for this user. The browser is sent there; the ticket is what binds the flow to the logged-in user.
+    """
     if service not in providers.SERVICES:
         raise HTTPException(404, "Unknown service")
     if settings.mcp_mock:
@@ -41,6 +47,7 @@ async def start(service: str, user: User = Depends(current_user)):
 
 
 class ClientIn(BaseModel):
+    """OAuth client (application) credentials entered by an officer."""
     client_id: str = Field(min_length=8, max_length=300)
     client_secret: str = Field(min_length=8, max_length=300)
     redirect_uri: str | None = Field(None, max_length=500)
@@ -71,6 +78,9 @@ async def list_clients(user: User = Depends(officer)):
 
 @router.put("/clients/{provider}")
 async def save_client(provider: str, body: ClientIn, user: User = Depends(officer)):
+    """Store the application's OAuth client for a provider, encrypted. Basic shape checks catch pasted mistakes;
+    the audit event records a masked client id and never the secret.
+    """
     if provider not in clients.PROVIDERS:
         raise HTTPException(404, "Unknown provider")
     cid = body.client_id.strip()
@@ -87,6 +97,7 @@ async def save_client(provider: str, body: ClientIn, user: User = Depends(office
 
 @router.delete("/clients/{provider}")
 async def remove_client(provider: str, user: User = Depends(officer)):
+    """Delete the stored OAuth client for a provider (the .env value, if any, becomes the fallback again)."""
     if provider not in clients.PROVIDERS:
         raise HTTPException(404, "Unknown provider")
     await clients.remove(provider)
@@ -96,6 +107,7 @@ async def remove_client(provider: str, user: User = Depends(officer)):
 
 @router.delete("/{service}")
 async def disconnect(service: str, user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Disconnect a service for the caller: revoke the token at the provider and delete the stored copy."""
     if service not in providers.SERVICES:
         raise HTTPException(404, "Unknown service")
     await delete_connection(session, user.id, service)

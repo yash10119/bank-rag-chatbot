@@ -1,3 +1,5 @@
+"""File routes: upload, list, delete and demo data. Uploads are validated (.xlsx / .csv only), encrypted at
+rest and handed to the worker for indexing."""
 import asyncio
 import uuid
 from pathlib import Path
@@ -21,6 +23,7 @@ router = APIRouter(prefix="/documents", tags=["documents"])
 
 
 def out(d: Document) -> dict:
+    """Document fields shown in the file list."""
     return {
         "id": str(d.id), "filename": d.filename, "scope": d.scope, "status": d.status, "kinds": d.kinds or [],
         "rows": d.n_rows, "chunks": d.n_chunks, "error": d.error, "size_bytes": d.size_bytes,
@@ -29,6 +32,9 @@ def out(d: Document) -> dict:
 
 
 async def save_and_queue(session: AsyncSession, *, filename: str, content: bytes, scope: str, owner_id: uuid.UUID | None) -> Document:
+    """Validate the file, write it encrypted under a server-generated name, record it and queue ingestion.
+    validate_upload raises UnsupportedFile here, which is where non-.xlsx/.csv uploads are rejected.
+    """
     ext = validate_upload(filename, content)
     doc_id = uuid.uuid4()
     path = Path(settings.upload_dir) / f"{doc_id}{ext}"  # server-generated name: no path traversal
@@ -49,6 +55,9 @@ async def upload(
     user: User = Depends(current_user),
     session: AsyncSession = Depends(get_session),
 ):
+    """Upload one file for indexing. Reads in bounded blocks to enforce MAX_UPLOAD_MB; only officers may
+    upload bank-wide files; anything that is not a valid .xlsx or .csv gets 415 with a clear reason.
+    """
     if scope not in ("customer", "bank"):
         raise HTTPException(422, "scope must be 'customer' or 'bank'")
     if scope == "bank" and user.role != "officer":
@@ -74,6 +83,7 @@ async def upload(
 
 @router.get("")
 async def list_documents(user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Files visible to the caller: shared bank files and the caller's own uploads."""
     rows = (
         await session.execute(
             select(Document)
@@ -86,6 +96,7 @@ async def list_documents(user: User = Depends(current_user), session: AsyncSessi
 
 @router.post("/demo")
 async def load_demo(user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Create and index the sample customer profile and transaction history for the caller."""
     docs = []
     for name, content in customer_files(user.name, user.email).items():
         docs.append(out(await save_and_queue(session, filename=name, content=content, scope="customer", owner_id=user.id)))
@@ -94,6 +105,7 @@ async def load_demo(user: User = Depends(current_user), session: AsyncSession = 
 
 @router.delete("/{doc_id}")
 async def delete(doc_id: uuid.UUID, user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
+    """Remove a file, its stored bytes and its index entries. Owners delete their own files; officers delete bank files."""
     doc = await session.get(Document, doc_id)
     allowed = doc and ((doc.owner_id == user.id) or (doc.scope == "bank" and user.role == "officer"))
     if not allowed:

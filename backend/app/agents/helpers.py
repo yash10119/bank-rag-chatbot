@@ -1,3 +1,4 @@
+"""Small shared helpers for the agent nodes: the LLM factory, Redis client, trace steps and text utilities."""
 import json
 import re
 from datetime import datetime, timedelta, timezone
@@ -33,6 +34,7 @@ def llm() -> BaseChatModel:
 
 @lru_cache
 def redis_client() -> aioredis.Redis:
+    """Shared async Redis client (locks, idempotency keys, streaming events)."""
     return aioredis.from_url(settings.redis_url, decode_responses=True)
 
 
@@ -51,6 +53,7 @@ def step(agent: str, detail: str, status: str = "done") -> dict:
 
 
 def text_of(content) -> str:
+    """Plain text of an LLM message whose content may be a string or a list of content blocks."""
     if isinstance(content, str):
         return content
     return "".join(b.get("text", "") for b in content if isinstance(b, dict) and b.get("type") == "text")
@@ -80,6 +83,7 @@ def resolve_relative_date(text: str, now: datetime) -> str | None:
 
 
 def last_user_text(state) -> str:
+    """The customer's most recent message in this conversation."""
     for m in reversed(state.get("messages", [])):
         if m.type == "human":
             return text_of(m.content)
@@ -92,6 +96,9 @@ async def once(key: str, ttl: int = 86400) -> bool:
 
 
 def slack_channel(prefs: dict | None, which: str) -> str:
+    """Slack channel for a purpose (loans, compliance, audit, rm): the user's preference or the default,
+    sanitised to a plain #channel name.
+    """
     defaults = {"loans": "#loans-team", "compliance": "#compliance-alerts", "audit": "#audit-log", "rm": "#rm-notifications"}
     raw = (prefs or {}).get(which) or defaults[which]
     raw = re.sub(r"[^\w#\-]", "", raw)
@@ -99,4 +106,5 @@ def slack_channel(prefs: dict | None, which: str) -> str:
 
 
 def pretty(obj) -> str:
+    """Compact JSON for prompts, capped so a large payload cannot crowd out the rest of the context."""
     return json.dumps(obj, ensure_ascii=False, default=str, indent=1)[:6000]

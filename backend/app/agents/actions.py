@@ -52,6 +52,7 @@ async def _reserve(uid: str, rm_email: str | None, start: datetime, end: datetim
 
 
 async def _finish_reservation(ref: str, status: str, event_id: str | None = None) -> None:
+    """Mark a reserved appointment confirmed (with its calendar event id) or failed."""
     async with SessionLocal() as s:
         row = (await s.execute(select(Appointment).where(Appointment.reference == ref))).scalar_one_or_none()
         if row:
@@ -64,6 +65,12 @@ def _fmt(dt: datetime) -> str:
 
 
 async def scheduler(state) -> dict:
+    """Book an appointment through the Calendar MCP server. If the customer named a time, that slot is checked
+    against the customer's and the relationship manager's calendars; otherwise the first free slot of the day is
+    taken. The slot is reserved in the appointments table before the event is created, so two requests cannot
+    double-book, and alternatives are offered on a conflict. Skips with a clear reason when Calendar is not
+    connected or no day was given.
+    """
     if "schedule_appointment" not in state.get("intents", []):
         return {}
     uid, e, profile = state["user_id"], state["entities"], state.get("profile") or {}
@@ -146,6 +153,7 @@ async def scheduler(state) -> dict:
 
 
 async def _compose_email(state, purpose: str) -> str:
+    """Draft a confirmation email body from the turn's facts only; the model may not add rates or dates."""
     facts = {"purpose": purpose, "customer": state.get("user_name"), "appointment": state.get("appointment"),
              "findings": state.get("evidence", {}), "bank": settings.bank_name}
     prompt = (
@@ -158,6 +166,10 @@ async def _compose_email(state, purpose: str) -> str:
 
 
 async def notify(state) -> dict:
+    """Send the side-effect notifications for this turn in parallel: confirmation email (Gmail), relationship
+    manager, loans team and compliance alerts (Slack). Each action is idempotent per turn and its outcome is
+    returned for the reply and the audit trail; a failure never aborts the turn.
+    """
     uid, intents, conns = state["user_id"], set(state.get("intents", [])), state.get("connections", {})
     appt, ev, risk, prefs = state.get("appointment") or {}, state.get("evidence", {}), state.get("risk", {}), state.get("prefs")
     turn = state.get("turn_id", uuid.uuid4().hex)
@@ -167,6 +179,7 @@ async def notify(state) -> dict:
     jobs: list = []
 
     async def run(service: str, kind: str, tool: str, args: dict, ok_detail: str) -> dict:
+        """Call one MCP tool for one notification, at most once per turn, and normalise the result into an action record."""
         if not conns.get(service):
             return _action(service, kind, None, "", f"{service.title()} not connected")
         if not await once(f"{turn}:{kind}"):
@@ -199,6 +212,8 @@ async def notify(state) -> dict:
         msg = f"New customer appointment {appt['reference']}: {customer} on {appt['when']} - topic: {appt['topic']}."
 
         async def rm_slack() -> dict:
+            """Tell the relationship manager on Slack: a direct message if their email is in the workspace,
+            otherwise a post in the RM channel."""
             if not conns.get("slack"):
                 return _action("slack", "rm_notification", None, "", "Slack not connected")
             if not await once(f"{turn}:rm_slack"):

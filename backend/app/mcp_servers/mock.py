@@ -19,6 +19,7 @@ DEMO_INBOX = [
 
 
 async def add(user_id: str, service: str, kind: str, payload: dict) -> MockItem:
+    """Store one simulated item for a user."""
     async with SessionLocal() as s:
         item = MockItem(user_id=uuid.UUID(user_id), service=service, kind=kind, payload=payload)
         s.add(item)
@@ -28,6 +29,7 @@ async def add(user_id: str, service: str, kind: str, payload: dict) -> MockItem:
 
 
 async def items(user_id: str, service: str, kinds: tuple[str, ...] | None = None, limit: int = 200) -> list[MockItem]:
+    """A user's simulated items for a service, newest first, optionally filtered by kind."""
     q = select(MockItem).where(MockItem.user_id == uuid.UUID(user_id), MockItem.service == service)
     if kinds:
         q = q.where(MockItem.kind.in_(kinds))
@@ -39,6 +41,7 @@ async def items(user_id: str, service: str, kinds: tuple[str, ...] | None = None
 
 
 async def send_email(user_id: str, to: list[str], subject: str, body: str, cc: list[str] | None) -> dict:
+    """Simulated Gmail send: records the message in the user's outbox."""
     item = await add(user_id, "gmail", "sent", {"to": to, "cc": cc or [], "subject": subject[:200], "body": body})
     return {"ok": True, "message_id": str(item.id), "mock": True}
 
@@ -52,6 +55,7 @@ async def _ensure_inbox(user_id: str) -> None:
 
 
 async def list_emails(user_id: str, query: str, max_results: int) -> dict:
+    """Simulated inbox listing with simple word matching; seeds three demo emails on first use."""
     await _ensure_inbox(user_id)
     words = [w.lower() for w in query.split() if ":" not in w]  # Gmail operators (newer_than:7d) are ignored
     out = []
@@ -64,6 +68,7 @@ async def list_emails(user_id: str, query: str, max_results: int) -> dict:
 
 
 async def read_email(user_id: str, message_id: str) -> dict:
+    """Simulated read of one message from the user's inbox or sent items."""
     for it in await items(user_id, "gmail", ("inbox", "sent")):
         if str(it.id) == message_id:
             p = it.payload
@@ -75,6 +80,7 @@ async def read_email(user_id: str, message_id: str) -> dict:
 
 
 async def busy(user_id: str, start: datetime, end: datetime) -> list[tuple[datetime, datetime]]:
+    """Simulated busy intervals overlapping a time range, from the user's recorded events."""
     out = []
     for it in await items(user_id, "calendar", ("event",)):
         s, e = datetime.fromisoformat(it.payload["start"]), datetime.fromisoformat(it.payload["end"])
@@ -84,6 +90,7 @@ async def busy(user_id: str, start: datetime, end: datetime) -> list[tuple[datet
 
 
 async def event_by_id(user_id: str, event_id: str) -> MockItem | None:
+    """Look up a simulated event by id; used to keep event creation idempotent."""
     for it in await items(user_id, "calendar", ("event",)):
         if it.payload.get("event_id") == event_id:
             return it
@@ -91,6 +98,7 @@ async def event_by_id(user_id: str, event_id: str) -> MockItem | None:
 
 
 async def create_event(user_id: str, event_id: str, payload: dict) -> dict:
+    """Simulated calendar event creation."""
     await add(user_id, "calendar", "event", {**payload, "event_id": event_id})
     return {"ok": True, "event_id": event_id, "html_link": f"mock://calendar/{event_id}", "mock": True}
 
@@ -99,5 +107,6 @@ async def create_event(user_id: str, event_id: str, payload: dict) -> dict:
 
 
 async def post(user_id: str, kind: str, payload: dict) -> dict:
+    """Simulated Slack post (message, card or direct message)."""
     item = await add(user_id, "slack", kind, payload)
     return {"ok": True, "channel": payload.get("channel"), "ts": str(item.created_at.timestamp()), "mock": True}

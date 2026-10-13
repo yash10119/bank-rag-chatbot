@@ -1,3 +1,5 @@
+"""FastAPI application: start-up wiring, CORS and the routers. Start-up waits for Postgres, creates the
+tables and the Qdrant collection, builds the LangGraph runtime and seeds the shared bank files."""
 import asyncio
 import logging
 from contextlib import asynccontextmanager
@@ -32,6 +34,7 @@ async def seed_bank_files() -> None:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    """Start-up and shutdown hook. Retries while Postgres is still booting so `docker compose up` works from cold."""
     Path(settings.upload_dir).mkdir(parents=True, exist_ok=True)
     for attempt in range(30):  # wait for Postgres on cold start
         try:
@@ -60,4 +63,5 @@ for r in (auth.router, oauth.router, documents.router, chat.router, mock.router)
 
 @app.get("/health")
 async def health():
+    """Liveness probe used by the Docker health check; other services wait for it before starting."""
     return {"status": "ok"}

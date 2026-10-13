@@ -38,6 +38,9 @@ SPECIALISTS = [rates_agent, eligibility_agent, transaction_agent, analytics_agen
 
 
 def route_after_risk(state):
+    """Conditional edge after the risk gate: decline out-of-scope requests, pause high-risk ones for approval,
+    otherwise fan out to the specialists the intents need.
+    """
     if set(state.get("intents", [])) <= {"out_of_scope"}:
         return "respond"
     if state["risk"]["level"] == "high":
@@ -46,10 +49,14 @@ def route_after_risk(state):
 
 
 def route_after_approval_decision(state):
+    """Conditional edge after an officer decides: fan out on approval, otherwise go straight to the reply."""
     return dispatch(state) if route_after_approval(state) == "dispatch" else "respond"
 
 
 def build_graph(checkpointer):
+    """Assemble and compile the graph shown in the module docstring. Specialists are reached through Send
+    fan-out and all rejoin at the scheduler, so side effects run once after every finding is in.
+    """
     g = StateGraph(BankState)
     for fn in (intake, clarify, risk_gate, request_approval, await_approval, scheduler, notify, respond, audit, *SPECIALISTS):
         g.add_node(fn.__name__, fn)

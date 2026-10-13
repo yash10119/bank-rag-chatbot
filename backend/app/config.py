@@ -1,9 +1,11 @@
+"""Application settings, read once from the environment / .env (see .env.example for every variable)."""
 from functools import lru_cache
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
+    """Typed settings shared by the API, the worker and the three MCP servers. Field names map to upper-case env vars."""
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     database_url: str = "postgresql+asyncpg://bank:bank@localhost:5432/bank"
@@ -63,15 +65,18 @@ class Settings(BaseSettings):
 
     @property
     def psycopg_url(self) -> str:
+        """Same database in plain psycopg form, which the LangGraph Postgres checkpointer requires."""
         return self.database_url.replace("+asyncpg", "")
 
     @property
     def officer_email_set(self) -> set[str]:
+        """Emails that receive the officer role at registration, lower-cased for comparison."""
         return {e.strip().lower() for e in self.officer_emails.split(",") if e.strip()}
 
 
 @lru_cache
 def get_settings() -> Settings:
+    """Build the settings object once per process."""
     return Settings()
 
 

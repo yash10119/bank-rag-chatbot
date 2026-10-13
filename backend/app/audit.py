@@ -60,10 +60,12 @@ class AuditCallback(AsyncCallbackHandler):
         self._start: dict[uuid.UUID, tuple[float, str]] = {}
 
     async def on_chat_model_start(self, serialized, messages, *, run_id, **kwargs):
+        """Remember the start time and the (clipped) prompt for this run."""
         prompt = "\n".join(f"[{m.type}] {m.content}" for m in messages[0])
         self._start[run_id] = (time.perf_counter(), _clip(prompt))
 
     async def on_llm_end(self, response, *, run_id, **kwargs):
+        """Record the prompt, response and latency of a completed LLM call."""
         t0, prompt = self._start.pop(run_id, (time.perf_counter(), ""))
         try:
             text = response.generations[0][0].text
@@ -72,5 +74,6 @@ class AuditCallback(AsyncCallbackHandler):
         await log_event("llm_call", model=self.model, prompt=prompt, response=_clip(text), ms=int((time.perf_counter() - t0) * 1000))
 
     async def on_llm_error(self, error, *, run_id, **kwargs):
+        """Record a failed LLM call with the error type, so outages are visible in the monitoring tab."""
         t0, prompt = self._start.pop(run_id, (time.perf_counter(), ""))
         await log_event("llm_call", model=self.model, prompt=prompt, error=type(error).__name__, ms=int((time.perf_counter() - t0) * 1000))
