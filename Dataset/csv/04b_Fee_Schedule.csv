@@ -1,0 +1,13 @@
+fee_id,service,slab,fee_inr,gst_pct,effective_date
+FEE-001,NEFT transfer,"Up to INR 10,000",2.5,18,2026-04-01
+FEE-002,NEFT transfer,"INR 10,001 to 1,00,000",5.0,18,2026-04-01
+FEE-003,NEFT transfer,"Above INR 1,00,000",15.0,18,2026-04-01
+FEE-004,RTGS transfer,"INR 2,00,000 to 5,00,000",25.0,18,2026-04-01
+FEE-005,RTGS transfer,"Above INR 5,00,000",50.0,18,2026-04-01
+FEE-006,IMPS transfer,"Up to INR 1,000",2.5,18,2026-04-01
+FEE-007,IMPS transfer,"Above INR 1,000",5.0,18,2026-04-01
+FEE-008,ATM withdrawal,Beyond 5 free per month,21.0,18,2026-04-01
+FEE-009,Cheque book,25 leaves,0.0,18,2026-04-01
+FEE-010,Duplicate statement,Per statement,100.0,18,2026-04-01
+FEE-011,Demand draft,"Per INR 1,000",1.5,18,2026-04-01
+FEE-012,Account closure,Within 12 months of opening,500.0,18,2026-04-01

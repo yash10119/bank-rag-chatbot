@@ -1,0 +1,301 @@
+customer_id,full_name,date_of_birth,city,occupation,annual_income_inr,kyc_status,kyc_last_verified,pan_masked,risk_category,risk_score,product_holdings,relationship_manager_id,customer_since,relationship_history
+CUST00001,Amit Shah,2001-12-09,Jaipur,Salaried,1200000,Verified,2026-04-10,XXXXX9565X,Medium,52,"Personal Loan, Current Account, Credit Card",AG021,2010-05-10,Recent KYC refresh completed
+CUST00002,Rahul Reddy,1956-07-05,Ahmedabad,Retired,7400000,Expired,2023-05-31,XXXXX9808X,Low,31,"Personal Loan, Current Account",AG023,2024-10-04,"Long-standing customer, no incidents"
+CUST00003,Rahul Rao,1998-09-26,Chennai,Student,6900000,Verified,2026-02-09,XXXXX5905X,Medium,49,Fixed Deposit,AG017,2007-08-04,"Long-standing customer, no incidents"
+CUST00004,Riya Shah,1980-10-05,Bengaluru,Professional,3500000,Verified,2024-05-29,XXXXX1832X,Medium,48,Mutual Fund SIP,AG018,2005-12-28,"Long-standing customer, no incidents"
+CUST00005,Isha Kapoor,1989-08-22,Surat,Professional,5600000,Verified,2023-08-18,XXXXX2232X,Low,14,"Savings Account, Mutual Fund SIP",AG024,2018-01-24,Cross-sold investment products
+CUST00006,Meera Chopra,1953-07-31,Pune,Self-Employed,3300000,Verified,2024-12-25,XXXXX7658X,Low,14,"Home Loan, Mutual Fund SIP",AG011,2022-12-10,Upgraded to premium tier
+CUST00007,Sanjay Verma,1986-12-09,Bengaluru,Business Owner,2200000,Verified,2023-08-10,XXXXX7267X,Medium,45,Insurance,AG015,2009-06-23,"Raised service complaint, resolved"
+CUST00008,Priya Sharma,1967-04-30,Hyderabad,Business Owner,3700000,Pending,2024-07-25,XXXXX6753X,Low,36,"Credit Card, Savings Account, Mutual Fund SIP, Fixed Deposit",AG012,2018-01-09,Recent KYC refresh completed
+CUST00009,Sanjay Nair,1995-11-19,Mumbai,Retired,7500000,Verified,2023-04-01,XXXXX8144X,Low,29,Home Loan,AG024,2014-09-04,"Long-standing customer, no incidents"
+CUST00010,Sanjay Desai,1961-03-07,Chennai,Student,4100000,Verified,2024-10-30,XXXXX7592X,High,89,"Fixed Deposit, Current Account, Home Loan",AG025,2020-03-11,"Dormant for 6 months, reactivated"
+CUST00011,Arjun Gupta,1950-01-14,Chennai,Business Owner,2800000,Verified,2026-04-02,XXXXX6279X,High,79,"Insurance, Home Loan, Credit Card, Current Account",AG033,2015-08-13,"Dormant for 6 months, reactivated"
+CUST00012,Riya Reddy,1958-05-19,Bengaluru,Professional,4100000,Verified,2024-02-12,XXXXX3414X,Low,12,Savings Account,AG016,2015-08-29,Cross-sold investment products
+CUST00013,Amit Shah,1984-06-13,Kolkata,Retired,3300000,Verified,2023-01-12,XXXXX2746X,Medium,54,"Home Loan, Current Account, Credit Card, Personal Loan",AG030,2006-02-16,Cross-sold investment products
+CUST00014,Ananya Verma,1991-09-08,Surat,Student,7800000,Verified,2025-06-25,XXXXX9270X,Low,37,"Insurance, Current Account, Credit Card, Home Loan",AG029,2010-10-25,Upgraded to premium tier
+CUST00015,Vikram Singh,1971-06-19,Chennai,Retired,1100000,Verified,2024-04-25,XXXXX5451X,Medium,64,"Credit Card, Personal Loan, Savings Account",AG009,2008-05-20,Upgraded to premium tier
+CUST00016,Aditya Nair,1986-07-27,Pune,Student,6100000,Verified,2024-02-28,XXXXX7883X,Low,14,"Savings Account, Mutual Fund SIP, Personal Loan, Home Loan",AG031,2005-02-18,Recent KYC refresh completed
+CUST00017,Sneha Kapoor,1998-12-30,Jaipur,Self-Employed,6400000,Verified,2025-06-11,XXXXX8956X,Low,22,Mutual Fund SIP,AG022,2020-01-02,"Dormant for 6 months, reactivated"
+CUST00018,Ananya Joshi,1997-12-02,Ahmedabad,Retired,7700000,Verified,2023-02-25,XXXXX2375X,Medium,45,"Fixed Deposit, Mutual Fund SIP, Home Loan, Current Account",AG004,2010-11-02,"Raised service complaint, resolved"
+CUST00019,Arjun Iyer,1987-10-27,Chennai,Salaried,6200000,Verified,2026-01-09,XXXXX1853X,Low,24,"Home Loan, Credit Card, Savings Account",AG003,2021-12-01,"Long-standing customer, no incidents"
+CUST00020,Riya Mehta,1971-05-27,Delhi,Retired,1600000,Verified,2024-03-22,XXXXX8619X,High,70,"Credit Card, Current Account, Personal Loan",AG039,2021-10-11,"Dormant for 6 months, reactivated"
+CUST00021,Diya Joshi,1952-04-21,Chennai,Student,5000000,Verified,2024-02-11,XXXXX2245X,Low,36,"Current Account, Credit Card",AG020,2024-01-27,"Dormant for 6 months, reactivated"
+CUST00022,Vivaan Reddy,1997-10-17,Hyderabad,Professional,4900000,Verified,2026-08-19,XXXXX6590X,Medium,65,Mutual Fund SIP,AG032,2007-05-15,"Raised service complaint, resolved"
+CUST00023,Ananya Nair,1965-10-20,Surat,Professional,3600000,Verified,2026-01-07,XXXXX8921X,High,84,"Mutual Fund SIP, Insurance, Credit Card, Personal Loan",AG018,2012-03-25,Upgraded to premium tier
+CUST00024,Priya Verma,1991-09-10,Jaipur,Student,5000000,Verified,2025-10-09,XXXXX6325X,Medium,48,"Insurance, Current Account",AG023,2022-11-23,Recent KYC refresh completed
+CUST00025,Karan Gupta,1950-11-29,Surat,Self-Employed,1200000,Verified,2025-04-12,XXXXX9004X,Low,38,"Insurance, Credit Card",AG032,2015-01-20,"Long-standing customer, no incidents"
+CUST00026,Priya Iyer,2002-03-05,Pune,Retired,7200000,Verified,2025-05-21,XXXXX6419X,Low,17,"Insurance, Fixed Deposit, Mutual Fund SIP",AG017,2010-03-04,"Long-standing customer, no incidents"
+CUST00027,Sneha Verma,1966-08-11,Bengaluru,Self-Employed,6300000,Verified,2026-04-22,XXXXX9595X,Medium,43,"Current Account, Mutual Fund SIP, Insurance",AG019,2010-02-07,Recent KYC refresh completed
+CUST00028,Ananya Iyer,1954-01-31,Ahmedabad,Student,3900000,Verified,2023-09-16,XXXXX9042X,Low,10,Savings Account,AG037,2011-05-19,"Raised service complaint, resolved"
+CUST00029,Karan Rao,1992-11-10,Mumbai,Salaried,5300000,Verified,2026-03-27,XXXXX1878X,Low,20,"Fixed Deposit, Mutual Fund SIP",AG037,2011-10-26,"Long-standing customer, no incidents"
+CUST00030,Kavya Joshi,2003-06-25,Jaipur,Self-Employed,6800000,Verified,2025-06-25,XXXXX5871X,High,94,"Personal Loan, Insurance, Mutual Fund SIP, Savings Account",AG040,2021-08-07,"Long-standing customer, no incidents"
+CUST00031,Karan Desai,1957-04-14,Delhi,Self-Employed,2400000,Verified,2023-11-17,XXXXX1043X,High,76,"Insurance, Credit Card, Personal Loan, Home Loan",AG019,2005-09-25,Upgraded to premium tier
+CUST00032,Aditya Desai,1970-12-10,Chennai,Professional,7700000,Verified,2024-02-10,XXXXX7965X,Low,19,Home Loan,AG010,2025-05-17,Recent KYC refresh completed
+CUST00033,Neha Joshi,2001-01-24,Chennai,Retired,1700000,Verified,2024-09-14,XXXXX7594X,Medium,41,"Insurance, Home Loan, Savings Account",AG039,2005-11-23,"Raised service complaint, resolved"
+CUST00034,Aditya Shah,2001-08-09,Jaipur,Salaried,3600000,Verified,2023-12-25,XXXXX8708X,Medium,48,"Personal Loan, Current Account, Insurance, Home Loan",AG032,2007-01-18,"Raised service complaint, resolved"
+CUST00035,Diya Rao,1964-06-05,Pune,Retired,6500000,Verified,2025-03-31,XXXXX1601X,Low,20,"Current Account, Fixed Deposit, Mutual Fund SIP, Credit Card",AG008,2022-04-30,"Raised service complaint, resolved"
+CUST00036,Sneha Singh,1987-01-28,Ahmedabad,Self-Employed,6800000,Verified,2025-10-17,XXXXX8242X,Medium,40,Home Loan,AG018,2017-04-27,Upgraded to premium tier
+CUST00037,Pooja Patel,1952-08-03,Jaipur,Self-Employed,2200000,Verified,2023-01-29,XXXXX7684X,High,92,Home Loan,AG008,2015-05-09,"Long-standing customer, no incidents"
+CUST00038,Neha Gupta,1974-07-13,Hyderabad,Retired,6200000,Verified,2026-02-02,XXXXX3369X,Medium,55,"Home Loan, Personal Loan, Mutual Fund SIP, Current Account",AG005,2011-03-14,"Raised service complaint, resolved"
+CUST00039,Aarav Iyer,1976-10-14,Jaipur,Student,6400000,Pending,2025-07-03,XXXXX9824X,Low,35,"Credit Card, Fixed Deposit, Personal Loan, Insurance",AG025,2015-03-20,Recent KYC refresh completed
+CUST00040,Arjun Shah,1986-11-08,Ahmedabad,Business Owner,6200000,Verified,2025-02-19,XXXXX7325X,Medium,47,"Insurance, Savings Account",AG009,2016-04-07,Cross-sold investment products
+CUST00041,Diya Gupta,1990-12-29,Ahmedabad,Professional,2000000,Verified,2026-09-02,XXXXX3529X,Low,13,Insurance,AG017,2012-08-05,Cross-sold investment products
+CUST00042,Sneha Nair,1978-05-30,Kolkata,Student,600000,Verified,2024-04-25,XXXXX5708X,Medium,42,"Current Account, Home Loan",AG007,2022-01-20,"Dormant for 6 months, reactivated"
+CUST00043,Neha Chopra,1952-08-06,Ahmedabad,Business Owner,900000,Verified,2025-02-06,XXXXX8056X,Medium,54,"Home Loan, Personal Loan",AG027,2017-09-11,"Dormant for 6 months, reactivated"
+CUST00044,Riya Rao,1984-04-27,Jaipur,Professional,3200000,Verified,2026-04-09,XXXXX3344X,Medium,45,"Insurance, Credit Card",AG017,2015-04-23,Recent KYC refresh completed
+CUST00045,Neha Desai,1999-01-14,Delhi,Salaried,5800000,Expired,2026-04-18,XXXXX5901X,Medium,65,"Personal Loan, Home Loan, Fixed Deposit, Current Account",AG025,2024-02-21,"Raised service complaint, resolved"
+CUST00046,Amit Iyer,1976-06-27,Ahmedabad,Professional,5200000,Verified,2026-03-05,XXXXX1803X,Low,22,"Personal Loan, Mutual Fund SIP, Current Account, Insurance",AG023,2009-11-30,"Dormant for 6 months, reactivated"
+CUST00047,Ananya Desai,1958-09-19,Ahmedabad,Business Owner,5800000,Verified,2025-01-17,XXXXX3153X,Low,18,Personal Loan,AG021,2021-10-07,"Raised service complaint, resolved"
+CUST00048,Meera Gupta,1995-01-07,Chennai,Self-Employed,3400000,Pending,2025-09-13,XXXXX5835X,Low,14,"Current Account, Home Loan, Savings Account",AG010,2021-12-01,Upgraded to premium tier
+CUST00049,Sneha Reddy,1958-02-07,Hyderabad,Salaried,3500000,Verified,2025-07-20,XXXXX7038X,Medium,61,"Mutual Fund SIP, Insurance, Credit Card",AG024,2007-06-07,"Dormant for 6 months, reactivated"
+CUST00050,Sanjay Chopra,1969-11-10,Mumbai,Professional,6100000,Pending,2024-09-10,XXXXX7689X,Low,10,Fixed Deposit,AG003,2005-11-01,Recent KYC refresh completed
+CUST00051,Sneha Mehta,1984-11-13,Kolkata,Business Owner,7100000,Verified,2023-11-13,XXXXX7797X,High,77,Insurance,AG040,2014-02-26,Recent KYC refresh completed
+CUST00052,Rahul Shah,1982-07-16,Mumbai,Professional,4900000,Verified,2026-08-13,XXXXX6876X,Low,21,Mutual Fund SIP,AG018,2009-04-04,"Long-standing customer, no incidents"
+CUST00053,Rohan Desai,2003-07-29,Ahmedabad,Salaried,4400000,Verified,2023-09-15,XXXXX4362X,High,72,Home Loan,AG038,2009-11-05,Upgraded to premium tier
+CUST00054,Aarav Iyer,1962-12-25,Delhi,Student,3400000,Verified,2023-08-14,XXXXX1422X,Low,14,"Savings Account, Fixed Deposit",AG016,2018-03-17,Recent KYC refresh completed
+CUST00055,Kavya Gupta,1960-03-13,Mumbai,Retired,5900000,Verified,2025-11-17,XXXXX2786X,Low,18,"Home Loan, Personal Loan, Savings Account, Mutual Fund SIP",AG020,2015-04-11,"Dormant for 6 months, reactivated"
+CUST00056,Kavya Desai,1959-09-08,Kolkata,Professional,5800000,Verified,2023-06-15,XXXXX6277X,High,82,"Current Account, Insurance",AG018,2019-01-02,"Dormant for 6 months, reactivated"
+CUST00057,Riya Gupta,1976-06-16,Kolkata,Student,7900000,Verified,2023-08-23,XXXXX4522X,Low,32,"Insurance, Current Account, Home Loan, Fixed Deposit",AG030,2013-12-11,"Raised service complaint, resolved"
+CUST00058,Karan Reddy,1963-09-11,Kolkata,Salaried,1300000,Verified,2023-07-10,XXXXX8075X,Medium,53,Credit Card,AG009,2017-06-24,"Long-standing customer, no incidents"
+CUST00059,Diya Nair,1981-09-21,Hyderabad,Professional,800000,Expired,2026-05-14,XXXXX6119X,Low,27,"Current Account, Personal Loan, Mutual Fund SIP",AG014,2008-06-21,"Dormant for 6 months, reactivated"
+CUST00060,Sneha Reddy,1960-04-22,Chennai,Student,3000000,Verified,2026-02-22,XXXXX1430X,Low,37,"Savings Account, Current Account, Fixed Deposit",AG020,2025-09-02,Recent KYC refresh completed
+CUST00061,Amit Desai,1985-12-15,Mumbai,Self-Employed,500000,Verified,2025-12-22,XXXXX4524X,Low,15,"Mutual Fund SIP, Home Loan, Fixed Deposit, Current Account",AG024,2011-12-28,"Dormant for 6 months, reactivated"
+CUST00062,Vivaan Mehta,1964-02-15,Jaipur,Salaried,1200000,Verified,2026-09-17,XXXXX7947X,Low,28,"Insurance, Home Loan, Fixed Deposit, Current Account",AG033,2007-07-22,Recent KYC refresh completed
+CUST00063,Amit Singh,1997-04-10,Chennai,Salaried,3000000,Verified,2026-05-12,XXXXX1897X,Low,19,Home Loan,AG020,2009-09-27,Upgraded to premium tier
+CUST00064,Aarav Singh,1988-08-20,Delhi,Self-Employed,5000000,Verified,2024-04-16,XXXXX9196X,Medium,50,"Current Account, Home Loan, Credit Card",AG003,2014-10-14,"Long-standing customer, no incidents"
+CUST00065,Amit Nair,2001-06-11,Hyderabad,Professional,5500000,Verified,2025-04-09,XXXXX1341X,Low,12,"Fixed Deposit, Mutual Fund SIP, Personal Loan",AG030,2023-08-30,"Dormant for 6 months, reactivated"
+CUST00066,Priya Nair,2002-10-31,Hyderabad,Student,1200000,Verified,2024-09-27,XXXXX6562X,High,73,"Credit Card, Mutual Fund SIP",AG011,2006-09-18,Cross-sold investment products
+CUST00067,Meera Reddy,1963-04-02,Bengaluru,Salaried,2000000,Verified,2023-12-22,XXXXX3504X,Medium,56,Fixed Deposit,AG032,2015-05-29,Cross-sold investment products
+CUST00068,Riya Reddy,1978-05-13,Delhi,Retired,1000000,Verified,2026-07-17,XXXXX5961X,Medium,61,"Savings Account, Fixed Deposit, Personal Loan",AG005,2011-12-18,"Raised service complaint, resolved"
+CUST00069,Aditya Desai,1958-02-06,Jaipur,Student,6600000,Verified,2026-04-03,XXXXX1672X,Low,11,"Home Loan, Fixed Deposit, Personal Loan, Insurance",AG033,2008-05-20,"Long-standing customer, no incidents"
+CUST00070,Aditya Gupta,1965-06-25,Ahmedabad,Self-Employed,5800000,Expired,2025-12-09,XXXXX9564X,Low,35,"Credit Card, Fixed Deposit",AG019,2013-09-09,"Raised service complaint, resolved"
+CUST00071,Sanjay Patel,1979-07-31,Mumbai,Student,5100000,Verified,2026-09-06,XXXXX3463X,Medium,59,"Current Account, Personal Loan, Credit Card",AG010,2025-07-24,Recent KYC refresh completed
+CUST00072,Arjun Mehta,2003-05-21,Mumbai,Business Owner,7300000,Verified,2024-11-03,XXXXX3093X,Low,30,Mutual Fund SIP,AG033,2013-02-12,"Long-standing customer, no incidents"
+CUST00073,Pooja Shah,1970-04-29,Delhi,Self-Employed,1100000,Verified,2023-07-27,XXXXX9317X,Low,15,Credit Card,AG040,2007-12-10,Cross-sold investment products
+CUST00074,Riya Verma,1964-11-07,Kolkata,Salaried,5400000,Verified,2024-05-01,XXXXX8277X,Low,15,"Insurance, Current Account, Personal Loan",AG016,2011-12-11,"Raised service complaint, resolved"
+CUST00075,Amit Singh,1991-06-03,Chennai,Retired,6600000,Verified,2023-11-28,XXXXX4271X,High,91,"Personal Loan, Savings Account",AG031,2024-08-09,Recent KYC refresh completed
+CUST00076,Diya Iyer,1957-07-11,Delhi,Business Owner,5900000,Pending,2023-10-29,XXXXX8167X,Low,13,Home Loan,AG029,2024-11-03,Recent KYC refresh completed
+CUST00077,Vikram Reddy,1971-02-25,Hyderabad,Salaried,4900000,Verified,2024-10-14,XXXXX2623X,High,82,"Fixed Deposit, Current Account, Savings Account",AG019,2025-07-30,"Raised service complaint, resolved"
+CUST00078,Pooja Singh,1950-06-22,Mumbai,Salaried,3400000,Verified,2023-11-03,XXXXX9991X,Medium,64,"Current Account, Mutual Fund SIP, Fixed Deposit, Insurance",AG020,2007-09-26,"Long-standing customer, no incidents"
+CUST00079,Rahul Patel,1959-12-12,Kolkata,Student,7000000,Verified,2025-11-21,XXXXX4963X,Low,30,"Personal Loan, Home Loan",AG001,2018-10-16,Recent KYC refresh completed
+CUST00080,Aditya Gupta,1982-05-09,Mumbai,Student,7100000,Verified,2025-11-05,XXXXX1333X,Low,23,"Insurance, Savings Account, Credit Card, Home Loan",AG024,2010-09-09,"Dormant for 6 months, reactivated"
+CUST00081,Priya Kapoor,1959-04-20,Jaipur,Professional,4400000,Verified,2024-12-22,XXXXX9945X,Low,35,"Fixed Deposit, Mutual Fund SIP, Credit Card",AG030,2020-08-06,"Raised service complaint, resolved"
+CUST00082,Rahul Sharma,1976-04-29,Bengaluru,Salaried,2700000,Pending,2024-10-08,XXXXX6080X,Medium,44,"Insurance, Fixed Deposit, Savings Account, Current Account",AG019,2013-01-03,"Long-standing customer, no incidents"
+CUST00083,Meera Nair,1985-11-20,Kolkata,Retired,4500000,Expired,2025-10-13,XXXXX9151X,Medium,48,"Personal Loan, Mutual Fund SIP, Savings Account",AG028,2006-10-09,"Raised service complaint, resolved"
+CUST00084,Neha Reddy,1959-03-16,Mumbai,Business Owner,3900000,Verified,2026-05-19,XXXXX7981X,Medium,45,"Insurance, Fixed Deposit",AG029,2005-12-13,"Dormant for 6 months, reactivated"
+CUST00085,Karan Desai,1955-02-23,Mumbai,Professional,5300000,Verified,2023-11-24,XXXXX1510X,Medium,59,"Insurance, Savings Account",AG009,2006-07-05,Upgraded to premium tier
+CUST00086,Amit Sharma,1963-10-07,Kolkata,Business Owner,4900000,Verified,2023-06-07,XXXXX3255X,Medium,51,"Mutual Fund SIP, Fixed Deposit, Credit Card",AG018,2010-08-07,"Long-standing customer, no incidents"
+CUST00087,Arjun Chopra,2000-05-22,Mumbai,Business Owner,3500000,Verified,2024-03-15,XXXXX5678X,Low,15,"Home Loan, Savings Account, Current Account, Mutual Fund SIP",AG029,2008-11-15,"Dormant for 6 months, reactivated"
+CUST00088,Sanjay Desai,1981-03-03,Mumbai,Student,7100000,Verified,2024-09-06,XXXXX3580X,Low,12,"Credit Card, Personal Loan",AG015,2007-09-22,Upgraded to premium tier
+CUST00089,Aarav Reddy,1999-09-15,Jaipur,Business Owner,6100000,Verified,2026-02-03,XXXXX3126X,Medium,65,Current Account,AG020,2013-12-06,"Dormant for 6 months, reactivated"
+CUST00090,Kavya Rao,2001-07-30,Mumbai,Self-Employed,4200000,Verified,2025-07-10,XXXXX8632X,Medium,53,"Fixed Deposit, Mutual Fund SIP, Personal Loan",AG038,2009-01-30,Upgraded to premium tier
+CUST00091,Diya Gupta,1963-09-24,Chennai,Self-Employed,2200000,Verified,2024-04-06,XXXXX6669X,Low,39,"Current Account, Fixed Deposit, Insurance",AG036,2011-02-27,Upgraded to premium tier
+CUST00092,Vikram Desai,1965-02-16,Jaipur,Student,2100000,Verified,2026-07-02,XXXXX6531X,Medium,57,Savings Account,AG006,2006-01-08,"Dormant for 6 months, reactivated"
+CUST00093,Amit Nair,1952-09-19,Kolkata,Professional,7100000,Verified,2024-09-10,XXXXX8912X,Medium,60,"Mutual Fund SIP, Fixed Deposit",AG030,2006-08-21,"Dormant for 6 months, reactivated"
+CUST00094,Rahul Shah,1980-07-09,Jaipur,Self-Employed,4200000,Pending,2024-10-15,XXXXX6658X,Low,24,"Fixed Deposit, Mutual Fund SIP, Insurance, Personal Loan",AG036,2007-05-20,Recent KYC refresh completed
+CUST00095,Priya Mehta,1958-09-08,Ahmedabad,Business Owner,5100000,Pending,2025-05-06,XXXXX5067X,Low,13,"Credit Card, Personal Loan",AG021,2009-04-05,Upgraded to premium tier
+CUST00096,Neha Singh,1952-01-30,Mumbai,Retired,6600000,Verified,2024-05-08,XXXXX4524X,Low,26,"Savings Account, Insurance, Fixed Deposit",AG032,2018-05-27,"Dormant for 6 months, reactivated"
+CUST00097,Diya Nair,1962-01-06,Chennai,Professional,4800000,Verified,2025-01-19,XXXXX1741X,Medium,57,"Savings Account, Personal Loan, Mutual Fund SIP, Current Account",AG024,2017-05-30,Recent KYC refresh completed
+CUST00098,Sneha Iyer,1960-08-29,Delhi,Salaried,5200000,Verified,2024-11-25,XXXXX6990X,Low,26,"Home Loan, Personal Loan",AG033,2014-01-02,Cross-sold investment products
+CUST00099,Sanjay Verma,1992-07-02,Surat,Retired,2100000,Verified,2025-11-21,XXXXX3290X,Low,11,"Credit Card, Current Account, Home Loan",AG040,2021-08-01,Recent KYC refresh completed
+CUST00100,Sneha Singh,2000-07-02,Chennai,Retired,400000,Verified,2026-10-11,XXXXX2795X,Low,26,"Personal Loan, Mutual Fund SIP, Credit Card, Savings Account",AG039,2015-08-24,Recent KYC refresh completed
+CUST00101,Amit Shah,1954-08-10,Jaipur,Retired,2300000,Verified,2026-06-23,XXXXX7229X,High,88,"Home Loan, Savings Account",AG037,2020-09-17,"Long-standing customer, no incidents"
+CUST00102,Ananya Nair,1968-04-17,Hyderabad,Student,8000000,Pending,2023-05-08,XXXXX3262X,Low,24,"Credit Card, Insurance",AG031,2016-10-14,"Raised service complaint, resolved"
+CUST00103,Sanjay Gupta,1981-10-14,Chennai,Student,6300000,Verified,2024-05-19,XXXXX5571X,Low,15,"Home Loan, Fixed Deposit, Mutual Fund SIP",AG014,2020-06-25,"Dormant for 6 months, reactivated"
+CUST00104,Karan Iyer,1960-12-07,Jaipur,Professional,7100000,Verified,2025-03-19,XXXXX6654X,Low,25,"Personal Loan, Savings Account",AG019,2021-01-07,"Long-standing customer, no incidents"
+CUST00105,Pooja Shah,1968-02-17,Surat,Business Owner,7300000,Verified,2023-10-09,XXXXX2789X,Low,24,"Home Loan, Savings Account",AG034,2010-01-23,"Dormant for 6 months, reactivated"
+CUST00106,Pooja Patel,1962-05-02,Ahmedabad,Student,2200000,Verified,2025-09-01,XXXXX8822X,Low,13,"Personal Loan, Fixed Deposit",AG019,2019-06-28,"Long-standing customer, no incidents"
+CUST00107,Priya Gupta,1953-05-07,Delhi,Retired,2400000,Expired,2023-03-16,XXXXX7504X,High,88,"Fixed Deposit, Credit Card, Insurance, Savings Account",AG001,2011-09-11,Cross-sold investment products
+CUST00108,Rahul Desai,1998-09-28,Surat,Retired,1900000,Pending,2025-08-16,XXXXX5470X,Medium,50,"Current Account, Fixed Deposit",AG011,2021-05-26,"Raised service complaint, resolved"
+CUST00109,Sanjay Verma,1976-06-20,Jaipur,Professional,2600000,Verified,2026-08-01,XXXXX7643X,Medium,45,"Credit Card, Savings Account, Home Loan, Mutual Fund SIP",AG012,2008-02-26,"Raised service complaint, resolved"
+CUST00110,Arjun Shah,1990-01-29,Chennai,Business Owner,4000000,Verified,2026-03-19,XXXXX1187X,Low,17,"Credit Card, Insurance, Current Account",AG004,2019-12-24,"Long-standing customer, no incidents"
+CUST00111,Vikram Chopra,1977-11-25,Mumbai,Professional,3900000,Verified,2024-03-28,XXXXX4590X,Low,15,"Insurance, Current Account",AG030,2021-10-09,Cross-sold investment products
+CUST00112,Sneha Verma,1969-08-05,Bengaluru,Professional,7800000,Pending,2023-06-17,XXXXX9609X,Low,32,"Credit Card, Savings Account, Personal Loan, Mutual Fund SIP",AG004,2023-08-04,Cross-sold investment products
+CUST00113,Ananya Mehta,1979-06-09,Surat,Retired,1600000,Verified,2026-04-09,XXXXX9008X,High,87,Insurance,AG004,2015-03-04,Upgraded to premium tier
+CUST00114,Sneha Singh,1977-08-25,Ahmedabad,Retired,3400000,Verified,2024-03-22,XXXXX2196X,Low,24,Mutual Fund SIP,AG023,2020-09-16,"Long-standing customer, no incidents"
+CUST00115,Pooja Sharma,1975-10-04,Hyderabad,Self-Employed,1900000,Verified,2026-08-15,XXXXX7887X,Low,11,"Mutual Fund SIP, Home Loan, Insurance",AG025,2006-10-20,"Dormant for 6 months, reactivated"
+CUST00116,Meera Patel,1966-01-05,Surat,Retired,6900000,Verified,2024-04-01,XXXXX1056X,High,74,Personal Loan,AG030,2020-02-09,"Dormant for 6 months, reactivated"
+CUST00117,Priya Singh,1981-01-20,Delhi,Business Owner,2600000,Expired,2023-08-20,XXXXX1527X,Low,27,"Savings Account, Current Account, Mutual Fund SIP, Insurance",AG007,2018-04-28,"Long-standing customer, no incidents"
+CUST00118,Priya Kapoor,1953-12-20,Hyderabad,Retired,3100000,Verified,2023-04-26,XXXXX3295X,Low,31,"Home Loan, Mutual Fund SIP, Credit Card",AG037,2012-02-26,Cross-sold investment products
+CUST00119,Priya Iyer,1962-11-08,Surat,Self-Employed,5400000,Verified,2023-05-05,XXXXX3869X,Low,31,"Insurance, Savings Account, Fixed Deposit, Home Loan",AG034,2012-02-25,"Dormant for 6 months, reactivated"
+CUST00120,Isha Verma,1998-04-05,Kolkata,Self-Employed,3000000,Verified,2023-10-23,XXXXX8586X,Low,14,Mutual Fund SIP,AG027,2017-07-02,Cross-sold investment products
+CUST00121,Sanjay Desai,1957-02-03,Kolkata,Business Owner,1300000,Verified,2024-01-26,XXXXX1844X,Low,17,"Mutual Fund SIP, Credit Card, Personal Loan",AG039,2005-11-20,"Long-standing customer, no incidents"
+CUST00122,Sneha Shah,1993-01-03,Bengaluru,Business Owner,4000000,Expired,2023-02-01,XXXXX4470X,Low,34,"Current Account, Credit Card",AG031,2025-07-06,Upgraded to premium tier
+CUST00123,Priya Gupta,1978-11-08,Chennai,Retired,6100000,Verified,2025-01-05,XXXXX6053X,Medium,46,"Credit Card, Personal Loan, Home Loan",AG030,2007-03-19,"Dormant for 6 months, reactivated"
+CUST00124,Meera Reddy,1987-02-19,Ahmedabad,Student,3000000,Verified,2023-02-03,XXXXX5272X,Low,36,"Personal Loan, Current Account, Mutual Fund SIP, Fixed Deposit",AG015,2013-07-09,Cross-sold investment products
+CUST00125,Sanjay Iyer,1993-11-02,Kolkata,Retired,2300000,Verified,2024-12-22,XXXXX3773X,Medium,57,"Insurance, Current Account",AG035,2019-05-25,"Long-standing customer, no incidents"
+CUST00126,Vivaan Verma,1950-07-29,Hyderabad,Self-Employed,3100000,Verified,2023-11-06,XXXXX1149X,Low,36,"Insurance, Fixed Deposit",AG004,2018-11-10,"Dormant for 6 months, reactivated"
+CUST00127,Pooja Sharma,1950-08-05,Surat,Student,5400000,Verified,2025-12-20,XXXXX5501X,Medium,69,"Savings Account, Personal Loan, Credit Card",AG028,2023-01-31,Upgraded to premium tier
+CUST00128,Priya Shah,1997-03-25,Chennai,Business Owner,3600000,Verified,2023-06-11,XXXXX7112X,Low,13,"Insurance, Personal Loan, Current Account, Credit Card",AG020,2020-05-05,"Long-standing customer, no incidents"
+CUST00129,Vivaan Patel,1986-05-12,Hyderabad,Retired,7200000,Verified,2026-07-28,XXXXX1154X,Medium,60,"Current Account, Home Loan",AG028,2019-06-20,Recent KYC refresh completed
+CUST00130,Vivaan Shah,1968-12-19,Jaipur,Retired,3600000,Verified,2023-06-02,XXXXX5593X,Low,37,Fixed Deposit,AG021,2005-05-09,Upgraded to premium tier
+CUST00131,Arjun Chopra,1956-11-26,Chennai,Self-Employed,7400000,Verified,2025-03-07,XXXXX9856X,Low,34,"Mutual Fund SIP, Insurance, Credit Card",AG009,2022-09-24,"Dormant for 6 months, reactivated"
+CUST00132,Vivaan Patel,1989-03-19,Bengaluru,Salaried,4500000,Verified,2026-06-11,XXXXX7499X,Medium,63,"Savings Account, Credit Card, Fixed Deposit",AG029,2016-01-03,Upgraded to premium tier
+CUST00133,Amit Desai,1984-02-06,Mumbai,Student,3900000,Verified,2023-05-31,XXXXX2344X,Low,22,"Fixed Deposit, Home Loan, Credit Card",AG010,2021-08-04,"Raised service complaint, resolved"
+CUST00134,Neha Singh,1982-04-16,Chennai,Salaried,1800000,Verified,2025-06-01,XXXXX8353X,Low,13,"Current Account, Savings Account, Mutual Fund SIP, Fixed Deposit",AG036,2007-02-02,Cross-sold investment products
+CUST00135,Aarav Iyer,1987-02-15,Hyderabad,Salaried,7300000,Pending,2024-05-12,XXXXX9537X,Low,20,"Mutual Fund SIP, Current Account",AG009,2011-01-12,Recent KYC refresh completed
+CUST00136,Kavya Iyer,1987-10-12,Chennai,Retired,1100000,Verified,2024-05-20,XXXXX9123X,Low,14,"Insurance, Savings Account",AG009,2011-11-01,"Long-standing customer, no incidents"
+CUST00137,Arjun Verma,1979-07-26,Kolkata,Business Owner,5700000,Verified,2026-08-26,XXXXX3230X,High,89,"Credit Card, Personal Loan, Insurance",AG013,2015-09-30,Recent KYC refresh completed
+CUST00138,Pooja Joshi,1971-10-01,Pune,Retired,3700000,Verified,2025-03-15,XXXXX6980X,Low,22,Home Loan,AG038,2017-03-28,Upgraded to premium tier
+CUST00139,Rahul Kapoor,1968-10-22,Kolkata,Business Owner,1000000,Verified,2025-04-17,XXXXX9180X,Medium,40,"Personal Loan, Current Account",AG017,2019-10-10,Upgraded to premium tier
+CUST00140,Rahul Joshi,1992-12-29,Jaipur,Retired,7000000,Verified,2025-05-06,XXXXX9907X,Medium,52,Credit Card,AG035,2018-04-27,"Dormant for 6 months, reactivated"
+CUST00141,Meera Mehta,1953-12-22,Jaipur,Professional,5300000,Expired,2024-11-10,XXXXX8052X,High,77,Savings Account,AG007,2010-10-21,Upgraded to premium tier
+CUST00142,Amit Shah,1989-12-29,Pune,Retired,6100000,Verified,2026-04-20,XXXXX9199X,Low,26,"Credit Card, Savings Account",AG031,2007-05-07,Recent KYC refresh completed
+CUST00143,Ananya Reddy,1977-12-25,Pune,Retired,2800000,Verified,2024-12-14,XXXXX8801X,Low,12,Insurance,AG029,2012-02-26,"Long-standing customer, no incidents"
+CUST00144,Aarav Rao,1980-10-11,Mumbai,Professional,2300000,Pending,2024-05-14,XXXXX9454X,Low,35,"Fixed Deposit, Insurance",AG036,2014-07-25,"Raised service complaint, resolved"
+CUST00145,Isha Desai,1988-10-08,Hyderabad,Salaried,8000000,Pending,2025-07-09,XXXXX8037X,Low,22,"Savings Account, Credit Card, Current Account, Mutual Fund SIP",AG018,2021-11-16,"Dormant for 6 months, reactivated"
+CUST00146,Sneha Mehta,1982-10-26,Pune,Self-Employed,6000000,Verified,2026-10-05,XXXXX9019X,Medium,58,"Mutual Fund SIP, Personal Loan, Home Loan",AG038,2007-07-25,Recent KYC refresh completed
+CUST00147,Neha Chopra,2002-12-12,Mumbai,Professional,1900000,Verified,2024-05-03,XXXXX6003X,Low,24,Fixed Deposit,AG024,2020-07-21,Upgraded to premium tier
+CUST00148,Amit Nair,1987-12-15,Delhi,Retired,7000000,Verified,2026-08-14,XXXXX3838X,Low,23,"Insurance, Fixed Deposit",AG009,2009-03-13,Recent KYC refresh completed
+CUST00149,Aarav Singh,1962-04-01,Bengaluru,Retired,7300000,Verified,2025-10-10,XXXXX7703X,Medium,41,"Mutual Fund SIP, Credit Card, Home Loan, Insurance",AG011,2006-11-09,Cross-sold investment products
+CUST00150,Vivaan Iyer,1970-03-04,Surat,Business Owner,2300000,Verified,2026-03-04,XXXXX9115X,Low,34,Current Account,AG018,2022-05-21,Cross-sold investment products
+CUST00151,Vivaan Verma,1989-08-06,Surat,Self-Employed,5600000,Verified,2026-08-31,XXXXX5055X,Medium,57,"Savings Account, Home Loan, Fixed Deposit",AG023,2024-05-04,"Long-standing customer, no incidents"
+CUST00152,Priya Shah,2002-09-30,Pune,Professional,8000000,Verified,2023-12-06,XXXXX3281X,Low,13,"Home Loan, Mutual Fund SIP",AG004,2017-10-15,Recent KYC refresh completed
+CUST00153,Sanjay Kapoor,1976-04-03,Chennai,Student,3600000,Expired,2025-11-19,XXXXX2560X,Low,29,"Mutual Fund SIP, Savings Account",AG018,2024-06-12,"Dormant for 6 months, reactivated"
+CUST00154,Ananya Kapoor,1978-11-24,Bengaluru,Professional,5200000,Verified,2026-03-28,XXXXX5402X,Low,37,"Mutual Fund SIP, Home Loan, Savings Account, Credit Card",AG026,2016-07-25,"Dormant for 6 months, reactivated"
+CUST00155,Rahul Singh,1979-05-13,Jaipur,Salaried,1300000,Verified,2025-07-27,XXXXX6869X,Low,39,Mutual Fund SIP,AG014,2014-08-21,Upgraded to premium tier
+CUST00156,Sanjay Gupta,2001-11-06,Delhi,Student,6400000,Verified,2023-04-10,XXXXX1752X,Low,20,Insurance,AG002,2007-10-15,Upgraded to premium tier
+CUST00157,Ananya Chopra,1977-01-30,Delhi,Business Owner,1300000,Verified,2024-05-27,XXXXX2350X,Low,10,"Fixed Deposit, Savings Account, Home Loan",AG020,2021-04-14,"Dormant for 6 months, reactivated"
+CUST00158,Diya Sharma,1969-02-23,Kolkata,Salaried,1800000,Verified,2025-11-29,XXXXX8291X,Medium,60,Savings Account,AG022,2023-04-30,"Long-standing customer, no incidents"
+CUST00159,Pooja Patel,1970-07-17,Hyderabad,Salaried,1500000,Verified,2025-01-22,XXXXX5902X,High,74,"Mutual Fund SIP, Insurance",AG009,2019-05-23,"Dormant for 6 months, reactivated"
+CUST00160,Riya Desai,1964-09-21,Kolkata,Business Owner,2900000,Verified,2023-11-07,XXXXX7745X,Low,26,"Home Loan, Savings Account, Mutual Fund SIP, Current Account",AG008,2018-03-23,"Dormant for 6 months, reactivated"
+CUST00161,Ananya Shah,1974-11-06,Mumbai,Self-Employed,7200000,Verified,2026-05-29,XXXXX5668X,Low,23,Personal Loan,AG014,2016-08-12,Cross-sold investment products
+CUST00162,Vivaan Verma,1971-06-22,Kolkata,Retired,1600000,Verified,2026-07-30,XXXXX2163X,Low,33,Credit Card,AG021,2007-12-18,"Raised service complaint, resolved"
+CUST00163,Sneha Desai,1965-07-02,Kolkata,Salaried,400000,Verified,2023-01-29,XXXXX5295X,Medium,53,"Savings Account, Insurance",AG026,2016-05-13,Recent KYC refresh completed
+CUST00164,Kavya Kapoor,1986-02-02,Mumbai,Professional,7000000,Verified,2023-11-09,XXXXX5546X,Medium,64,Personal Loan,AG006,2016-06-20,Upgraded to premium tier
+CUST00165,Arjun Joshi,1955-12-07,Chennai,Professional,5700000,Verified,2024-05-03,XXXXX1948X,High,80,"Current Account, Home Loan",AG008,2015-03-04,Cross-sold investment products
+CUST00166,Isha Patel,1951-02-20,Delhi,Professional,300000,Verified,2024-12-11,XXXXX9568X,Medium,61,"Fixed Deposit, Insurance, Current Account",AG018,2021-06-10,"Long-standing customer, no incidents"
+CUST00167,Kavya Iyer,1996-12-30,Mumbai,Business Owner,7500000,Verified,2025-10-13,XXXXX8457X,Medium,50,"Savings Account, Home Loan, Personal Loan",AG011,2013-04-01,Upgraded to premium tier
+CUST00168,Diya Shah,1995-08-26,Ahmedabad,Salaried,300000,Verified,2025-08-24,XXXXX6963X,Low,13,"Fixed Deposit, Current Account, Savings Account, Personal Loan",AG027,2010-01-14,Recent KYC refresh completed
+CUST00169,Karan Rao,1956-12-27,Jaipur,Business Owner,1700000,Verified,2023-04-18,XXXXX3938X,Low,39,"Savings Account, Home Loan",AG005,2024-09-02,"Raised service complaint, resolved"
+CUST00170,Sanjay Patel,1999-08-15,Kolkata,Salaried,4900000,Verified,2026-02-28,XXXXX5979X,Medium,67,"Insurance, Fixed Deposit",AG038,2016-01-25,Upgraded to premium tier
+CUST00171,Priya Mehta,1950-07-28,Hyderabad,Salaried,3100000,Verified,2026-07-26,XXXXX1157X,Medium,64,"Savings Account, Mutual Fund SIP, Credit Card",AG025,2024-01-17,"Dormant for 6 months, reactivated"
+CUST00172,Priya Nair,1994-02-21,Ahmedabad,Self-Employed,3700000,Verified,2024-04-19,XXXXX9515X,Medium,46,"Credit Card, Home Loan, Insurance, Savings Account",AG038,2007-02-22,Cross-sold investment products
+CUST00173,Amit Joshi,1955-08-03,Hyderabad,Professional,1800000,Verified,2024-06-18,XXXXX6161X,Low,36,"Credit Card, Fixed Deposit, Home Loan, Mutual Fund SIP",AG015,2006-09-04,Upgraded to premium tier
+CUST00174,Ananya Patel,1964-09-30,Kolkata,Retired,4200000,Verified,2026-01-02,XXXXX6870X,Low,34,"Insurance, Fixed Deposit",AG030,2010-12-11,"Long-standing customer, no incidents"
+CUST00175,Riya Sharma,1969-04-16,Pune,Self-Employed,1300000,Verified,2024-12-29,XXXXX7492X,Low,35,Personal Loan,AG017,2023-05-25,Upgraded to premium tier
+CUST00176,Sneha Kapoor,1999-05-10,Bengaluru,Salaried,6100000,Verified,2023-10-14,XXXXX2989X,Low,22,Savings Account,AG015,2007-12-07,Upgraded to premium tier
+CUST00177,Aditya Joshi,2002-08-01,Chennai,Salaried,400000,Expired,2024-02-09,XXXXX8265X,Medium,61,"Current Account, Mutual Fund SIP",AG022,2007-10-01,"Long-standing customer, no incidents"
+CUST00178,Kavya Rao,1985-06-09,Kolkata,Salaried,5000000,Verified,2023-12-20,XXXXX6799X,High,88,"Fixed Deposit, Insurance",AG018,2015-01-02,Upgraded to premium tier
+CUST00179,Neha Singh,1986-12-18,Surat,Retired,900000,Verified,2025-02-23,XXXXX3248X,Low,29,"Home Loan, Credit Card, Personal Loan, Current Account",AG035,2022-10-30,"Long-standing customer, no incidents"
+CUST00180,Pooja Gupta,1993-06-25,Pune,Student,6600000,Verified,2024-07-07,XXXXX3946X,High,81,Credit Card,AG039,2009-11-30,"Long-standing customer, no incidents"
+CUST00181,Pooja Gupta,1982-01-25,Jaipur,Self-Employed,2200000,Verified,2026-09-07,XXXXX4951X,Medium,48,"Savings Account, Mutual Fund SIP, Current Account",AG037,2023-12-27,"Raised service complaint, resolved"
+CUST00182,Isha Shah,2003-02-27,Pune,Professional,4700000,Pending,2023-02-27,XXXXX6761X,Low,36,"Home Loan, Mutual Fund SIP",AG032,2017-02-28,Recent KYC refresh completed
+CUST00183,Priya Joshi,1969-08-18,Ahmedabad,Student,6300000,Verified,2026-06-11,XXXXX4300X,Low,11,"Credit Card, Insurance",AG012,2025-08-10,Recent KYC refresh completed
+CUST00184,Ananya Verma,1959-12-14,Surat,Business Owner,1100000,Verified,2026-09-18,XXXXX7481X,Low,14,Credit Card,AG020,2012-03-27,Upgraded to premium tier
+CUST00185,Pooja Desai,1978-06-19,Delhi,Professional,7300000,Verified,2026-06-10,XXXXX6846X,High,95,"Fixed Deposit, Home Loan",AG020,2021-06-18,"Dormant for 6 months, reactivated"
+CUST00186,Amit Nair,2000-11-29,Ahmedabad,Self-Employed,7900000,Verified,2026-06-06,XXXXX4619X,Low,15,Insurance,AG010,2012-06-05,"Dormant for 6 months, reactivated"
+CUST00187,Aditya Rao,1980-02-14,Kolkata,Salaried,3500000,Verified,2023-05-19,XXXXX6742X,Low,21,"Current Account, Credit Card, Savings Account",AG004,2013-08-28,"Raised service complaint, resolved"
+CUST00188,Pooja Chopra,1983-12-23,Pune,Student,5000000,Verified,2025-09-08,XXXXX4695X,Medium,68,"Insurance, Savings Account",AG003,2011-08-13,"Long-standing customer, no incidents"
+CUST00189,Isha Chopra,1983-09-08,Delhi,Professional,1100000,Verified,2023-07-10,XXXXX6536X,Low,13,"Savings Account, Home Loan, Credit Card, Current Account",AG039,2024-12-15,"Raised service complaint, resolved"
+CUST00190,Rohan Nair,1999-09-18,Surat,Business Owner,3800000,Verified,2023-07-16,XXXXX1813X,Low,13,"Insurance, Current Account, Savings Account, Fixed Deposit",AG001,2014-08-04,"Long-standing customer, no incidents"
+CUST00191,Pooja Shah,1958-09-14,Ahmedabad,Self-Employed,2300000,Verified,2023-06-17,XXXXX8758X,Low,31,Personal Loan,AG026,2015-07-25,"Raised service complaint, resolved"
+CUST00192,Sneha Nair,1966-08-03,Pune,Retired,4900000,Verified,2023-04-02,XXXXX5313X,Medium,42,"Insurance, Fixed Deposit, Current Account, Mutual Fund SIP",AG037,2006-05-20,Upgraded to premium tier
+CUST00193,Meera Verma,1998-07-30,Hyderabad,Student,3100000,Verified,2025-03-03,XXXXX9561X,Medium,43,"Insurance, Personal Loan, Current Account, Home Loan",AG020,2006-10-09,"Raised service complaint, resolved"
+CUST00194,Amit Chopra,1996-05-14,Jaipur,Professional,2000000,Verified,2025-07-08,XXXXX3832X,High,86,"Home Loan, Mutual Fund SIP",AG013,2007-10-31,"Long-standing customer, no incidents"
+CUST00195,Ananya Rao,2003-05-21,Chennai,Business Owner,1000000,Verified,2026-02-13,XXXXX7510X,Low,31,"Personal Loan, Insurance, Home Loan",AG001,2022-08-23,"Dormant for 6 months, reactivated"
+CUST00196,Diya Nair,1963-06-05,Delhi,Student,7700000,Verified,2023-07-25,XXXXX2730X,Medium,65,Personal Loan,AG035,2024-09-28,Recent KYC refresh completed
+CUST00197,Pooja Joshi,1992-06-09,Ahmedabad,Self-Employed,3700000,Verified,2026-06-20,XXXXX7581X,Medium,52,Mutual Fund SIP,AG022,2020-06-27,Upgraded to premium tier
+CUST00198,Meera Sharma,1980-04-24,Chennai,Business Owner,3700000,Verified,2023-07-21,XXXXX4734X,Low,25,"Personal Loan, Credit Card",AG029,2022-05-12,Recent KYC refresh completed
+CUST00199,Aditya Shah,1989-08-18,Bengaluru,Retired,6400000,Verified,2025-02-04,XXXXX1920X,Low,23,"Current Account, Fixed Deposit",AG033,2014-01-18,Upgraded to premium tier
+CUST00200,Aarav Mehta,1967-04-18,Bengaluru,Salaried,3300000,Verified,2023-04-14,XXXXX6904X,Medium,68,"Personal Loan, Fixed Deposit",AG030,2016-04-30,"Raised service complaint, resolved"
+CUST00201,Priya Reddy,1993-11-07,Jaipur,Retired,2400000,Expired,2025-08-29,XXXXX6730X,Medium,61,"Fixed Deposit, Mutual Fund SIP, Insurance",AG006,2011-05-25,"Long-standing customer, no incidents"
+CUST00202,Rohan Rao,1969-11-10,Bengaluru,Professional,2800000,Verified,2025-04-18,XXXXX9409X,Low,15,Savings Account,AG031,2025-06-12,Upgraded to premium tier
+CUST00203,Priya Iyer,1977-05-28,Chennai,Retired,5000000,Pending,2025-07-29,XXXXX5128X,Medium,65,"Insurance, Fixed Deposit",AG034,2023-06-28,Cross-sold investment products
+CUST00204,Meera Gupta,2003-04-09,Jaipur,Business Owner,4000000,Verified,2025-09-13,XXXXX2045X,Low,13,"Personal Loan, Credit Card, Fixed Deposit",AG018,2010-11-10,"Dormant for 6 months, reactivated"
+CUST00205,Rohan Mehta,1996-05-29,Bengaluru,Salaried,7800000,Verified,2024-10-16,XXXXX3292X,Medium,60,Insurance,AG019,2010-10-27,"Raised service complaint, resolved"
+CUST00206,Amit Rao,1967-01-15,Pune,Professional,3000000,Verified,2026-07-31,XXXXX8794X,Low,33,"Personal Loan, Mutual Fund SIP, Current Account",AG036,2009-01-23,Recent KYC refresh completed
+CUST00207,Sneha Verma,1966-06-04,Pune,Professional,1300000,Verified,2024-04-02,XXXXX6031X,Low,14,"Credit Card, Fixed Deposit, Mutual Fund SIP, Personal Loan",AG019,2015-05-28,"Long-standing customer, no incidents"
+CUST00208,Amit Joshi,1956-05-22,Kolkata,Self-Employed,6600000,Verified,2025-02-20,XXXXX9680X,Low,37,"Mutual Fund SIP, Savings Account, Current Account",AG009,2009-06-29,Recent KYC refresh completed
+CUST00209,Ananya Reddy,1966-03-07,Mumbai,Retired,4400000,Verified,2023-12-29,XXXXX6134X,Low,28,Savings Account,AG029,2011-02-19,Upgraded to premium tier
+CUST00210,Isha Singh,1957-11-24,Delhi,Student,5700000,Verified,2025-04-06,XXXXX8029X,Medium,58,"Mutual Fund SIP, Savings Account, Insurance, Personal Loan",AG013,2021-05-22,Recent KYC refresh completed
+CUST00211,Vikram Shah,1951-08-11,Ahmedabad,Professional,3300000,Verified,2024-12-06,XXXXX6113X,High,94,"Current Account, Home Loan",AG033,2018-03-16,Recent KYC refresh completed
+CUST00212,Neha Singh,1996-09-04,Jaipur,Student,4500000,Verified,2023-10-02,XXXXX6615X,Low,36,"Credit Card, Mutual Fund SIP, Current Account, Insurance",AG026,2005-06-06,Upgraded to premium tier
+CUST00213,Aarav Joshi,1995-04-10,Delhi,Salaried,4800000,Verified,2023-03-18,XXXXX7147X,Low,14,"Savings Account, Personal Loan, Insurance",AG007,2019-08-30,"Long-standing customer, no incidents"
+CUST00214,Arjun Patel,1999-02-06,Chennai,Retired,2100000,Verified,2026-07-14,XXXXX1152X,Low,13,"Mutual Fund SIP, Credit Card, Savings Account",AG034,2011-01-21,Cross-sold investment products
+CUST00215,Vikram Kapoor,1960-07-24,Chennai,Salaried,1500000,Verified,2026-06-01,XXXXX4272X,Medium,53,"Home Loan, Fixed Deposit, Credit Card",AG027,2011-08-17,Upgraded to premium tier
+CUST00216,Pooja Reddy,1971-01-15,Ahmedabad,Salaried,1300000,Pending,2026-03-21,XXXXX9095X,Low,25,"Current Account, Mutual Fund SIP",AG033,2006-09-07,"Dormant for 6 months, reactivated"
+CUST00217,Priya Singh,1976-07-23,Chennai,Retired,800000,Verified,2023-12-24,XXXXX1646X,Medium,48,"Credit Card, Mutual Fund SIP, Insurance",AG021,2014-07-22,"Dormant for 6 months, reactivated"
+CUST00218,Aarav Rao,1962-06-01,Delhi,Business Owner,4700000,Pending,2026-06-27,XXXXX5395X,Low,37,Credit Card,AG022,2009-02-07,"Long-standing customer, no incidents"
+CUST00219,Pooja Verma,1987-11-02,Delhi,Salaried,1800000,Verified,2023-05-01,XXXXX3611X,Low,24,Mutual Fund SIP,AG038,2015-10-30,Cross-sold investment products
+CUST00220,Meera Joshi,1952-08-02,Delhi,Retired,6400000,Verified,2025-04-22,XXXXX8220X,Medium,59,Current Account,AG017,2019-09-10,Recent KYC refresh completed
+CUST00221,Amit Kapoor,2000-09-09,Bengaluru,Professional,4500000,Verified,2026-06-20,XXXXX2560X,Low,37,"Home Loan, Insurance, Fixed Deposit, Mutual Fund SIP",AG010,2023-10-27,Cross-sold investment products
+CUST00222,Isha Gupta,1992-02-07,Kolkata,Self-Employed,1100000,Verified,2024-10-18,XXXXX4946X,Medium,41,"Personal Loan, Savings Account, Insurance",AG015,2017-05-07,"Dormant for 6 months, reactivated"
+CUST00223,Rahul Singh,2001-05-30,Kolkata,Salaried,6500000,Verified,2023-09-01,XXXXX9148X,Low,36,Current Account,AG026,2014-04-01,"Long-standing customer, no incidents"
+CUST00224,Riya Joshi,1977-04-30,Surat,Student,2800000,Verified,2025-07-23,XXXXX6584X,Low,10,"Savings Account, Mutual Fund SIP, Current Account",AG030,2012-06-12,Cross-sold investment products
+CUST00225,Meera Kapoor,1990-08-07,Mumbai,Salaried,3000000,Verified,2024-12-28,XXXXX5783X,Medium,55,"Current Account, Savings Account, Insurance",AG032,2008-02-25,"Dormant for 6 months, reactivated"
+CUST00226,Riya Shah,1966-10-29,Mumbai,Retired,2900000,Verified,2024-01-26,XXXXX6536X,Medium,43,Mutual Fund SIP,AG003,2025-10-13,"Dormant for 6 months, reactivated"
+CUST00227,Rahul Singh,2002-11-14,Surat,Self-Employed,6500000,Verified,2023-04-10,XXXXX8091X,Medium,43,"Fixed Deposit, Credit Card, Personal Loan, Current Account",AG009,2007-04-29,"Raised service complaint, resolved"
+CUST00228,Vikram Chopra,1984-07-05,Hyderabad,Student,3300000,Verified,2024-12-03,XXXXX5819X,Medium,68,"Fixed Deposit, Current Account, Home Loan, Personal Loan",AG033,2011-09-15,"Dormant for 6 months, reactivated"
+CUST00229,Sneha Desai,1969-07-01,Bengaluru,Self-Employed,3900000,Verified,2026-10-09,XXXXX3173X,Low,20,"Credit Card, Insurance",AG008,2022-01-24,Recent KYC refresh completed
+CUST00230,Kavya Desai,1997-11-24,Chennai,Retired,300000,Verified,2023-02-21,XXXXX7240X,Low,28,"Savings Account, Credit Card",AG004,2009-06-26,Recent KYC refresh completed
+CUST00231,Karan Mehta,1955-07-26,Chennai,Self-Employed,7100000,Verified,2025-07-15,XXXXX2679X,Medium,49,"Mutual Fund SIP, Current Account",AG033,2022-08-05,"Dormant for 6 months, reactivated"
+CUST00232,Arjun Nair,1978-01-19,Surat,Salaried,300000,Verified,2024-02-20,XXXXX8259X,Low,31,"Credit Card, Mutual Fund SIP",AG038,2017-04-05,"Dormant for 6 months, reactivated"
+CUST00233,Neha Singh,1965-12-01,Mumbai,Self-Employed,2400000,Verified,2023-09-02,XXXXX7180X,Medium,63,Mutual Fund SIP,AG018,2017-06-26,Recent KYC refresh completed
+CUST00234,Aarav Reddy,1991-11-02,Delhi,Salaried,2100000,Pending,2026-05-07,XXXXX1833X,Low,28,"Insurance, Mutual Fund SIP, Personal Loan",AG036,2013-01-12,"Long-standing customer, no incidents"
+CUST00235,Isha Gupta,1956-02-13,Surat,Self-Employed,5500000,Verified,2025-04-06,XXXXX2506X,Medium,56,"Home Loan, Current Account, Credit Card",AG022,2012-06-05,Recent KYC refresh completed
+CUST00236,Pooja Gupta,1950-10-16,Mumbai,Professional,4600000,Verified,2026-08-08,XXXXX4994X,Low,34,Credit Card,AG025,2025-07-18,"Long-standing customer, no incidents"
+CUST00237,Aarav Chopra,1996-05-15,Pune,Student,6700000,Verified,2023-03-31,XXXXX5856X,Low,27,"Credit Card, Personal Loan",AG006,2007-02-26,Upgraded to premium tier
+CUST00238,Aarav Desai,1955-11-16,Bengaluru,Professional,2900000,Pending,2025-05-18,XXXXX2702X,High,87,"Mutual Fund SIP, Credit Card",AG005,2021-10-02,"Dormant for 6 months, reactivated"
+CUST00239,Vivaan Patel,1956-07-28,Ahmedabad,Self-Employed,3400000,Verified,2026-03-23,XXXXX4729X,Low,24,"Mutual Fund SIP, Home Loan, Insurance",AG026,2014-09-18,Recent KYC refresh completed
+CUST00240,Aarav Desai,1955-09-04,Jaipur,Salaried,1100000,Verified,2025-10-26,XXXXX2738X,Low,31,"Personal Loan, Insurance, Savings Account",AG019,2022-03-02,"Raised service complaint, resolved"
+CUST00241,Pooja Mehta,1997-11-10,Bengaluru,Self-Employed,5200000,Verified,2026-01-22,XXXXX5832X,Low,36,"Personal Loan, Credit Card",AG024,2005-04-02,Cross-sold investment products
+CUST00242,Aarav Joshi,2003-07-13,Hyderabad,Student,7200000,Expired,2024-09-16,XXXXX4441X,Medium,43,"Home Loan, Insurance, Credit Card",AG033,2008-03-12,Upgraded to premium tier
+CUST00243,Rohan Patel,1966-04-09,Jaipur,Salaried,7200000,Verified,2026-01-30,XXXXX2198X,Low,29,"Current Account, Fixed Deposit, Savings Account",AG013,2021-04-11,Cross-sold investment products
+CUST00244,Priya Patel,1975-08-01,Jaipur,Salaried,2600000,Verified,2025-07-11,XXXXX6379X,Low,20,"Fixed Deposit, Personal Loan, Mutual Fund SIP",AG024,2023-02-12,Recent KYC refresh completed
+CUST00245,Priya Verma,1969-11-15,Hyderabad,Business Owner,4800000,Verified,2024-11-10,XXXXX8863X,High,80,"Insurance, Fixed Deposit, Mutual Fund SIP, Home Loan",AG036,2007-06-11,Upgraded to premium tier
+CUST00246,Ananya Chopra,1998-04-28,Bengaluru,Business Owner,1100000,Verified,2023-02-08,XXXXX9309X,Medium,66,Mutual Fund SIP,AG038,2009-10-09,"Long-standing customer, no incidents"
+CUST00247,Pooja Desai,1963-05-03,Pune,Retired,3000000,Pending,2026-04-22,XXXXX5767X,Low,27,"Insurance, Personal Loan",AG033,2007-01-12,"Raised service complaint, resolved"
+CUST00248,Riya Desai,1964-11-17,Surat,Self-Employed,5900000,Verified,2026-03-05,XXXXX3395X,Low,10,"Credit Card, Savings Account, Current Account, Home Loan",AG015,2006-05-30,Recent KYC refresh completed
+CUST00249,Vikram Chopra,1982-05-30,Hyderabad,Retired,6000000,Pending,2023-03-23,XXXXX6309X,Low,11,Personal Loan,AG017,2017-12-24,Cross-sold investment products
+CUST00250,Meera Joshi,1956-12-25,Surat,Business Owner,5000000,Expired,2024-04-01,XXXXX9460X,Low,22,"Credit Card, Mutual Fund SIP, Fixed Deposit, Home Loan",AG031,2024-11-24,Cross-sold investment products
+CUST00251,Isha Shah,1956-12-01,Surat,Professional,3700000,Verified,2024-01-18,XXXXX3578X,Low,38,"Current Account, Credit Card, Insurance",AG027,2023-03-13,Recent KYC refresh completed
+CUST00252,Pooja Shah,2003-01-02,Delhi,Professional,5400000,Verified,2023-03-30,XXXXX3095X,Medium,61,"Fixed Deposit, Credit Card",AG033,2005-11-18,Cross-sold investment products
+CUST00253,Vikram Nair,2003-10-09,Jaipur,Professional,400000,Pending,2026-09-17,XXXXX5644X,Low,15,Home Loan,AG029,2018-08-09,"Raised service complaint, resolved"
+CUST00254,Riya Mehta,2002-04-10,Delhi,Student,6700000,Verified,2024-12-02,XXXXX8429X,Medium,47,Home Loan,AG025,2013-08-24,Upgraded to premium tier
+CUST00255,Kavya Rao,1963-06-02,Jaipur,Salaried,2400000,Verified,2026-06-13,XXXXX1639X,Low,16,Current Account,AG031,2019-10-16,Upgraded to premium tier
+CUST00256,Kavya Gupta,1987-09-28,Pune,Salaried,6900000,Verified,2025-09-14,XXXXX7246X,High,70,"Current Account, Home Loan, Insurance",AG017,2015-09-14,Upgraded to premium tier
+CUST00257,Sneha Nair,1973-02-16,Bengaluru,Salaried,200000,Verified,2023-08-30,XXXXX9515X,High,89,Mutual Fund SIP,AG014,2020-06-05,Recent KYC refresh completed
+CUST00258,Amit Iyer,1973-06-11,Surat,Retired,7400000,Verified,2024-07-18,XXXXX7511X,Low,13,"Mutual Fund SIP, Personal Loan",AG036,2015-10-28,Upgraded to premium tier
+CUST00259,Neha Joshi,1980-11-22,Hyderabad,Professional,1900000,Pending,2026-09-12,XXXXX2951X,Low,27,"Insurance, Mutual Fund SIP",AG011,2007-04-02,Upgraded to premium tier
+CUST00260,Sneha Joshi,1954-09-02,Delhi,Retired,200000,Verified,2023-10-25,XXXXX8727X,Low,35,"Current Account, Savings Account, Fixed Deposit, Insurance",AG024,2006-10-18,Cross-sold investment products
+CUST00261,Riya Desai,1996-09-28,Chennai,Professional,7800000,Verified,2023-12-25,XXXXX9099X,Low,22,"Savings Account, Current Account, Credit Card, Personal Loan",AG019,2009-05-15,"Long-standing customer, no incidents"
+CUST00262,Priya Joshi,1965-03-16,Ahmedabad,Business Owner,3200000,Verified,2023-11-19,XXXXX2422X,Medium,56,"Mutual Fund SIP, Fixed Deposit, Credit Card",AG026,2014-02-04,Cross-sold investment products
+CUST00263,Aditya Chopra,1958-02-02,Surat,Business Owner,7300000,Pending,2024-12-13,XXXXX6693X,Low,10,"Home Loan, Personal Loan, Current Account",AG030,2025-11-08,"Raised service complaint, resolved"
+CUST00264,Vikram Patel,2000-02-13,Mumbai,Student,3900000,Verified,2023-08-28,XXXXX9409X,Low,18,"Personal Loan, Credit Card, Home Loan",AG025,2017-08-19,"Raised service complaint, resolved"
+CUST00265,Rahul Desai,1991-05-02,Jaipur,Salaried,6300000,Verified,2023-05-19,XXXXX7269X,Medium,50,"Home Loan, Mutual Fund SIP",AG021,2014-04-02,Recent KYC refresh completed
+CUST00266,Priya Iyer,1958-05-06,Hyderabad,Professional,4500000,Verified,2024-01-01,XXXXX8807X,Low,10,"Credit Card, Current Account, Personal Loan",AG018,2009-02-06,"Dormant for 6 months, reactivated"
+CUST00267,Rohan Shah,1971-09-19,Chennai,Self-Employed,3100000,Verified,2024-05-26,XXXXX6833X,Medium,46,"Current Account, Savings Account",AG006,2020-02-28,"Dormant for 6 months, reactivated"
+CUST00268,Vivaan Rao,1993-04-08,Pune,Student,4200000,Verified,2026-03-22,XXXXX5501X,Low,10,"Fixed Deposit, Mutual Fund SIP, Personal Loan, Insurance",AG026,2009-12-25,Cross-sold investment products
+CUST00269,Pooja Gupta,1952-12-03,Surat,Business Owner,5200000,Pending,2023-12-24,XXXXX8490X,Low,26,Insurance,AG021,2020-06-17,"Long-standing customer, no incidents"
+CUST00270,Diya Reddy,1982-06-10,Jaipur,Business Owner,2500000,Verified,2024-04-30,XXXXX5413X,Low,16,"Credit Card, Fixed Deposit, Current Account, Home Loan",AG028,2009-09-21,"Raised service complaint, resolved"
+CUST00271,Karan Singh,1966-02-20,Jaipur,Self-Employed,7500000,Verified,2023-07-24,XXXXX5422X,Medium,51,"Mutual Fund SIP, Insurance",AG025,2009-05-26,Upgraded to premium tier
+CUST00272,Aarav Mehta,1987-10-26,Kolkata,Self-Employed,6800000,Verified,2024-10-08,XXXXX8972X,Medium,44,"Personal Loan, Insurance, Mutual Fund SIP",AG004,2013-12-08,"Long-standing customer, no incidents"
+CUST00273,Pooja Rao,1958-08-22,Kolkata,Professional,4400000,Verified,2025-01-07,XXXXX5222X,Medium,46,"Savings Account, Home Loan, Insurance",AG023,2024-06-15,"Dormant for 6 months, reactivated"
+CUST00274,Sneha Mehta,1975-07-15,Pune,Business Owner,6700000,Verified,2025-07-04,XXXXX2284X,High,88,"Personal Loan, Home Loan, Credit Card, Current Account",AG011,2019-05-15,Recent KYC refresh completed
+CUST00275,Aditya Patel,1964-07-14,Pune,Self-Employed,4200000,Verified,2024-08-19,XXXXX5382X,Low,29,"Personal Loan, Home Loan, Fixed Deposit, Insurance",AG034,2015-02-06,"Raised service complaint, resolved"
+CUST00276,Priya Desai,1972-07-29,Mumbai,Self-Employed,2300000,Verified,2023-07-15,XXXXX2045X,Low,37,"Savings Account, Insurance, Home Loan, Personal Loan",AG006,2007-05-02,Recent KYC refresh completed
+CUST00277,Neha Shah,1972-03-12,Chennai,Retired,1800000,Verified,2023-12-16,XXXXX1468X,Medium,60,Credit Card,AG021,2024-05-20,"Raised service complaint, resolved"
+CUST00278,Sneha Singh,1962-02-14,Surat,Self-Employed,7700000,Verified,2026-07-16,XXXXX8126X,Low,37,"Credit Card, Home Loan, Personal Loan",AG015,2023-01-19,"Long-standing customer, no incidents"
+CUST00279,Ananya Iyer,1950-12-12,Ahmedabad,Student,1900000,Verified,2025-08-18,XXXXX9767X,Low,21,Insurance,AG031,2011-09-21,"Long-standing customer, no incidents"
+CUST00280,Priya Verma,1950-08-25,Surat,Business Owner,2600000,Verified,2026-02-22,XXXXX8161X,Medium,49,"Home Loan, Current Account, Credit Card, Insurance",AG025,2009-12-13,Recent KYC refresh completed
+CUST00281,Riya Verma,1974-05-23,Chennai,Professional,7000000,Verified,2025-04-25,XXXXX4080X,Low,30,Fixed Deposit,AG009,2011-07-01,"Long-standing customer, no incidents"
+CUST00282,Riya Singh,1966-11-06,Pune,Salaried,2100000,Verified,2025-12-31,XXXXX1362X,Medium,54,"Current Account, Fixed Deposit",AG018,2007-10-22,"Dormant for 6 months, reactivated"
+CUST00283,Ananya Sharma,1994-04-13,Bengaluru,Business Owner,5500000,Verified,2025-10-17,XXXXX7084X,Low,10,"Savings Account, Fixed Deposit, Insurance, Current Account",AG004,2010-12-24,"Raised service complaint, resolved"
+CUST00284,Karan Rao,1984-03-26,Ahmedabad,Salaried,3300000,Verified,2025-06-26,XXXXX5049X,Low,25,Home Loan,AG030,2021-06-29,"Long-standing customer, no incidents"
+CUST00285,Neha Chopra,1978-12-26,Delhi,Professional,700000,Verified,2026-01-30,XXXXX9534X,Low,16,Personal Loan,AG031,2019-04-28,Recent KYC refresh completed
+CUST00286,Rohan Patel,1971-03-04,Hyderabad,Business Owner,300000,Verified,2024-07-19,XXXXX2960X,Low,38,"Home Loan, Savings Account, Mutual Fund SIP, Personal Loan",AG031,2020-06-10,Cross-sold investment products
+CUST00287,Isha Singh,1958-03-15,Jaipur,Business Owner,900000,Verified,2026-08-13,XXXXX3521X,Low,34,Fixed Deposit,AG032,2010-03-22,Recent KYC refresh completed
+CUST00288,Meera Verma,1989-05-11,Bengaluru,Salaried,5000000,Verified,2023-10-03,XXXXX5107X,High,94,Insurance,AG029,2017-07-16,Recent KYC refresh completed
+CUST00289,Isha Gupta,1981-03-11,Pune,Professional,6100000,Verified,2026-05-11,XXXXX3627X,Low,25,Fixed Deposit,AG029,2011-08-20,Recent KYC refresh completed
+CUST00290,Vikram Nair,1966-08-24,Ahmedabad,Student,4800000,Verified,2024-05-04,XXXXX6254X,Low,24,Mutual Fund SIP,AG013,2016-10-03,"Dormant for 6 months, reactivated"
+CUST00291,Neha Reddy,1986-10-07,Pune,Salaried,1400000,Verified,2023-05-17,XXXXX1717X,Low,27,"Fixed Deposit, Mutual Fund SIP",AG003,2009-07-14,"Long-standing customer, no incidents"
+CUST00292,Arjun Desai,1993-12-14,Surat,Student,7700000,Verified,2025-01-20,XXXXX4616X,Low,13,Savings Account,AG014,2019-09-16,"Raised service complaint, resolved"
+CUST00293,Vivaan Reddy,2000-01-24,Hyderabad,Business Owner,900000,Verified,2024-06-28,XXXXX9667X,High,84,Current Account,AG020,2006-10-01,Upgraded to premium tier
+CUST00294,Priya Gupta,1984-07-27,Bengaluru,Self-Employed,6900000,Verified,2026-03-13,XXXXX3931X,High,93,"Current Account, Mutual Fund SIP, Credit Card, Personal Loan",AG023,2020-02-17,"Raised service complaint, resolved"
+CUST00295,Isha Verma,1966-03-09,Surat,Retired,6600000,Verified,2023-11-20,XXXXX9747X,Medium,68,"Credit Card, Fixed Deposit, Personal Loan, Mutual Fund SIP",AG024,2014-04-01,"Dormant for 6 months, reactivated"
+CUST00296,Priya Joshi,1998-12-14,Bengaluru,Retired,7200000,Pending,2024-06-04,XXXXX6898X,Low,33,"Insurance, Home Loan, Savings Account, Credit Card",AG019,2018-05-13,"Long-standing customer, no incidents"
+CUST00297,Neha Shah,1969-04-10,Pune,Salaried,3700000,Pending,2025-11-13,XXXXX3534X,Low,38,Savings Account,AG030,2012-12-23,Upgraded to premium tier
+CUST00298,Priya Shah,1972-12-27,Chennai,Salaried,7500000,Verified,2024-03-21,XXXXX2264X,Low,21,"Insurance, Current Account, Home Loan",AG037,2023-05-20,"Long-standing customer, no incidents"
+CUST00299,Amit Nair,1957-01-15,Ahmedabad,Business Owner,4600000,Pending,2025-06-08,XXXXX7824X,Low,19,Home Loan,AG039,2025-10-30,"Long-standing customer, no incidents"
+CUST00300,Neha Gupta,1953-09-11,Pune,Student,7400000,Verified,2025-10-25,XXXXX4617X,Medium,52,"Savings Account, Credit Card",AG026,2014-12-30,Cross-sold investment products

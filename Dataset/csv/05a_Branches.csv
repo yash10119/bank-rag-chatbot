@@ -1,0 +1,13 @@
+branch_id,branch_name,city,manager,staff_count,opened_date
+BR001,Mumbai Central Branch,Chennai,Priya Shah,16,1999-08-07
+BR002,Surat Central Branch,Jaipur,Kavya Sharma,9,1999-03-16
+BR003,Bengaluru East Branch,Surat,Riya Sharma,43,2003-12-02
+BR004,Surat Main Branch,Bengaluru,Rahul Joshi,25,1995-04-17
+BR005,Delhi Main Branch,Pune,Karan Mehta,21,2010-02-05
+BR006,Mumbai Central Branch,Hyderabad,Diya Reddy,30,2022-01-30
+BR007,Chennai Central Branch,Kolkata,Sneha Patel,32,1998-07-15
+BR008,Surat West Branch,Jaipur,Meera Joshi,20,1998-02-13
+BR009,Ahmedabad East Branch,Chennai,Aditya Rao,22,1999-07-13
+BR010,Hyderabad West Branch,Kolkata,Meera Mehta,31,2010-12-08
+BR011,Bengaluru West Branch,Mumbai,Riya Desai,18,2018-12-17
+BR012,Bengaluru East Branch,Kolkata,Arjun Iyer,43,2004-11-07

@@ -1,0 +1,3 @@
+streamlit==1.65.0  # pinned: session cookie uses st.context.cookies + components.html
+httpx>=0.27
+pandas>=2.2

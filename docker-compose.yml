@@ -1,0 +1,125 @@
+# Single-command start:  docker compose up --build
+x-backend: &backend
+  build:
+    context: ./backend
+  env_file: .env
+  environment: &backend-env
+    DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+    REDIS_URL: redis://redis:6379/0
+    QDRANT_URL: http://qdrant:6333
+    MCP_GMAIL_URL: http://mcp-gmail:8101/mcp
+    MCP_CALENDAR_URL: http://mcp-calendar:8102/mcp
+    MCP_SLACK_URL: http://mcp-slack:8103/mcp
+    UPLOAD_DIR: /data/uploads
+    OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  volumes:
+    - uploads:/data/uploads
+  restart: unless-stopped
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  redis:  # broker (arq jobs), OAuth state, per-thread locks, rate limits
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  qdrant:  # vector store (dense + BM25 sparse hybrid)
+    image: qdrant/qdrant:v1.12.4
+    volumes:
+      - qdrantdata:/qdrant/storage
+    restart: unless-stopped
+
+  api:
+    <<: *backend
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      qdrant: {condition: service_started}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; urllib.request.urlopen('http://localhost:8000/health', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  worker:  # arq agent worker: ingestion, resume-after-approval, audit posting
+    <<: *backend
+    command: ["arq", "app.worker.WorkerSettings"]
+    depends_on:
+      api: {condition: service_healthy}
+
+  mcp-gmail:
+    <<: *backend
+    command: ["python", "-m", "app.mcp_servers.gmail"]
+    environment:
+      <<: *backend-env
+      MCP_PORT: "8101"
+    ports:
+      - "8101:8101"  # browser OAuth endpoints (/oauth/start, /oauth/callback)
+    depends_on:
+      api: {condition: service_healthy}
+
+  mcp-calendar:
+    <<: *backend
+    command: ["python", "-m", "app.mcp_servers.calendar"]
+    environment:
+      <<: *backend-env
+      MCP_PORT: "8102"
+    ports:
+      - "8102:8102"  # browser OAuth endpoints (/oauth/start, /oauth/callback)
+    depends_on:
+      api: {condition: service_healthy}
+
+  mcp-slack:
+    <<: *backend
+    command: ["python", "-m", "app.mcp_servers.slack"]
+    environment:
+      <<: *backend-env
+      MCP_PORT: "8103"
+    ports:
+      - "8103:8103"  # browser OAuth endpoints (/oauth/start, /oauth/callback)
+    depends_on:
+      api: {condition: service_healthy}
+
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      API_URL: http://api:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      api: {condition: service_healthy}
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  redisdata:
+  qdrantdata:
+  uploads:

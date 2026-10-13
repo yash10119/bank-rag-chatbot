@@ -1,0 +1,102 @@
+import json
+import re
+from datetime import datetime, timedelta, timezone
+from functools import lru_cache
+
+import redis.asyncio as aioredis
+from langchain_core.language_models.chat_models import BaseChatModel
+from langgraph.config import get_stream_writer
+
+from ..config import settings
+
+
+@lru_cache
+def llm() -> BaseChatModel:
+    """Chat model chosen by LLM_PROVIDER: 'ollama' (local, no API key) or 'anthropic'."""
+    from ..audit import AuditCallback
+
+    audit = [AuditCallback(settings.llm_model)]  # every prompt/response -> audit_events (llm_call)
+    if settings.llm_provider == "anthropic":
+        from langchain_anthropic import ChatAnthropic
+
+        return ChatAnthropic(model=settings.llm_model, api_key=settings.anthropic_api_key, max_tokens=2048, max_retries=3, timeout=90, callbacks=audit)
+    if settings.llm_provider == "openai":  # any OpenAI-compatible endpoint: Groq, OpenRouter, Together, vLLM ...
+        from langchain_openai import ChatOpenAI
+
+        return ChatOpenAI(model=settings.llm_model, api_key=settings.openai_api_key, base_url=settings.openai_base_url, temperature=0,
+                          max_tokens=2048, max_retries=3, timeout=90, callbacks=audit)
+    from langchain_ollama import ChatOllama
+
+    return ChatOllama(model=settings.llm_model, base_url=settings.ollama_base_url, temperature=0, num_predict=2048,
+                      client_kwargs={"timeout": 300}, callbacks=audit)
+
+
+@lru_cache
+def redis_client() -> aioredis.Redis:
+    return aioredis.from_url(settings.redis_url, decode_responses=True)
+
+
+def emit(**event) -> None:
+    """Live agent-activity event for the Streamlit UI (custom stream channel)."""
+    try:
+        get_stream_writer()(event)
+    except Exception:  # outside a graph run (tests)
+        pass
+
+
+def step(agent: str, detail: str, status: str = "done") -> dict:
+    """Emit a UI event and return a trace entry to persist with the message."""
+    emit(type="step", agent=agent, status=status, detail=detail)
+    return {"agent": agent, "status": status, "detail": detail, "ts": datetime.now(timezone.utc).isoformat()}
+
+
+def text_of(content) -> str:
+    if isinstance(content, str):
+        return content
+    return "".join(b.get("text", "") for b in content if isinstance(b, dict) and b.get("type") == "text")
+
+
+_WEEKDAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+
+
+def resolve_relative_date(text: str, now: datetime) -> str | None:
+    """Deterministic 'today' / 'tomorrow' / '[this|next] <weekday>' -> YYYY-MM-DD (LLMs get this wrong).
+    'Thursday' and 'this Thursday' = the next such day, today included; 'next Thursday' = strictly after today."""
+    t = text.lower()
+    today = now.date()
+    if re.search(r"\bday after tomorrow\b", t):
+        return (today + timedelta(days=2)).isoformat()
+    if re.search(r"\btomorrow\b", t):
+        return (today + timedelta(days=1)).isoformat()
+    if re.search(r"\btoday\b", t):
+        return today.isoformat()
+    m = re.search(r"\b(?:(next|this|coming)\s+)?(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b", t)
+    if not m:
+        return None
+    ahead = (_WEEKDAYS.index(m.group(2)) - today.weekday()) % 7
+    if m.group(1) == "next" and ahead == 0:
+        ahead = 7
+    return (today + timedelta(days=ahead)).isoformat()
+
+
+def last_user_text(state) -> str:
+    for m in reversed(state.get("messages", [])):
+        if m.type == "human":
+            return text_of(m.content)
+    return ""
+
+
+async def once(key: str, ttl: int = 86400) -> bool:
+    """True the first time `key` is seen -> side effects are not duplicated on retries."""
+    return bool(await redis_client().set(f"once:{key}", "1", nx=True, ex=ttl))
+
+
+def slack_channel(prefs: dict | None, which: str) -> str:
+    defaults = {"loans": "#loans-team", "compliance": "#compliance-alerts", "audit": "#audit-log", "rm": "#rm-notifications"}
+    raw = (prefs or {}).get(which) or defaults[which]
+    raw = re.sub(r"[^\w#\-]", "", raw)
+    return raw if raw.startswith("#") else f"#{raw}"
+
+
+def pretty(obj) -> str:
+    return json.dumps(obj, ensure_ascii=False, default=str, indent=1)[:6000]

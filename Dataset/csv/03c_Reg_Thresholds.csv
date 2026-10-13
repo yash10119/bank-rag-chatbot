@@ -1,0 +1,8 @@
+threshold_id,name,value,unit,applies_to,effective_date,version
+THR-001,Cash deposit reporting threshold,1000000,INR,Cash Transaction Report,2024-07-05,1.0
+THR-002,Cash transaction PAN requirement,50000,INR,PAN mandatory,2023-05-22,1.0
+THR-003,Suspicious transaction reporting,Any amount,INR,STR within 7 days of suspicion,2024-12-14,1.0
+THR-004,RTGS minimum amount,200000,INR,Minimum value for RTGS,2023-05-19,1.0
+THR-005,UPI per-transaction limit,100000,INR,Standard limit,2026-03-30,1.0
+THR-006,Large value transaction alert,500000,INR,Internal review alert,2026-02-23,1.0
+THR-007,Foreign remittance reporting,1000000,INR,Form A2 required,2023-05-02,1.0

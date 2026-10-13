@@ -1,0 +1,8 @@
+policy_id,title,category,policy_text,version,effective_date,owner_department,status
+POL-KYC-001,KYC Policy,Customer Onboarding,"Every customer must complete identity and address verification before an account is activated. Full KYC must be refreshed every 2 years for high-risk, 8 years for medium-risk and 10 years for low-risk customers.",1.0,2025-12-02,Risk,Active
+POL-AML-002,Anti-Money Laundering Policy,AML,"Transactions that show unusual patterns, structuring, or unexplained high value must be escalated to the Compliance Officer within 24 hours for review.",1.0,2023-11-12,Risk,Active
+POL-DATA-003,Data Protection Policy,Data Privacy,"Customer personal and financial data must be encrypted at rest and in transit, and access must follow least-privilege role-based controls.",4.1,2025-01-23,Legal,Active
+POL-LOAN-004,Credit & Lending Policy,Lending,"Loan applications require income proof, credit bureau check, and a debt-to-income ratio of no more than 50 percent for unsecured loans.",4.1,2026-05-29,Risk,Active
+POL-GRV-005,Grievance Redressal Policy,Customer Service,"Customer complaints must be acknowledged within 24 hours and resolved within 30 days, with escalation to the nodal officer if unresolved.",1.1,2022-01-21,Legal,Active
+POL-FRD-006,Fraud Management Policy,Fraud,Accounts with suspected fraudulent activity must be frozen immediately pending investigation and reported per regulatory timelines.,1.0,2025-01-15,Compliance,Active
+POL-DORM-007,Dormant Account Policy,Account Management,An account with no customer-initiated transaction for 24 months is classified as dormant and requires re-KYC to reactivate.,4.1,2022-12-07,Risk,Active

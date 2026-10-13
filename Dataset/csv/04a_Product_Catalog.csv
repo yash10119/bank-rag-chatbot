@@ -1,0 +1,9 @@
+product_id,product_name,category,interest_rate_pct,processing_fee_inr,key_terms,eligibility,last_updated
+PRD-SAV-01,Regular Savings Account,Savings,3.0,0,"Min balance INR 5,000","Age 21-60, min income INR 25,000/month",2026-09-22
+PRD-SAV-02,Premium Savings Account,Savings,3.5,0,"Min balance INR 50,000",Resident individuals and entities,2026-10-03
+PRD-CUR-01,Business Current Account,Current,0.0,500,"Min balance INR 25,000","Age 21-60, min income INR 25,000/month",2026-10-02
+PRD-FD-01,Fixed Deposit,Deposit,6.8,0,Tenure 7 days to 10 years,"Age 21-60, min income INR 25,000/month",2026-10-04
+PRD-RD-01,Recurring Deposit,Deposit,6.5,0,Monthly installments from INR 500,Resident individuals and entities,2026-10-08
+PRD-HL-01,Home Loan,Loan,8.5,5000,"Up to 30 years, up to 90 percent LTV","Age 18+, KYC verified",2026-09-26
+PRD-PL-01,Personal Loan,Loan,11.5,2500,"Up to 5 years, unsecured","Age 21-60, min income INR 25,000/month",2026-10-06
+PRD-CC-01,Rewards Credit Card,Card,42.0,999,"Annual fee, 3 percent monthly interest",Resident individuals and entities,2026-09-25

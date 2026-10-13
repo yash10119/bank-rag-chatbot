@@ -1,0 +1,181 @@
+date,product,rate_pct,source
+2026-09-13,Savings,3.0,Bank rate card
+2026-09-14,Savings,2.98,Bank rate card
+2026-09-15,Savings,2.98,Bank rate card
+2026-09-16,Savings,2.98,Bank rate card
+2026-09-17,Savings,2.98,Bank rate card
+2026-09-18,Savings,3.0,Bank rate card
+2026-09-19,Savings,3.02,Bank rate card
+2026-09-20,Savings,3.02,Bank rate card
+2026-09-21,Savings,3.0,Bank rate card
+2026-09-22,Savings,3.0,Bank rate card
+2026-09-23,Savings,2.98,Bank rate card
+2026-09-24,Savings,2.98,Bank rate card
+2026-09-25,Savings,2.96,Bank rate card
+2026-09-26,Savings,2.96,Bank rate card
+2026-09-27,Savings,2.94,Bank rate card
+2026-09-28,Savings,2.94,Bank rate card
+2026-09-29,Savings,2.94,Bank rate card
+2026-09-30,Savings,2.96,Bank rate card
+2026-10-01,Savings,2.96,Bank rate card
+2026-10-02,Savings,2.94,Bank rate card
+2026-10-03,Savings,2.96,Bank rate card
+2026-10-04,Savings,2.96,Bank rate card
+2026-10-05,Savings,2.98,Bank rate card
+2026-10-06,Savings,3.0,Bank rate card
+2026-10-07,Savings,3.0,Bank rate card
+2026-10-08,Savings,3.02,Bank rate card
+2026-10-09,Savings,3.02,Bank rate card
+2026-10-10,Savings,3.02,Bank rate card
+2026-10-11,Savings,3.04,Bank rate card
+2026-10-12,Savings,3.06,Bank rate card
+2026-09-13,FD 1 year,6.58,Bank rate card
+2026-09-14,FD 1 year,6.58,Bank rate card
+2026-09-15,FD 1 year,6.58,Bank rate card
+2026-09-16,FD 1 year,6.56,Bank rate card
+2026-09-17,FD 1 year,6.56,Bank rate card
+2026-09-18,FD 1 year,6.56,Bank rate card
+2026-09-19,FD 1 year,6.56,Bank rate card
+2026-09-20,FD 1 year,6.56,Bank rate card
+2026-09-21,FD 1 year,6.56,Bank rate card
+2026-09-22,FD 1 year,6.54,Bank rate card
+2026-09-23,FD 1 year,6.52,Bank rate card
+2026-09-24,FD 1 year,6.54,Bank rate card
+2026-09-25,FD 1 year,6.54,Bank rate card
+2026-09-26,FD 1 year,6.56,Bank rate card
+2026-09-27,FD 1 year,6.56,Bank rate card
+2026-09-28,FD 1 year,6.58,Bank rate card
+2026-09-29,FD 1 year,6.6,Bank rate card
+2026-09-30,FD 1 year,6.62,Bank rate card
+2026-10-01,FD 1 year,6.62,Bank rate card
+2026-10-02,FD 1 year,6.64,Bank rate card
+2026-10-03,FD 1 year,6.64,Bank rate card
+2026-10-04,FD 1 year,6.62,Bank rate card
+2026-10-05,FD 1 year,6.64,Bank rate card
+2026-10-06,FD 1 year,6.66,Bank rate card
+2026-10-07,FD 1 year,6.64,Bank rate card
+2026-10-08,FD 1 year,6.64,Bank rate card
+2026-10-09,FD 1 year,6.64,Bank rate card
+2026-10-10,FD 1 year,6.64,Bank rate card
+2026-10-11,FD 1 year,6.66,Bank rate card
+2026-10-12,FD 1 year,6.68,Bank rate card
+2026-09-13,FD 3 year,6.92,Bank rate card
+2026-09-14,FD 3 year,6.94,Bank rate card
+2026-09-15,FD 3 year,6.94,Bank rate card
+2026-09-16,FD 3 year,6.94,Bank rate card
+2026-09-17,FD 3 year,6.92,Bank rate card
+2026-09-18,FD 3 year,6.9,Bank rate card
+2026-09-19,FD 3 year,6.9,Bank rate card
+2026-09-20,FD 3 year,6.9,Bank rate card
+2026-09-21,FD 3 year,6.92,Bank rate card
+2026-09-22,FD 3 year,6.9,Bank rate card
+2026-09-23,FD 3 year,6.88,Bank rate card
+2026-09-24,FD 3 year,6.88,Bank rate card
+2026-09-25,FD 3 year,6.86,Bank rate card
+2026-09-26,FD 3 year,6.84,Bank rate card
+2026-09-27,FD 3 year,6.84,Bank rate card
+2026-09-28,FD 3 year,6.84,Bank rate card
+2026-09-29,FD 3 year,6.82,Bank rate card
+2026-09-30,FD 3 year,6.82,Bank rate card
+2026-10-01,FD 3 year,6.82,Bank rate card
+2026-10-02,FD 3 year,6.82,Bank rate card
+2026-10-03,FD 3 year,6.84,Bank rate card
+2026-10-04,FD 3 year,6.82,Bank rate card
+2026-10-05,FD 3 year,6.84,Bank rate card
+2026-10-06,FD 3 year,6.84,Bank rate card
+2026-10-07,FD 3 year,6.84,Bank rate card
+2026-10-08,FD 3 year,6.82,Bank rate card
+2026-10-09,FD 3 year,6.82,Bank rate card
+2026-10-10,FD 3 year,6.8,Bank rate card
+2026-10-11,FD 3 year,6.78,Bank rate card
+2026-10-12,FD 3 year,6.8,Bank rate card
+2026-09-13,Home Loan,8.52,Bank rate card
+2026-09-14,Home Loan,8.54,Bank rate card
+2026-09-15,Home Loan,8.54,Bank rate card
+2026-09-16,Home Loan,8.56,Bank rate card
+2026-09-17,Home Loan,8.56,Bank rate card
+2026-09-18,Home Loan,8.54,Bank rate card
+2026-09-19,Home Loan,8.54,Bank rate card
+2026-09-20,Home Loan,8.56,Bank rate card
+2026-09-21,Home Loan,8.58,Bank rate card
+2026-09-22,Home Loan,8.6,Bank rate card
+2026-09-23,Home Loan,8.6,Bank rate card
+2026-09-24,Home Loan,8.6,Bank rate card
+2026-09-25,Home Loan,8.62,Bank rate card
+2026-09-26,Home Loan,8.62,Bank rate card
+2026-09-27,Home Loan,8.64,Bank rate card
+2026-09-28,Home Loan,8.66,Bank rate card
+2026-09-29,Home Loan,8.64,Bank rate card
+2026-09-30,Home Loan,8.62,Bank rate card
+2026-10-01,Home Loan,8.62,Bank rate card
+2026-10-02,Home Loan,8.6,Bank rate card
+2026-10-03,Home Loan,8.62,Bank rate card
+2026-10-04,Home Loan,8.62,Bank rate card
+2026-10-05,Home Loan,8.64,Bank rate card
+2026-10-06,Home Loan,8.62,Bank rate card
+2026-10-07,Home Loan,8.6,Bank rate card
+2026-10-08,Home Loan,8.62,Bank rate card
+2026-10-09,Home Loan,8.62,Bank rate card
+2026-10-10,Home Loan,8.62,Bank rate card
+2026-10-11,Home Loan,8.62,Bank rate card
+2026-10-12,Home Loan,8.6,Bank rate card
+2026-09-13,Personal Loan,11.48,Bank rate card
+2026-09-14,Personal Loan,11.48,Bank rate card
+2026-09-15,Personal Loan,11.48,Bank rate card
+2026-09-16,Personal Loan,11.5,Bank rate card
+2026-09-17,Personal Loan,11.52,Bank rate card
+2026-09-18,Personal Loan,11.54,Bank rate card
+2026-09-19,Personal Loan,11.56,Bank rate card
+2026-09-20,Personal Loan,11.56,Bank rate card
+2026-09-21,Personal Loan,11.56,Bank rate card
+2026-09-22,Personal Loan,11.54,Bank rate card
+2026-09-23,Personal Loan,11.52,Bank rate card
+2026-09-24,Personal Loan,11.52,Bank rate card
+2026-09-25,Personal Loan,11.52,Bank rate card
+2026-09-26,Personal Loan,11.54,Bank rate card
+2026-09-27,Personal Loan,11.54,Bank rate card
+2026-09-28,Personal Loan,11.52,Bank rate card
+2026-09-29,Personal Loan,11.52,Bank rate card
+2026-09-30,Personal Loan,11.5,Bank rate card
+2026-10-01,Personal Loan,11.5,Bank rate card
+2026-10-02,Personal Loan,11.5,Bank rate card
+2026-10-03,Personal Loan,11.5,Bank rate card
+2026-10-04,Personal Loan,11.48,Bank rate card
+2026-10-05,Personal Loan,11.46,Bank rate card
+2026-10-06,Personal Loan,11.46,Bank rate card
+2026-10-07,Personal Loan,11.46,Bank rate card
+2026-10-08,Personal Loan,11.44,Bank rate card
+2026-10-09,Personal Loan,11.46,Bank rate card
+2026-10-10,Personal Loan,11.48,Bank rate card
+2026-10-11,Personal Loan,11.48,Bank rate card
+2026-10-12,Personal Loan,11.46,Bank rate card
+2026-09-13,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-14,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-15,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-16,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-17,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-18,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-19,Repo Rate (benchmark),5.52,Bank rate card
+2026-09-20,Repo Rate (benchmark),5.54,Bank rate card
+2026-09-21,Repo Rate (benchmark),5.52,Bank rate card
+2026-09-22,Repo Rate (benchmark),5.52,Bank rate card
+2026-09-23,Repo Rate (benchmark),5.54,Bank rate card
+2026-09-24,Repo Rate (benchmark),5.52,Bank rate card
+2026-09-25,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-26,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-27,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-28,Repo Rate (benchmark),5.52,Bank rate card
+2026-09-29,Repo Rate (benchmark),5.5,Bank rate card
+2026-09-30,Repo Rate (benchmark),5.5,Bank rate card
+2026-10-01,Repo Rate (benchmark),5.5,Bank rate card
+2026-10-02,Repo Rate (benchmark),5.5,Bank rate card
+2026-10-03,Repo Rate (benchmark),5.52,Bank rate card
+2026-10-04,Repo Rate (benchmark),5.54,Bank rate card
+2026-10-05,Repo Rate (benchmark),5.56,Bank rate card
+2026-10-06,Repo Rate (benchmark),5.54,Bank rate card
+2026-10-07,Repo Rate (benchmark),5.54,Bank rate card
+2026-10-08,Repo Rate (benchmark),5.56,Bank rate card
+2026-10-09,Repo Rate (benchmark),5.58,Bank rate card
+2026-10-10,Repo Rate (benchmark),5.6,Bank rate card
+2026-10-11,Repo Rate (benchmark),5.62,Bank rate card
+2026-10-12,Repo Rate (benchmark),5.62,Bank rate card

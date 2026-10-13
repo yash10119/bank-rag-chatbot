@@ -1,0 +1,7 @@
+rule_id,rule_name,trigger_condition,severity,action_required,status,last_reviewed
+AML-R001,Cash Transaction Threshold,"Single cash deposit or withdrawal of INR 10,00,000 or more",High,Auto-generate Cash Transaction Report,Enabled,2026-08-28
+AML-R002,Structuring Detection,"Multiple cash deposits between INR 8,00,000 and 9,99,999 within 7 days",High,Raise alert and escalate to Compliance,Enabled,2026-07-13
+AML-R003,Rapid Movement of Funds,Credit followed by debit of 90 percent or more within 24 hours,Medium,Review by AML analyst,Enabled,2026-07-20
+AML-R004,High-Risk Jurisdiction,Transfer to or from a sanctioned or high-risk jurisdiction,High,Block and file Suspicious Transaction Report,Enabled,2026-03-27
+AML-R005,Dormant Account Activity,Sudden high-value transaction on a dormant account,Medium,Verify with customer and re-KYC,Enabled,2026-02-27
+AML-R006,Round Amount Pattern,Repeated round-figure transfers to the same new beneficiary,Low,Monitor for 30 days,Enabled,2026-07-07

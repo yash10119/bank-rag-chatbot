@@ -1,0 +1,251 @@
+escalation_id,created_at,customer_id,branch_id,issue_type,escalation_level,assigned_agent_id,status,resolution_hours,event_source
+ESC00001,2026-09-26 06:14:29,CUST00288,BR012,Card blocked,3,AG024,In Progress,83.4,event-driven
+ESC00002,2026-09-11 10:38:41,CUST00099,BR006,Statement request,1,AG016,Closed,33.3,event-driven
+ESC00003,2026-09-04 02:38:30,CUST00251,BR004,Statement request,1,AG019,Closed,40.9,event-driven
+ESC00004,2026-09-02 00:45:37,CUST00222,BR009,Statement request,3,AG037,Resolved,77.9,event-driven
+ESC00005,2026-10-06 16:10:52,CUST00131,BR008,Failed transaction,3,AG023,Resolved,31.5,event-driven
+ESC00006,2026-09-06 02:47:54,CUST00024,BR011,Failed transaction,1,AG003,Closed,78.8,event-driven
+ESC00007,2026-09-08 21:08:01,CUST00053,BR012,Card blocked,1,AG014,Resolved,92.3,event-driven
+ESC00008,2026-09-06 04:12:32,CUST00214,BR010,Unauthorised debit,1,AG015,Open,15.6,event-driven
+ESC00009,2026-09-18 05:42:33,CUST00051,BR005,Card blocked,3,AG011,Resolved,22.9,event-driven
+ESC00010,2026-09-07 11:01:29,CUST00066,BR002,KYC delay,1,AG017,In Progress,87.3,event-driven
+ESC00011,2026-09-06 03:58:06,CUST00019,BR005,KYC delay,1,AG008,Closed,38.3,event-driven
+ESC00012,2026-09-27 09:17:39,CUST00253,BR009,Unauthorised debit,2,AG003,Closed,92.2,event-driven
+ESC00013,2026-10-03 23:05:07,CUST00181,BR010,Failed transaction,1,AG014,In Progress,52.0,event-driven
+ESC00014,2026-09-10 00:56:31,CUST00090,BR012,Statement request,1,AG026,In Progress,34.8,event-driven
+ESC00015,2026-09-14 01:04:42,CUST00021,BR004,Card blocked,1,AG025,Closed,54.4,event-driven
+ESC00016,2026-09-10 03:21:31,CUST00175,BR008,Failed transaction,1,AG037,Resolved,17.7,event-driven
+ESC00017,2026-10-05 03:17:30,CUST00182,BR005,KYC delay,1,AG022,Open,92.9,event-driven
+ESC00018,2026-09-28 03:29:59,CUST00224,BR011,Service complaint,2,AG011,Resolved,1.6,event-driven
+ESC00019,2026-09-09 20:13:17,CUST00169,BR007,KYC delay,2,AG002,Closed,56.4,event-driven
+ESC00020,2026-09-01 16:56:37,CUST00274,BR007,Unauthorised debit,2,AG039,Closed,58.0,event-driven
+ESC00021,2026-09-19 02:39:59,CUST00288,BR007,Loan disbursal delay,1,AG037,Closed,55.1,event-driven
+ESC00022,2026-09-30 10:51:37,CUST00269,BR002,Unauthorised debit,1,AG008,Closed,60.6,event-driven
+ESC00023,2026-09-15 02:19:52,CUST00236,BR005,Loan disbursal delay,1,AG008,In Progress,92.5,event-driven
+ESC00024,2026-09-05 01:15:04,CUST00005,BR001,Card blocked,1,AG019,Open,33.0,event-driven
+ESC00025,2026-09-25 00:03:51,CUST00168,BR009,Service complaint,2,AG026,Closed,86.4,event-driven
+ESC00026,2026-09-22 23:52:47,CUST00105,BR004,Card blocked,1,AG031,Open,48.9,event-driven
+ESC00027,2026-10-10 13:28:21,CUST00206,BR007,Loan disbursal delay,1,AG033,Resolved,85.3,event-driven
+ESC00028,2026-09-26 21:02:13,CUST00277,BR012,KYC delay,1,AG014,Open,37.6,event-driven
+ESC00029,2026-09-04 06:05:33,CUST00208,BR006,Service complaint,1,AG006,In Progress,59.5,event-driven
+ESC00030,2026-10-11 21:26:11,CUST00207,BR012,KYC delay,1,AG019,Resolved,8.4,event-driven
+ESC00031,2026-09-17 12:01:39,CUST00254,BR002,Statement request,1,AG003,Closed,65.6,event-driven
+ESC00032,2026-10-03 02:18:30,CUST00237,BR006,Unauthorised debit,2,AG027,Open,88.5,event-driven
+ESC00033,2026-09-27 11:53:40,CUST00170,BR009,Loan disbursal delay,3,AG040,Resolved,19.0,event-driven
+ESC00034,2026-09-17 02:30:23,CUST00154,BR004,KYC delay,2,AG011,In Progress,25.9,event-driven
+ESC00035,2026-09-14 10:11:24,CUST00086,BR012,Failed transaction,2,AG011,In Progress,83.6,event-driven
+ESC00036,2026-09-27 14:42:48,CUST00218,BR003,Statement request,1,AG001,Closed,86.1,event-driven
+ESC00037,2026-09-06 05:13:50,CUST00140,BR001,Statement request,1,AG037,Closed,69.5,event-driven
+ESC00038,2026-10-06 08:29:54,CUST00300,BR002,KYC delay,2,AG008,Closed,29.7,event-driven
+ESC00039,2026-09-06 00:58:07,CUST00184,BR001,Unauthorised debit,1,AG023,Open,8.5,event-driven
+ESC00040,2026-09-12 18:06:32,CUST00246,BR011,KYC delay,2,AG011,Closed,66.4,event-driven
+ESC00041,2026-09-11 15:21:24,CUST00131,BR002,Card blocked,2,AG011,Closed,29.8,event-driven
+ESC00042,2026-09-07 14:03:07,CUST00137,BR012,Card blocked,1,AG037,Resolved,17.9,event-driven
+ESC00043,2026-09-17 12:47:42,CUST00204,BR001,Service complaint,1,AG019,Open,3.5,event-driven
+ESC00044,2026-09-05 01:28:02,CUST00142,BR003,KYC delay,1,AG016,Closed,67.4,event-driven
+ESC00045,2026-10-10 22:18:43,CUST00205,BR009,Statement request,2,AG022,Closed,18.6,event-driven
+ESC00046,2026-10-09 12:28:56,CUST00222,BR009,Service complaint,2,AG012,Open,10.3,event-driven
+ESC00047,2026-10-02 10:24:40,CUST00085,BR003,KYC delay,1,AG025,Resolved,89.9,event-driven
+ESC00048,2026-09-08 17:54:16,CUST00275,BR001,Unauthorised debit,2,AG032,Open,1.8,event-driven
+ESC00049,2026-10-07 23:37:09,CUST00008,BR010,Loan disbursal delay,2,AG016,Resolved,87.8,event-driven
+ESC00050,2026-10-11 08:12:22,CUST00163,BR010,Failed transaction,2,AG005,Resolved,62.7,event-driven
+ESC00051,2026-09-12 10:39:00,CUST00029,BR003,Statement request,1,AG023,Closed,23.7,event-driven
+ESC00052,2026-09-30 01:22:13,CUST00273,BR007,Failed transaction,1,AG020,Closed,23.4,event-driven
+ESC00053,2026-10-08 01:21:33,CUST00177,BR009,Loan disbursal delay,1,AG012,Closed,19.8,event-driven
+ESC00054,2026-09-05 04:40:57,CUST00019,BR011,Failed transaction,1,AG021,In Progress,22.6,event-driven
+ESC00055,2026-09-01 08:36:53,CUST00096,BR006,Loan disbursal delay,1,AG037,Closed,40.5,event-driven
+ESC00056,2026-09-22 14:30:30,CUST00035,BR004,Card blocked,2,AG005,Closed,34.9,event-driven
+ESC00057,2026-09-29 21:02:48,CUST00117,BR010,KYC delay,1,AG035,Closed,66.8,event-driven
+ESC00058,2026-09-08 15:56:50,CUST00222,BR004,Failed transaction,1,AG024,In Progress,21.2,event-driven
+ESC00059,2026-09-29 18:54:10,CUST00016,BR004,Statement request,2,AG020,Resolved,12.2,event-driven
+ESC00060,2026-09-04 16:37:58,CUST00196,BR011,KYC delay,1,AG013,Closed,68.4,event-driven
+ESC00061,2026-09-21 23:26:11,CUST00107,BR007,KYC delay,1,AG027,Closed,68.1,event-driven
+ESC00062,2026-09-16 22:57:49,CUST00155,BR006,Card blocked,1,AG012,Resolved,61.7,event-driven
+ESC00063,2026-09-11 07:37:51,CUST00167,BR011,Card blocked,1,AG020,Resolved,31.5,event-driven
+ESC00064,2026-09-10 01:49:55,CUST00229,BR010,Unauthorised debit,2,AG014,Resolved,57.6,event-driven
+ESC00065,2026-09-20 17:24:30,CUST00225,BR008,KYC delay,1,AG036,In Progress,61.9,event-driven
+ESC00066,2026-09-17 19:43:54,CUST00255,BR001,Statement request,1,AG025,In Progress,91.7,event-driven
+ESC00067,2026-09-15 00:02:18,CUST00101,BR012,Service complaint,1,AG005,In Progress,4.9,event-driven
+ESC00068,2026-09-15 23:02:42,CUST00236,BR009,Card blocked,1,AG001,Closed,44.0,event-driven
+ESC00069,2026-09-17 05:09:33,CUST00205,BR004,Card blocked,1,AG032,Resolved,92.1,event-driven
+ESC00070,2026-10-02 14:10:07,CUST00059,BR005,Failed transaction,1,AG002,Resolved,12.9,event-driven
+ESC00071,2026-09-30 09:07:03,CUST00103,BR007,KYC delay,2,AG011,Resolved,15.5,event-driven
+ESC00072,2026-09-04 14:22:46,CUST00208,BR005,Statement request,1,AG021,Closed,20.3,event-driven
+ESC00073,2026-09-24 14:45:11,CUST00247,BR010,Loan disbursal delay,1,AG031,Resolved,38.0,event-driven
+ESC00074,2026-10-01 13:30:36,CUST00096,BR007,Unauthorised debit,2,AG033,Resolved,19.5,event-driven
+ESC00075,2026-10-09 06:01:17,CUST00120,BR004,Card blocked,1,AG009,Resolved,74.6,event-driven
+ESC00076,2026-10-06 18:15:29,CUST00282,BR003,Service complaint,2,AG007,Closed,1.1,event-driven
+ESC00077,2026-10-02 02:47:51,CUST00248,BR002,Unauthorised debit,3,AG037,Resolved,29.2,event-driven
+ESC00078,2026-09-30 06:26:45,CUST00049,BR009,KYC delay,1,AG008,In Progress,44.7,event-driven
+ESC00079,2026-09-21 12:12:46,CUST00213,BR012,Failed transaction,3,AG014,Resolved,56.4,event-driven
+ESC00080,2026-09-16 20:08:38,CUST00077,BR007,Failed transaction,3,AG027,Resolved,18.5,event-driven
+ESC00081,2026-09-08 15:43:22,CUST00235,BR010,KYC delay,3,AG026,Open,75.0,event-driven
+ESC00082,2026-10-07 13:41:11,CUST00195,BR007,Failed transaction,1,AG024,Resolved,60.0,event-driven
+ESC00083,2026-09-10 05:21:15,CUST00173,BR008,Unauthorised debit,1,AG039,Open,53.0,event-driven
+ESC00084,2026-09-17 06:17:21,CUST00023,BR007,Unauthorised debit,2,AG001,In Progress,78.3,event-driven
+ESC00085,2026-10-08 09:25:43,CUST00248,BR012,Service complaint,1,AG005,Open,5.7,event-driven
+ESC00086,2026-09-23 18:08:09,CUST00072,BR004,Service complaint,1,AG034,Resolved,92.2,event-driven
+ESC00087,2026-10-01 23:49:38,CUST00170,BR012,Service complaint,1,AG007,Resolved,14.2,event-driven
+ESC00088,2026-10-01 09:29:29,CUST00019,BR008,Card blocked,1,AG010,In Progress,76.0,event-driven
+ESC00089,2026-09-12 18:33:35,CUST00284,BR003,Card blocked,1,AG015,Resolved,59.6,event-driven
+ESC00090,2026-09-18 10:42:04,CUST00062,BR004,Statement request,1,AG040,Resolved,73.5,event-driven
+ESC00091,2026-09-23 19:07:05,CUST00125,BR009,Service complaint,3,AG030,Resolved,42.7,event-driven
+ESC00092,2026-09-23 17:00:08,CUST00225,BR009,Service complaint,1,AG011,In Progress,1.7,event-driven
+ESC00093,2026-09-27 18:22:50,CUST00094,BR003,Unauthorised debit,2,AG025,Closed,73.0,event-driven
+ESC00094,2026-10-11 14:08:43,CUST00054,BR005,KYC delay,1,AG017,Closed,36.8,event-driven
+ESC00095,2026-09-23 07:22:01,CUST00013,BR007,Card blocked,1,AG002,Resolved,7.1,event-driven
+ESC00096,2026-10-03 19:31:29,CUST00286,BR011,KYC delay,2,AG037,Resolved,12.7,event-driven
+ESC00097,2026-09-25 13:13:41,CUST00073,BR001,Card blocked,2,AG038,Resolved,7.0,event-driven
+ESC00098,2026-09-01 11:45:49,CUST00266,BR005,Card blocked,2,AG014,Resolved,96.0,event-driven
+ESC00099,2026-09-05 02:03:51,CUST00282,BR002,Service complaint,1,AG005,Resolved,61.1,event-driven
+ESC00100,2026-09-29 16:25:36,CUST00100,BR001,Statement request,1,AG022,Closed,95.9,event-driven
+ESC00101,2026-10-07 13:21:25,CUST00293,BR006,Failed transaction,3,AG019,In Progress,81.5,event-driven
+ESC00102,2026-09-09 07:00:22,CUST00086,BR010,Unauthorised debit,1,AG001,Open,50.4,event-driven
+ESC00103,2026-10-02 13:08:31,CUST00058,BR007,Failed transaction,1,AG025,Resolved,94.0,event-driven
+ESC00104,2026-09-20 19:54:14,CUST00140,BR001,Unauthorised debit,2,AG034,Closed,94.3,event-driven
+ESC00105,2026-09-06 13:35:16,CUST00220,BR004,Card blocked,3,AG016,Resolved,19.6,event-driven
+ESC00106,2026-09-01 16:15:00,CUST00164,BR008,Statement request,3,AG019,Open,24.1,event-driven
+ESC00107,2026-09-20 22:45:37,CUST00090,BR007,Service complaint,3,AG022,Resolved,12.6,event-driven
+ESC00108,2026-09-16 20:10:11,CUST00274,BR004,Unauthorised debit,1,AG023,Open,42.0,event-driven
+ESC00109,2026-09-16 06:47:34,CUST00038,BR002,Loan disbursal delay,1,AG019,Closed,27.4,event-driven
+ESC00110,2026-09-22 01:19:44,CUST00257,BR005,Service complaint,1,AG031,Open,19.1,event-driven
+ESC00111,2026-10-04 05:38:57,CUST00031,BR002,Service complaint,3,AG004,Closed,80.0,event-driven
+ESC00112,2026-10-02 12:00:13,CUST00174,BR009,Service complaint,1,AG022,Resolved,80.7,event-driven
+ESC00113,2026-09-27 17:51:39,CUST00042,BR002,Service complaint,1,AG004,Open,37.5,event-driven
+ESC00114,2026-09-07 09:22:32,CUST00190,BR004,KYC delay,1,AG038,Closed,49.4,event-driven
+ESC00115,2026-09-25 18:28:58,CUST00050,BR005,Failed transaction,1,AG035,Open,14.4,event-driven
+ESC00116,2026-09-12 18:20:14,CUST00117,BR002,Loan disbursal delay,1,AG032,Closed,38.5,event-driven
+ESC00117,2026-09-07 22:26:36,CUST00204,BR009,Unauthorised debit,1,AG012,Resolved,86.1,event-driven
+ESC00118,2026-09-27 22:19:53,CUST00240,BR009,Service complaint,1,AG030,Closed,52.8,event-driven
+ESC00119,2026-09-30 21:19:28,CUST00273,BR004,KYC delay,1,AG032,Resolved,43.1,event-driven
+ESC00120,2026-09-03 05:14:47,CUST00046,BR001,Statement request,1,AG017,Resolved,95.2,event-driven
+ESC00121,2026-10-01 10:36:30,CUST00095,BR009,Card blocked,1,AG007,In Progress,67.9,event-driven
+ESC00122,2026-10-04 20:20:58,CUST00262,BR003,KYC delay,1,AG006,Closed,29.6,event-driven
+ESC00123,2026-09-12 08:42:15,CUST00152,BR005,Loan disbursal delay,1,AG037,Resolved,60.5,event-driven
+ESC00124,2026-09-15 09:38:52,CUST00168,BR010,Loan disbursal delay,1,AG015,In Progress,89.5,event-driven
+ESC00125,2026-10-07 10:34:05,CUST00011,BR002,Unauthorised debit,1,AG029,Resolved,69.4,event-driven
+ESC00126,2026-09-30 13:36:33,CUST00142,BR006,Failed transaction,1,AG004,In Progress,59.8,event-driven
+ESC00127,2026-09-05 08:01:46,CUST00102,BR011,Failed transaction,2,AG014,Open,74.7,event-driven
+ESC00128,2026-09-19 22:36:22,CUST00003,BR007,Statement request,1,AG007,Resolved,69.7,event-driven
+ESC00129,2026-09-28 00:12:17,CUST00212,BR005,Service complaint,2,AG035,Resolved,13.9,event-driven
+ESC00130,2026-10-02 02:47:08,CUST00268,BR008,Card blocked,3,AG034,In Progress,50.7,event-driven
+ESC00131,2026-10-11 10:53:46,CUST00263,BR002,Unauthorised debit,2,AG025,Resolved,58.4,event-driven
+ESC00132,2026-09-11 23:41:12,CUST00131,BR005,Failed transaction,2,AG021,Resolved,14.5,event-driven
+ESC00133,2026-09-16 00:06:51,CUST00237,BR003,Failed transaction,1,AG015,Closed,39.9,event-driven
+ESC00134,2026-09-10 12:23:29,CUST00207,BR003,Failed transaction,2,AG038,Open,1.7,event-driven
+ESC00135,2026-10-03 02:08:28,CUST00300,BR011,KYC delay,3,AG008,Resolved,67.6,event-driven
+ESC00136,2026-09-10 09:41:56,CUST00015,BR002,Loan disbursal delay,1,AG004,Resolved,38.1,event-driven
+ESC00137,2026-10-10 23:49:48,CUST00193,BR004,Service complaint,1,AG029,Open,67.3,event-driven
+ESC00138,2026-10-09 12:48:27,CUST00285,BR010,Card blocked,1,AG023,Resolved,24.8,event-driven
+ESC00139,2026-10-05 22:24:39,CUST00027,BR005,Loan disbursal delay,3,AG003,Closed,89.2,event-driven
+ESC00140,2026-10-04 16:22:42,CUST00082,BR007,KYC delay,1,AG025,Closed,37.5,event-driven
+ESC00141,2026-10-04 15:20:49,CUST00220,BR006,Loan disbursal delay,1,AG025,Resolved,10.0,event-driven
+ESC00142,2026-09-23 06:03:29,CUST00058,BR002,Service complaint,2,AG008,Open,90.0,event-driven
+ESC00143,2026-09-01 20:54:43,CUST00010,BR012,KYC delay,1,AG034,Closed,19.2,event-driven
+ESC00144,2026-09-18 19:50:40,CUST00252,BR011,Unauthorised debit,1,AG012,Closed,85.0,event-driven
+ESC00145,2026-09-09 20:32:08,CUST00174,BR003,KYC delay,1,AG030,Resolved,34.2,event-driven
+ESC00146,2026-10-05 12:51:54,CUST00122,BR004,KYC delay,2,AG039,Closed,49.8,event-driven
+ESC00147,2026-09-13 12:46:15,CUST00265,BR007,Failed transaction,1,AG033,Resolved,73.2,event-driven
+ESC00148,2026-10-04 13:18:15,CUST00098,BR001,Service complaint,2,AG017,In Progress,91.6,event-driven
+ESC00149,2026-09-08 19:38:18,CUST00254,BR009,KYC delay,1,AG014,Open,83.4,event-driven
+ESC00150,2026-10-04 13:00:12,CUST00034,BR012,Card blocked,2,AG015,Closed,52.7,event-driven
+ESC00151,2026-10-11 02:49:35,CUST00290,BR001,KYC delay,1,AG001,Open,47.5,event-driven
+ESC00152,2026-10-10 11:29:26,CUST00177,BR009,KYC delay,2,AG037,Resolved,2.5,event-driven
+ESC00153,2026-09-15 18:13:51,CUST00174,BR007,KYC delay,1,AG001,Open,34.4,event-driven
+ESC00154,2026-09-27 14:46:41,CUST00024,BR010,KYC delay,1,AG040,Open,65.8,event-driven
+ESC00155,2026-09-23 09:02:51,CUST00289,BR001,KYC delay,2,AG026,In Progress,58.4,event-driven
+ESC00156,2026-09-04 07:13:33,CUST00295,BR002,Unauthorised debit,2,AG013,Closed,40.9,event-driven
+ESC00157,2026-09-13 22:45:13,CUST00277,BR004,Loan disbursal delay,1,AG009,Resolved,87.4,event-driven
+ESC00158,2026-09-21 03:06:53,CUST00100,BR007,Loan disbursal delay,1,AG031,Closed,44.3,event-driven
+ESC00159,2026-10-05 10:28:24,CUST00095,BR010,Loan disbursal delay,1,AG037,Resolved,89.7,event-driven
+ESC00160,2026-10-09 06:46:20,CUST00197,BR010,Failed transaction,1,AG023,Closed,68.2,event-driven
+ESC00161,2026-10-01 16:56:08,CUST00277,BR009,Statement request,2,AG006,Resolved,26.2,event-driven
+ESC00162,2026-10-04 12:05:29,CUST00168,BR003,Service complaint,1,AG029,Closed,45.9,event-driven
+ESC00163,2026-09-18 13:18:46,CUST00274,BR008,KYC delay,1,AG022,Open,41.8,event-driven
+ESC00164,2026-09-13 21:20:40,CUST00274,BR002,Unauthorised debit,1,AG035,Resolved,79.0,event-driven
+ESC00165,2026-09-19 17:05:09,CUST00189,BR001,Failed transaction,1,AG015,Closed,11.7,event-driven
+ESC00166,2026-09-29 00:15:09,CUST00237,BR001,Loan disbursal delay,1,AG018,Closed,8.7,event-driven
+ESC00167,2026-09-09 04:00:48,CUST00124,BR005,Service complaint,1,AG040,Closed,76.0,event-driven
+ESC00168,2026-09-16 00:46:32,CUST00090,BR009,Statement request,1,AG005,Closed,30.5,event-driven
+ESC00169,2026-09-15 05:19:18,CUST00160,BR008,Unauthorised debit,1,AG028,Resolved,19.6,event-driven
+ESC00170,2026-09-18 08:46:01,CUST00095,BR004,Loan disbursal delay,2,AG011,Resolved,22.6,event-driven
+ESC00171,2026-09-03 07:15:11,CUST00293,BR001,Card blocked,1,AG020,In Progress,29.2,event-driven
+ESC00172,2026-09-20 06:16:05,CUST00146,BR004,Service complaint,2,AG012,Closed,93.8,event-driven
+ESC00173,2026-09-03 00:55:40,CUST00165,BR005,Unauthorised debit,2,AG025,Resolved,10.7,event-driven
+ESC00174,2026-09-23 08:31:00,CUST00097,BR001,Service complaint,2,AG031,Resolved,1.3,event-driven
+ESC00175,2026-10-01 02:48:30,CUST00293,BR010,Statement request,1,AG033,Closed,79.3,event-driven
+ESC00176,2026-09-14 12:58:39,CUST00215,BR002,Loan disbursal delay,1,AG002,Resolved,36.4,event-driven
+ESC00177,2026-09-05 11:58:18,CUST00111,BR012,Service complaint,2,AG023,Resolved,93.1,event-driven
+ESC00178,2026-09-16 11:05:42,CUST00204,BR003,Failed transaction,1,AG004,Closed,70.0,event-driven
+ESC00179,2026-09-29 21:19:20,CUST00270,BR001,KYC delay,1,AG030,Closed,82.8,event-driven
+ESC00180,2026-10-05 03:01:43,CUST00012,BR001,Service complaint,1,AG004,Closed,29.3,event-driven
+ESC00181,2026-09-04 13:51:55,CUST00196,BR011,Card blocked,1,AG003,Closed,36.6,event-driven
+ESC00182,2026-09-22 18:55:10,CUST00255,BR006,Loan disbursal delay,2,AG010,Closed,87.0,event-driven
+ESC00183,2026-09-10 02:19:11,CUST00059,BR008,KYC delay,1,AG035,Resolved,79.1,event-driven
+ESC00184,2026-09-28 06:02:02,CUST00012,BR006,Card blocked,1,AG030,Open,71.7,event-driven
+ESC00185,2026-10-02 04:03:53,CUST00201,BR012,Statement request,1,AG002,Closed,64.2,event-driven
+ESC00186,2026-09-09 23:14:02,CUST00111,BR003,Statement request,1,AG018,Resolved,58.7,event-driven
+ESC00187,2026-10-11 08:03:08,CUST00117,BR011,Loan disbursal delay,2,AG031,Closed,40.9,event-driven
+ESC00188,2026-09-24 02:24:34,CUST00139,BR007,Loan disbursal delay,2,AG035,In Progress,79.9,event-driven
+ESC00189,2026-09-14 11:03:42,CUST00151,BR009,KYC delay,1,AG010,Resolved,93.8,event-driven
+ESC00190,2026-09-30 08:05:15,CUST00282,BR012,Failed transaction,1,AG032,Resolved,46.2,event-driven
+ESC00191,2026-10-01 18:09:44,CUST00224,BR006,Unauthorised debit,3,AG022,Resolved,42.7,event-driven
+ESC00192,2026-09-19 01:04:51,CUST00154,BR006,Failed transaction,1,AG038,In Progress,14.1,event-driven
+ESC00193,2026-09-28 13:33:32,CUST00198,BR009,Statement request,1,AG009,Closed,59.6,event-driven
+ESC00194,2026-09-28 03:51:23,CUST00047,BR007,KYC delay,3,AG010,In Progress,50.5,event-driven
+ESC00195,2026-09-11 02:06:16,CUST00045,BR009,Loan disbursal delay,1,AG031,Resolved,23.9,event-driven
+ESC00196,2026-10-01 10:35:03,CUST00146,BR009,Loan disbursal delay,1,AG032,Resolved,43.3,event-driven
+ESC00197,2026-09-20 18:52:28,CUST00300,BR008,Statement request,2,AG005,Closed,95.8,event-driven
+ESC00198,2026-09-10 09:10:20,CUST00275,BR008,Service complaint,1,AG012,Resolved,84.0,event-driven
+ESC00199,2026-09-21 07:12:39,CUST00210,BR011,Unauthorised debit,3,AG033,Closed,64.6,event-driven
+ESC00200,2026-09-22 06:25:01,CUST00145,BR012,Card blocked,2,AG001,In Progress,67.8,event-driven
+ESC00201,2026-10-03 06:24:25,CUST00167,BR008,Unauthorised debit,2,AG019,Resolved,14.7,event-driven
+ESC00202,2026-09-04 09:10:29,CUST00135,BR007,KYC delay,1,AG006,Resolved,39.4,event-driven
+ESC00203,2026-09-16 10:29:09,CUST00178,BR004,Failed transaction,2,AG009,Open,85.8,event-driven
+ESC00204,2026-10-03 20:21:48,CUST00267,BR003,Statement request,2,AG040,Resolved,81.0,event-driven
+ESC00205,2026-10-01 06:27:39,CUST00221,BR011,Unauthorised debit,1,AG028,In Progress,11.3,event-driven
+ESC00206,2026-10-02 00:29:27,CUST00210,BR001,Service complaint,1,AG007,Resolved,77.0,event-driven
+ESC00207,2026-10-06 19:47:34,CUST00122,BR010,Loan disbursal delay,1,AG030,Open,95.6,event-driven
+ESC00208,2026-10-10 13:20:55,CUST00190,BR012,Service complaint,2,AG011,In Progress,30.3,event-driven
+ESC00209,2026-10-06 19:47:30,CUST00198,BR006,KYC delay,1,AG010,Resolved,89.8,event-driven
+ESC00210,2026-09-30 04:19:40,CUST00249,BR009,Loan disbursal delay,1,AG013,Closed,11.9,event-driven
+ESC00211,2026-09-27 08:38:16,CUST00003,BR003,Card blocked,1,AG030,Resolved,8.8,event-driven
+ESC00212,2026-10-02 16:13:44,CUST00026,BR001,Card blocked,1,AG006,Resolved,58.1,event-driven
+ESC00213,2026-09-03 11:59:47,CUST00274,BR005,Loan disbursal delay,1,AG021,Closed,32.6,event-driven
+ESC00214,2026-09-22 16:23:01,CUST00127,BR005,Statement request,2,AG014,Open,18.1,event-driven
+ESC00215,2026-09-30 10:32:09,CUST00066,BR011,Statement request,1,AG005,Resolved,79.2,event-driven
+ESC00216,2026-09-12 16:50:15,CUST00298,BR012,KYC delay,1,AG040,Resolved,35.0,event-driven
+ESC00217,2026-09-25 21:38:51,CUST00269,BR005,Loan disbursal delay,2,AG039,Resolved,72.6,event-driven
+ESC00218,2026-09-11 00:22:25,CUST00233,BR006,Unauthorised debit,1,AG018,Closed,41.6,event-driven
+ESC00219,2026-09-24 00:28:00,CUST00098,BR008,Failed transaction,1,AG010,In Progress,29.4,event-driven
+ESC00220,2026-09-30 14:52:47,CUST00179,BR010,Unauthorised debit,1,AG040,Resolved,58.2,event-driven
+ESC00221,2026-09-19 10:16:06,CUST00015,BR010,KYC delay,1,AG030,Resolved,93.5,event-driven
+ESC00222,2026-10-10 15:08:52,CUST00218,BR005,Loan disbursal delay,1,AG022,Resolved,51.5,event-driven
+ESC00223,2026-09-28 11:40:15,CUST00256,BR003,KYC delay,1,AG018,Closed,37.9,event-driven
+ESC00224,2026-09-12 18:33:04,CUST00272,BR011,KYC delay,1,AG009,Resolved,5.1,event-driven
+ESC00225,2026-09-09 09:16:34,CUST00300,BR004,Statement request,1,AG037,Closed,56.9,event-driven
+ESC00226,2026-09-05 11:14:38,CUST00074,BR003,Failed transaction,2,AG012,Closed,8.0,event-driven
+ESC00227,2026-10-02 20:05:28,CUST00071,BR011,Statement request,1,AG033,Resolved,21.0,event-driven
+ESC00228,2026-09-25 17:45:35,CUST00167,BR005,Service complaint,1,AG007,Resolved,64.6,event-driven
+ESC00229,2026-09-09 00:26:13,CUST00251,BR001,Failed transaction,3,AG035,Closed,43.9,event-driven
+ESC00230,2026-09-24 02:42:10,CUST00028,BR001,Card blocked,1,AG012,In Progress,69.9,event-driven
+ESC00231,2026-09-02 06:58:21,CUST00147,BR008,Unauthorised debit,1,AG019,In Progress,41.5,event-driven
+ESC00232,2026-09-13 10:56:39,CUST00159,BR007,KYC delay,2,AG015,Open,6.9,event-driven
+ESC00233,2026-10-10 02:28:07,CUST00072,BR004,Card blocked,3,AG035,Closed,77.8,event-driven
+ESC00234,2026-10-10 08:53:07,CUST00229,BR012,Loan disbursal delay,1,AG031,In Progress,72.0,event-driven
+ESC00235,2026-09-27 14:26:40,CUST00090,BR002,Unauthorised debit,1,AG028,Closed,27.4,event-driven
+ESC00236,2026-09-17 13:37:01,CUST00215,BR009,Card blocked,2,AG009,In Progress,9.9,event-driven
+ESC00237,2026-09-07 14:40:26,CUST00041,BR003,KYC delay,2,AG024,Closed,48.7,event-driven
+ESC00238,2026-09-26 05:29:35,CUST00087,BR012,Card blocked,1,AG002,Resolved,12.4,event-driven
+ESC00239,2026-09-06 09:24:12,CUST00169,BR008,Failed transaction,1,AG027,Resolved,6.6,event-driven
+ESC00240,2026-09-25 04:28:01,CUST00096,BR005,KYC delay,2,AG022,In Progress,79.4,event-driven
+ESC00241,2026-09-23 18:18:14,CUST00225,BR002,Failed transaction,1,AG015,Closed,36.5,event-driven
+ESC00242,2026-10-07 15:19:32,CUST00213,BR009,Service complaint,2,AG032,In Progress,65.0,event-driven
+ESC00243,2026-09-07 08:03:49,CUST00199,BR005,KYC delay,1,AG039,Resolved,41.8,event-driven
+ESC00244,2026-09-12 04:56:23,CUST00144,BR007,Unauthorised debit,1,AG019,Resolved,21.3,event-driven
+ESC00245,2026-09-05 19:58:45,CUST00294,BR001,Card blocked,2,AG023,Resolved,33.8,event-driven
+ESC00246,2026-10-05 13:33:31,CUST00194,BR004,Statement request,1,AG012,Resolved,46.0,event-driven
+ESC00247,2026-09-02 16:09:17,CUST00252,BR011,Failed transaction,2,AG039,In Progress,30.0,event-driven
+ESC00248,2026-09-06 08:40:32,CUST00089,BR004,Unauthorised debit,2,AG029,Closed,89.3,event-driven
+ESC00249,2026-09-26 01:31:35,CUST00281,BR001,Loan disbursal delay,3,AG016,Resolved,40.3,event-driven
+ESC00250,2026-10-06 19:07:17,CUST00158,BR010,Loan disbursal delay,2,AG003,Resolved,60.4,event-driven

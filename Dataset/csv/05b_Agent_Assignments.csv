@@ -1,0 +1,41 @@
+agent_id,agent_name,branch_id,role,assigned_customers,status
+AG001,Sanjay Rao,BR001,Teller,115,Active
+AG002,Sanjay Nair,BR005,Relationship Manager,37,On Leave
+AG003,Sanjay Shah,BR011,Compliance Officer,60,Active
+AG004,Ananya Iyer,BR003,Teller,105,Active
+AG005,Sneha Iyer,BR012,Support Agent,64,On Leave
+AG006,Arjun Reddy,BR004,Teller,75,Active
+AG007,Aditya Verma,BR001,Relationship Manager,29,Active
+AG008,Kavya Joshi,BR002,Compliance Officer,58,On Leave
+AG009,Rahul Gupta,BR005,Support Agent,120,Active
+AG010,Diya Desai,BR009,Loan Officer,108,Active
+AG011,Diya Iyer,BR007,Teller,68,Active
+AG012,Karan Gupta,BR003,Support Agent,23,Active
+AG013,Vikram Joshi,BR004,Teller,57,Active
+AG014,Sneha Verma,BR009,Relationship Manager,86,Active
+AG015,Pooja Sharma,BR002,Loan Officer,116,Active
+AG016,Priya Sharma,BR004,Support Agent,20,Active
+AG017,Pooja Rao,BR002,Support Agent,108,Active
+AG018,Ananya Desai,BR008,Support Agent,31,Active
+AG019,Vikram Rao,BR010,Compliance Officer,37,Active
+AG020,Rohan Kapoor,BR005,Compliance Officer,95,Active
+AG021,Rahul Chopra,BR009,Compliance Officer,25,Active
+AG022,Priya Patel,BR006,Relationship Manager,85,Active
+AG023,Priya Joshi,BR004,Relationship Manager,19,Active
+AG024,Priya Patel,BR001,Loan Officer,19,Active
+AG025,Priya Iyer,BR011,Compliance Officer,37,Active
+AG026,Ananya Kapoor,BR010,Support Agent,70,Active
+AG027,Pooja Verma,BR007,Teller,22,Active
+AG028,Kavya Reddy,BR007,Compliance Officer,69,Active
+AG029,Diya Sharma,BR007,Loan Officer,112,Active
+AG030,Priya Shah,BR004,Support Agent,67,Active
+AG031,Kavya Mehta,BR005,Compliance Officer,41,Active
+AG032,Rahul Verma,BR009,Relationship Manager,16,Active
+AG033,Aarav Patel,BR004,Teller,62,Active
+AG034,Pooja Shah,BR007,Relationship Manager,31,Active
+AG035,Aarav Nair,BR005,Compliance Officer,46,Active
+AG036,Sneha Desai,BR012,Compliance Officer,29,Active
+AG037,Neha Shah,BR001,Support Agent,104,Active
+AG038,Vivaan Kapoor,BR006,Relationship Manager,16,On Leave
+AG039,Pooja Gupta,BR009,Teller,17,Active
+AG040,Aditya Rao,BR003,Relationship Manager,86,Active
