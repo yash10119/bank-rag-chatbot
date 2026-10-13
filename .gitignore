@@ -10,3 +10,6 @@ Banking_RAG_Chatbot_Assessment*.docx
 ~$*
 image.png
 Dataset/*.zip
+# design-doc generator stays local; the repo carries only the PDF
+docs/make_design_doc.py
+docs/requirements.txt
