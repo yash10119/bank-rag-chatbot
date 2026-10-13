@@ -105,6 +105,43 @@ def slack_channel(prefs: dict | None, which: str) -> str:
     return raw if raw.startswith("#") else f"#{raw}"
 
 
+_PHONE = re.compile(r"(?<![\w.,])\+?\(?\d[\d\s\-().]{6,}\d(?![\w,]|\.\d)")
+_EMAIL = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
+_URL = re.compile(r"(?:https?://|www\.)[^\s)>\]]+", re.I)
+
+
+def ungrounded_contacts(text: str, known: str) -> list[str]:
+    """Phone numbers, email addresses and links in `text` that do not appear in `known` (the facts and the
+    conversation). A language model can make these up; a wrong hotline number is harmful in a banking reply."""
+    known_low, known_digits = known.lower(), re.sub(r"\D", "", known)
+    found = []
+    for m in _PHONE.finditer(text):
+        digits = re.sub(r"\D", "", m.group())
+        if len(digits) >= 9 and digits not in known_digits:
+            found.append(m.group().strip())
+    for rx in (_EMAIL, _URL):
+        found += [m.group().rstrip(".,;") for m in rx.finditer(text) if m.group().rstrip(".,;").lower() not in known_low]
+    return found
+
+
+def strip_ungrounded_contacts(text: str, known: str) -> tuple[str, list[str]]:
+    """Remove every sentence that contains an invented phone number, email address or link.
+    Returns (clean_text, removed_items). Lines left empty (e.g. a bare bullet) are dropped."""
+    bad = ungrounded_contacts(text, known)
+    if not bad:
+        return text, []
+    out = []
+    for line in text.split("\n"):
+        if not any(b in line for b in bad):
+            out.append(line)
+            continue
+        lead = re.match(r"\s*(?:[-*\u2022]|\d+[.)])?\s*", line).group()
+        kept = [s for s in re.split(r"(?<=[.!?])\s+", line[len(lead):]) if not any(b in s for b in bad)]
+        if kept:
+            out.append(lead + " ".join(kept))
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(out)).strip(), bad
+
+
 def pretty(obj) -> str:
     """Compact JSON for prompts, capped so a large payload cannot crowd out the rest of the context."""
     return json.dumps(obj, ensure_ascii=False, default=str, indent=1)[:6000]

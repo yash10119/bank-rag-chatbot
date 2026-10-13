@@ -180,6 +180,23 @@ async def test_high_risk_transfer_pauses_for_officer_then_resumes(env):
     assert any(x[2] == "send_email" for x in env.calls)  # approved -> confirmation email
 
 
+async def test_connection_made_while_waiting_for_approval_is_seen_on_resume(env, monkeypatch):
+    """A request paused for hours must not reply 'Gmail is not connected' after the user connected it meanwhile."""
+    live = {"services": ("slack",)}
+
+    async def status(session, uid):
+        return {s: {"connected": True} for s in live["services"]}
+
+    monkeypatch.setattr(core, "connection_status", status)
+    uid = str(uuid.uuid4())
+    c = cfg(uid)
+    await env.graph.ainvoke(first_input(uid, "transfer 50000 to a new payee"), c)
+    assert set((await env.graph.aget_state(c)).values["connections"]) == {"slack"}
+    live["services"] = ("gmail", "calendar", "slack")
+    out = await env.graph.ainvoke(Command(resume={"decision": "approved", "note": "ok"}), c)
+    assert set(out["connections"]) == {"gmail", "calendar", "slack"}
+
+
 async def test_rejected_transfer_skips_specialists_and_notifications(env):
     uid = str(uuid.uuid4())
     c = cfg(uid)

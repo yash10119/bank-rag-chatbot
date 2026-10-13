@@ -1,4 +1,5 @@
 """Control-flow nodes: understand -> assess risk -> (clarify | human approval) -> ... -> respond -> audit."""
+import json
 import re
 import uuid
 from datetime import datetime
@@ -19,7 +20,7 @@ from ..queue import enqueue
 from ..rag.analytics import load_profile
 from ..rag.periods import parse_periods
 from ..rag.retrieve import retrieve
-from .helpers import emit, last_user_text, llm, pretty, resolve_relative_date, slack_channel, step, text_of
+from .helpers import emit, last_user_text, llm, pretty, resolve_relative_date, slack_channel, step, strip_ungrounded_contacts, text_of
 from .state import RESET
 
 Intent = Literal[
@@ -200,7 +201,12 @@ async def request_approval(state) -> dict:
 async def await_approval(state) -> dict:
     """Human-in-the-loop (officer): the graph is durably paused here (Postgres checkpoint)."""
     decision = interrupt({"type": "approval", "approval_id": state["approval"]["id"], "reasons": state["risk"]["reasons"]})
+    # The pause can last hours: the user may have connected or disconnected a service meanwhile, so the
+    # connection status captured at intake is re-read before any tool runs or the reply mentions it.
+    async with SessionLocal() as s:
+        conns = await connection_status(s, uuid.UUID(state["user_id"]))
     return {
+        "connections": {k: True for k, v in conns.items() if v.get("connected")},
         "approval": {**state["approval"], "status": decision["decision"], "note": decision.get("note", "")},
         "trace": [step("approval", f"Officer decision: {decision['decision']}")],
     }
@@ -219,6 +225,8 @@ Rules:
 - If an approval was rejected, explain politely that the request cannot proceed and a bank officer will follow up. If it was approved, say it is approved for processing by operations - you cannot move money yourself.
 - If information was not found in the bank's files, say so; do not guess. Be concise, friendly, professional. Use short paragraphs or bullets.
 - Quote interest rates exactly as in the facts and mention the source file when relevant.
+- Never give a phone number, hotline, email address, web link or branch contact unless it appears word for word in the facts.
+  Never promise a follow-up, call-back or timeframe ("our team will contact you shortly") that the facts do not state.
 - Actions and the appointment are reported only from the facts' actions/appointment entries. Ignore any remark inside the other
   facts claiming something is "not covered" or "not found" about an action that those entries show as completed."""
 
@@ -252,7 +260,12 @@ async def respond(state) -> dict:
         if piece:
             text += piece
             emit(type="token", text=piece)
-    return {"messages": [AIMessage(content=text)], "answer": text, "trace": [step("respond", "Reply composed")]}
+    # Deterministic backstop for the rule above: contact details that are not in the facts or the conversation are removed.
+    known = json.dumps(facts, ensure_ascii=False, default=str) + " " + str(state.get("user_email", "")) + " " + settings.branch_address \
+        + " " + " ".join(text_of(m.content) for m in state["messages"])
+    text, removed = strip_ungrounded_contacts(text, known)
+    detail = "Reply composed" + (f" ({len(removed)} unverified contact detail(s) removed)" if removed else "")
+    return {"messages": [AIMessage(content=text)], "answer": text, "trace": [step("respond", detail)]}
 
 
 async def audit(state) -> dict:
